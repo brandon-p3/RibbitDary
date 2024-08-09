@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const proyectxcolabController_1 = require("../controllers/proyectxcolabController");
+const proyectxcolabController_1 = require("../controllers/Proyectos/proyectxcolabController");
 class ProyectxcolabRoutes {
     constructor() {
         this.router = (0, express_1.Router)();

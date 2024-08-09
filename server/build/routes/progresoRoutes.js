@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const progresoController_1 = require("../controllers/progresoController");
+const progresoController_1 = require("../controllers/Proyectos/progresoController");
 class ProgresoRoutes {
     constructor() {
         this.router = (0, express_1.Router)();

@@ -3,61 +3,22 @@
     <app-nav-nar-lat></app-nav-nar-lat>
 </header>
 
-<body class="body">
+<div class="body">
     <div class="container">
-        <div class="user-card">
+        <div class="user-card" *ngFor="let socio of socios">
             <div class="user-info">
-                <img src="../../../../assets/img/Icon-User/icon-user-4.jpg" alt="Usuario 1">
+                <img [src]="socio.icono" alt="Imagen del Usuario">
                 <div class="user-details">
-                    <h1>Andres_a</h1>
-                    <p>Jose Andres</p>
+                    <h1>{{ socio.nombres }}</h1>
+                    <p>{{ socio.aPuP }}</p>
+                    <p>{{ socio.aPuM }}</p>
                 </div>
             </div>
             <div class="projects">
                 <h2>Proyectos Involucrados</h2>
                 <ul>
-                    <li>Proyecto A</li>
-                    <li>Proyecto B</li>
-                </ul>
-            </div>
-            <div class="actions">
-                <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Borrar</button>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-info">
-                <img src="../../../../assets/img/Icon-User/icon-user-2.jpg"  alt="Usuario 2">
-                <div class="user-details">
-                    <h1>gustavo_p3</h1>
-                    <p>Brandon Gustavo</p>
-                </div>
-            </div>
-            <div class="projects">
-                <h2>Proyectos Involucrados</h2>
-                <ul>
-                    <li>Proyecto C</li>
-                    <li>Proyecto D</li>
-                </ul>
-            </div>
-            <div class="actions">
-                <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Borrar</button>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-info">
-                <img src="../../../../assets/img/Icon-User/icon-user-3.jpg"  alt="Usuario 3">
-                <div class="user-details">
-                    <h1>pipo</h1>
-                    <p>Felipe</p>
-                </div>
-            </div>
-            <div class="projects">
-                <h2>Proyectos Involucrados</h2>
-                <ul>
-                    <li>Proyecto E</li>
-                    <li>Proyecto F</li>
+                    <!-- Aquí podrías agregar una lista dinámica de proyectos si tu API la proporciona -->
+                    <li *ngFor="let proyecto of socio.proyectos">{{ proyecto.nombre }}</li>
                 </ul>
             </div>
             <div class="actions">
@@ -67,6 +28,5 @@
         </div>
     </div>
 
-<a routerLink="/crear-socios" class="add-btn">+</a>
-
-</body>
+    <a routerLink="/crear-socios" class="add-btn">+</a>
+</div>

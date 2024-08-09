@@ -8,6 +8,8 @@ export interface Proyect {
   descripcion?: string;
   notas?: string;
   progreso?: string;
+  presupuesto?:number;
+  estatus?:string;
 }
 
 

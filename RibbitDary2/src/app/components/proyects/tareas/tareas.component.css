@@ -161,6 +161,7 @@ button:active {
     border-radius: 100%;
 }
 
+/*Estatus de la tarea*/
 .complet {
     gap: 10%;
     padding: 4%;

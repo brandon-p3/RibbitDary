@@ -16,6 +16,8 @@ export class ProyectsService {
 
   constructor(private http: HttpClient) { }
 
+
+
   //Usuarios
   getUsuario(idU: string): Observable<string[]> {
     return this.http.get<string[]>(`${this.API_BASE_URL}/usuario/${idU}`);
@@ -29,12 +31,18 @@ export class ProyectsService {
     return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`,usuario);
   }
 
+  getsocios():Observable<string[]> {
+    return this.http.get<string[]>(`${this.API_BASE_URL}/usuario`);
+   }
 
 
   //User x User
   getUserxUser(idU: string): Observable<string[]> {
     return this.http.get<string[]>(`${this.API_BASE_URL}/userxuser/${idU}`);
   }
+
+
+
 
 
   // Proyectos
@@ -70,10 +78,24 @@ export class ProyectsService {
     return this.http.get<any>(`${this.API_BASE_URL}/progreso/${idP}`);
   }
 
+  estatusProyecto(idP: number, updatedProyect: Proyect): Observable<Proyect> {
+    return this.http.put<Proyect>(`${this.API_BASE_URL}/proyects/estatusProyecto/${idP}`, updatedProyect);
+  }
+
+  
+
+
+
+
   //Tipo de proyecto
   getTipoproyecto(idType: string): Observable<string[]> {
     return this.http.get<string[]>(`${this.API_BASE_URL}/tipoproyecto/${idType}`);
   }
+
+
+
+
+
 
   // Colaboradores
   getColaboradores(idP: string): Observable<string[]> {
@@ -87,6 +109,14 @@ export class ProyectsService {
   deletePColaborador(idP: string, idC: string): Observable<Proyectxcolab> {
     return this.http.delete<Proyectxcolab>(`${this.API_BASE_URL}/proyectxcolab/${idP}/${idC}`);
   }
+
+
+
+
+
+
+
+
 
   // Tareas
   getTareas(idU: string): Observable<Tarea[]> {
@@ -117,6 +147,10 @@ export class ProyectsService {
     return this.http.put<Tarea>(`${this.API_BASE_URL}/tareas/estatusTarea/${idT}`, updatedTarea);
   }
 
+
+
+
+
   // Estado de tarea
   getTareasUrgentes(idU: string): Observable<Tarea[]> {
     return this.http.get<Tarea[]>(`${this.API_BASE_URL}/filtrado/tareasUrgentes/${idU}`);
@@ -135,6 +169,18 @@ export class ProyectsService {
   }
 
 
+ //Filtrado de proyectos
+  getProyectosActivos(idU: string): Observable<Proyect[]> {
+    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/activos/${idU}`);
+  }
+
+  getProyectosBajaTemporal(idU: string): Observable<Proyect[]> {
+    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/bajaTemporal/${idU}`);
+  }
+  
+  getProyectosCancelados(idU: string): Observable<Proyect[]> {
+    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/cancelados/${idU}`);
+  }
 
 
   //Materiales

@@ -1,17 +1,18 @@
 import express, { Application } from 'express';
 import indexRoutes from './routes/indexRoutes';
-import proyectsRoutes from './routes/proyectsRoutes';
-import tareasRoutes from './routes/tareasRoutes';
+import proyectsRoutes from './routes/Proyectos/proyectsRoutes';
+import tareasRoutes from './routes/Tareas/tareasRoutes';
 import morgan from 'morgan';
 import cors from 'cors';
-import proyectxcolabRoutes from './routes/proyectxcolabRoutes';
-import usuarioRoutes from './routes/usuarioRoutes';
-import userxuserRoutes from './routes/userxuserRoutes';
-import materialesRoutes from './routes/materialesRoutes';
-import authRoutes from './routes/authRoutes';
-import tipoProyectoRoutes from './routes/tipoProyectRoutes';
-import progresoRoutes from './routes/progresoRoutes';
-import filtradoTareasRoutes from './routes/filtradoTareasRoutes';
+import proyectxcolabRoutes from './routes/Proyectos/proyectxcolabRoutes';
+import usuarioRoutes from './routes/Usuarios/usuarioRoutes';
+import userxuserRoutes from './routes/Usuarios/userxuserRoutes';
+import materialesRoutes from './routes/Materiales/materialesRoutes';
+import authRoutes from './routes/Usuarios/authRoutes';
+import tipoProyectoRoutes from './routes/Proyectos/tipoProyectRoutes';
+import progresoRoutes from './routes/Proyectos/progresoRoutes';
+import filtradoTareasRoutes from './routes/Tareas/filtradoTareasRoutes';
+import filtradoProyectosRoutes from './routes/Proyectos/filtradoProyectosRoutes';
 
 class Server {
     public app: Application;
@@ -42,6 +43,7 @@ class Server {
         this.app.use('/api', authRoutes); 
         this.app.use('/api/progreso', progresoRoutes);
         this.app.use('/api/filtrado', filtradoTareasRoutes)
+        this.app.use('/api/filtradoP', filtradoProyectosRoutes);
     }
 
     start(): void {

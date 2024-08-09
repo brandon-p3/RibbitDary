@@ -88,6 +88,7 @@ CREATE TABLE Proyecto (
     notas VARCHAR(255),
     idU INT NOT NULL,
     idType INT NOT NULL,
+    estatus VARCHAR(50),
     CONSTRAINT idU_Pro_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
     CONSTRAINT idType_FK FOREIGN KEY (idType) REFERENCES TipoProyecto(idType)
 );
@@ -96,8 +97,8 @@ CREATE TABLE Proyecto (
 CREATE TABLE ProyectXColab (
     idColaboradores INT NOT NULL,
     idP INT NOT NULL,
-    PRIMARY KEY (idColaboradores, idP),
-    CONSTRAINT idColab_Pro_FK FOREIGN KEY (idColaboradores) REFERENCES Usuario(idU),
+    PRIMARY KEY (idColaborador, idP),
+    CONSTRAINT idColab_Pro_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
     CONSTRAINT idP_Pro_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
 );
 
@@ -109,11 +110,11 @@ CREATE TABLE Tarea (
     fechaI DATE NOT NULL,
     fechaF DATE NOT NULL,
     idU INT NOT NULL,
-    idColaboradores INT NOT NULL,
+    idColaborador INT NOT NULL,
     idP INT NOT NULL,
     estatus BOOLEAN,
     CONSTRAINT idU_Tar_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
-    CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaboradores) REFERENCES Usuario(idU),
+    CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
     CONSTRAINT idP_Tar_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
 );
 

@@ -28,7 +28,7 @@
 .cont-Proy-Info-1{
     padding: 2%;
     display: flex;
-    gap: 50%;
+    gap: 20%;
     margin-top: -5%;
 }
 
@@ -43,7 +43,7 @@
 
   .cont-Proy-Info-1 p{
     color: white;
-    font-size: .9em;
+    font-size: .95em;
   }
 /*Nombre proyecto*/
 .if-Pro-1{
@@ -62,20 +62,32 @@
     color: white;
     font-size: 1.5em;
   }
+
+  .if-Pro-2{
+    width: 100%;
+  }
 /*Creador*/
 
 .users{
     display: flex;
     gap: 10%;
     padding: 4%;
+    margin-bottom: -5%;
 }
 .users p{
-    font-size: 0.9em;
+  font-size: .95em;
 }
 
 .users img{
-    height: 50px;
+    height: 55px;
+    width: 58px;
     border-radius: 100%;
+}
+
+/*Progreso y presupuesto*/
+.presu-pro{
+  display: flex;
+  gap: 5%;
 }
 
 
@@ -111,11 +123,12 @@
     width: 12%;
     display: flex;
 }
+
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 15px;
+    padding: 10px 35px;
     margin: 5px;
     border: none;
     border-radius: 8px;
@@ -131,7 +144,8 @@
   .btn-edit {
     background-color: #4CAF50;
     color: white;
-    height: 20%;
+    height: 50px;
+    width: 100px;
   }
   
   .btn-edit:hover {
@@ -143,6 +157,7 @@
   .btn-delete {
     background-color: #f44336;
     color: white;
+    width: 200px;
   }
   
   .btn-delete:hover {
@@ -150,52 +165,76 @@
     transform: scale(1.05);
   }
   
-  /* Estilos para los íconos */
-  .btn-icon {
-    margin-right: 8px;
-    font-size: 18px;
-  }
-  
-  /* Añadiendo un toque cute */
-  .btn-cute {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-cute:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
 
-/* Añadir estos estilos a tu archivo CSS */
-.search-form {
+/* Contenedor para alinear la barra de búsqueda y el filtro */
+.search-filter-container {
   display: flex;
-  align-items: left;
+  align-items: center;
   margin-bottom: 20px;
-  max-width: 500px; /* Limitar el ancho de la barra de búsqueda */
-  margin: 0 auto; /* Centrar la barra de búsqueda */
+  max-width: 800px; /* Ajusta según tu diseño */
+  margin: 0 auto; /* Centrar el contenedor */
+  gap: 20px; /* Espacio entre la búsqueda y el filtro */
+}
+
+.search-form {
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
   width: 100%;
-  padding: 8px; /* Ajustar el tamaño del relleno */
+  padding: 10px;
   border: 1px solid #28a745;
   border-radius: 4px 0 0 4px;
-  font-size: 14px; /* Reducir el tamaño de la fuente */
+  font-size: 14px;
   color: #155724;
 }
 
 .search-button {
   background-color: #28a745;
   border: none;
-  padding: 8px; /* Ajustar el tamaño del relleno */
+  padding: 10px;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   color: white;
 }
 
-.search-button i {
-  font-size: 14px; /* Reducir el tamaño del icono */
+.FiltroProyectos {
+  flex-grow: 1;
 }
+
+.FiltroProyectos select {
+  width: 100%;
+  height: 35px;
+  background-color: rgb(107, 214, 233);
+  color: #fff; 
+  border: 2px solid rgb(77, 162, 201); 
+  border-radius: 8px; 
+  font-family: Arial, Helvetica, sans-serif; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  font-size: 0.9em;
+}
+
+.FiltroProyectos select:hover {
+  background-color: rgb(107, 214, 233);
+  border: 2px solid rgb(77, 162, 201); 
+}
+
+.FiltroProyectos select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(104, 179, 139, 0.5); 
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .search-filter-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 
 /* Agrega estos estilos si deseas hacer la barra de búsqueda y el botón responsivos */
 @media (max-width: 768px) {
@@ -232,3 +271,29 @@
   transition: width 0.3s ease, background 0.3s ease; /* Transición suave al cambiar el ancho y el color */
 }
 
+/*Estatus del proyecto*/
+.complet {
+  padding: 5px; 
+}
+
+.complet select {
+  height: 50px;
+  background-color: rgb(89, 156, 123);
+  color: #fff; 
+  border: 2px solid rgb(76, 130, 103); 
+  border-radius: 8px; 
+  font-family: Arial, Helvetica, sans-serif; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  font-size: 0.9em;
+}
+
+.complet select:hover {
+  background-color: rgb(104, 179, 139);
+  border-color: rgb(89, 156, 123); 
+}
+
+.complet select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(104, 179, 139, 0.5); 
+}

@@ -18,6 +18,8 @@ export class CreateProyectosComponent implements OnInit {
     fechaF: '',
     descripcion: '',
     notas: '',
+    presupuesto: 0,
+    estatus: 'Activo',
   };
 
   colaboradoresSeleccionados: any[] = [];
@@ -178,5 +180,16 @@ export class CreateProyectosComponent implements OnInit {
       console.error('ID del proyecto no encontrado.');
     }
   }
+
+  //Presupuesto solo permita numeros
+  validateInput(event: KeyboardEvent) {
+    const inputChar = String.fromCharCode(event.keyCode);
+  
+    // Permitir solo números
+    if (!/[0-9]/.test(inputChar)) {
+      event.preventDefault(); // Evita que se inserten letras u otros caracteres no permitidos
+    }
+  }
+  
 
 }

@@ -144,5 +144,12 @@ class ProyectsController {
             }
         });
     }
+    estusProyecto(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idP } = req.params;
+            yield database_1.default.query('UPDATE proyecto SET ? WHERE idP = ?', [req.body, idP]);
+            resp.json({ message: 'Updating a Tarea ' + req.params.id });
+        });
+    }
 }
 exports.proyectsController = new ProyectsController();

@@ -21,6 +21,7 @@
   justify-content: space-between;
   width: 300px;
   font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  color: #ffffff; /* Azul pastel */
 }
 
 /* Estilos para tareas urgentes */
@@ -69,7 +70,7 @@
 
 .task-info h2 {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #ffffff; /* Azul pastel */
 }
 
@@ -95,16 +96,17 @@
 }
 
 .task-user img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   vertical-align: middle;
 }
 
 .task-user span {
   line-height: 40px;
-  color: #ffffff; /* Azul pastel */
+  color: #ffffff; 
   font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  font-size: 1.2em;
 }
 
 .task-status {

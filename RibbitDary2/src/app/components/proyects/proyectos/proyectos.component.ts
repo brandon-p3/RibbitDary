@@ -16,6 +16,7 @@ export class ProyectosComponent implements OnInit {
   tipoProyecto: any = [];
   searchTerm: string = '';
   progreso: any = [];
+  filtro: string = '';
 
   constructor(
     private proyectsService: ProyectsService,
@@ -28,7 +29,7 @@ export class ProyectosComponent implements OnInit {
     this.getProyects();
   }
 
- 
+
   getProyects() {
     this.idU = this.route.snapshot.paramMap.get('idU');
 
@@ -67,24 +68,33 @@ export class ProyectosComponent implements OnInit {
       );
     }
   }
-  getTipoProyecto(idType : string) {
-      this.proyectsService.getTipoproyecto(idType).subscribe(
-        resp => {
-          this.tipoProyecto[idType] = resp;
-        },
-        err => console.error('Error al obtener usuario:', err)
-      );
+  getTipoProyecto(idType: string) {
+    this.proyectsService.getTipoproyecto(idType).subscribe(
+      resp => {
+        this.tipoProyecto[idType] = resp;
+      },
+      err => console.error('Error al obtener usuario:', err)
+    );
   }
 
-  getProgreso(idP : string) {
+  //Obtener el progreso
+
+  getProgreso(idP: string) {
     this.proyectsService.getProgreso(idP).subscribe(
       resp => {
         this.progreso[idP] = resp;
       },
       err => console.error('Error al obtener usuario:', err)
     );
-}
-//Buscar Proyecto
+  }
+  getProgressColor(progreso: number): string {
+    // Convertir el porcentaje a un valor de color interpolado
+    const red = Math.max(255 - (progreso * 2.55), 0);   // De rojo (255, 0, 0) a amarillo-verde (255,255,0)
+    const green = Math.min(progreso * 2.55, 255);      // De rojo (255, 0, 0) a verde (0, 255, 0)
+    return `rgb(${red}, ${green}, 0)`; // El color en formato RGB
+  }
+
+  //Buscar Proyecto
   buscarProyecto() {
     const idU = this.route.snapshot.paramMap.get('idU');
     if (idU && this.searchTerm.trim()) { // Verifica que searchTerm no esté vacío
@@ -117,11 +127,62 @@ export class ProyectosComponent implements OnInit {
     );
   }
 
-  getProgressColor(progreso: number): string {
-    // Convertir el porcentaje a un valor de color interpolado
-    const red = Math.max(255 - (progreso * 2.55), 0);   // De rojo (255, 0, 0) a amarillo-verde (255,255,0)
-    const green = Math.min(progreso * 2.55, 255);      // De rojo (255, 0, 0) a verde (0, 255, 0)
-    return `rgb(${red}, ${green}, 0)`; // El color en formato RGB
+  //Actualizar el estatus del proyecto
+  updateEstatus(proyect: any) {
+    this.proyectsService.estatusProyecto(proyect.idP, { estatus: proyect.estatus }).subscribe(
+      resp => {
+        console.log('Proyecto actualizado actualizada:', resp);
+      },
+      err => console.error('Error al actualizar Proyecto:', err)
+    );
   }
-  
+
+
+  //Filtrar proyectos
+  filtroProyectos(filter: string) {
+    const idU = this.route.snapshot.paramMap.get('idU');
+
+
+    if (idU) {
+      if (filter === 'Activo') {
+        this.proyectsService.getProyectosActivos(idU).subscribe(
+          resp => {
+            this.proyects = resp;
+            this.proyects.forEach((proyect: any) => {
+              this.getCreador(proyect.idU);
+              this.getTipoProyecto(proyect.idType);
+              this.getProgreso(proyect.idP);
+            });
+          },
+          err => console.error('Error al obtener proyectos:', err)
+        );
+      } else if (filter === 'Baja Temporal') {
+        this.proyectsService.getProyectosBajaTemporal(idU).subscribe(
+          resp => {
+            this.proyects = resp;
+            this.proyects.forEach((proyect: any) => {
+              this.getCreador(proyect.idU);
+              this.getTipoProyecto(proyect.idType);
+              this.getProgreso(proyect.idP);
+            });
+          },
+          err => console.error('Error al obtener proyectos:', err)
+        );
+      } else if (filter === 'Cancelado') {
+        this.proyectsService.getProyectosCancelados(idU).subscribe(
+          resp => {
+            this.proyects = resp;
+            this.proyects.forEach((proyect: any) => {
+              this.getCreador(proyect.idU);
+              this.getTipoProyecto(proyect.idType);
+              this.getProgreso(proyect.idP);
+            });
+          },
+          err => console.error('Error al obtener proyectos:', err)
+        );
+      } else {
+        this.getProyects();
+      }
+    }
+  }
 }

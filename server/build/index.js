@@ -5,18 +5,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
-const proyectsRoutes_1 = __importDefault(require("./routes/proyectsRoutes"));
-const tareasRoutes_1 = __importDefault(require("./routes/tareasRoutes"));
+const proyectsRoutes_1 = __importDefault(require("./routes/Proyectos/proyectsRoutes"));
+const tareasRoutes_1 = __importDefault(require("./routes/Tareas/tareasRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const proyectxcolabRoutes_1 = __importDefault(require("./routes/proyectxcolabRoutes"));
-const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
-const userxuserRoutes_1 = __importDefault(require("./routes/userxuserRoutes"));
-const materialesRoutes_1 = __importDefault(require("./routes/materialesRoutes"));
-const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
-const tipoProyectRoutes_1 = __importDefault(require("./routes/tipoProyectRoutes"));
-const progresoRoutes_1 = __importDefault(require("./routes/progresoRoutes"));
-const filtradoTareasRoutes_1 = __importDefault(require("./routes/filtradoTareasRoutes"));
+const proyectxcolabRoutes_1 = __importDefault(require("./routes/Proyectos/proyectxcolabRoutes"));
+const usuarioRoutes_1 = __importDefault(require("./routes/Usuarios/usuarioRoutes"));
+const userxuserRoutes_1 = __importDefault(require("./routes/Usuarios/userxuserRoutes"));
+const materialesRoutes_1 = __importDefault(require("./routes/Materiales/materialesRoutes"));
+const authRoutes_1 = __importDefault(require("./routes/Usuarios/authRoutes"));
+const tipoProyectRoutes_1 = __importDefault(require("./routes/Proyectos/tipoProyectRoutes"));
+const progresoRoutes_1 = __importDefault(require("./routes/Proyectos/progresoRoutes"));
+const filtradoTareasRoutes_1 = __importDefault(require("./routes/Tareas/filtradoTareasRoutes"));
+const filtradoProyectosRoutes_1 = __importDefault(require("./routes/Proyectos/filtradoProyectosRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -42,6 +43,7 @@ class Server {
         this.app.use('/api', authRoutes_1.default);
         this.app.use('/api/progreso', progresoRoutes_1.default);
         this.app.use('/api/filtrado', filtradoTareasRoutes_1.default);
+        this.app.use('/api/filtradoP', filtradoProyectosRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

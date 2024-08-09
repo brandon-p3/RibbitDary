@@ -66,6 +66,9 @@ export class TareasComponent implements OnInit {
     this.idP = this.route.snapshot.paramMap.get('idP');
     this.idU = this.route.snapshot.paramMap.get('idU');
 
+
+
+
     if (this.idP && this.idU) {
       this.proyectsService.getTareaP(this.idU, this.idP).subscribe(
         resp => {
