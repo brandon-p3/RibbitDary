@@ -9,7 +9,7 @@ import usuarioRoutes from './routes/Usuarios/usuarioRoutes';
 import userxuserRoutes from './routes/Usuarios/userxuserRoutes';
 import materialesRoutes from './routes/Materiales/materialesRoutes';
 import authRoutes from './routes/Usuarios/authRoutes';
-import tipoProyectoRoutes from './routes/Proyectos/tipoProyectRoutes';
+import tipoProyectoRoutes from './routes/TipoProyecto/tipoProyectRoutes';
 import progresoRoutes from './routes/Proyectos/progresoRoutes';
 import filtradoTareasRoutes from './routes/Tareas/filtradoTareasRoutes';
 import filtradoProyectosRoutes from './routes/Proyectos/filtradoProyectosRoutes';

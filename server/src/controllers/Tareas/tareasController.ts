@@ -4,12 +4,10 @@ import pool from '../../database'
 
 class TareasController {
     public async list(req: Request, resp: Response) {
-        const { idP } = req.params;
         const proyect = await pool.query(`
             SELECT * FROM tarea
-            WHERE idP = ?
             ORDER BY fechaI
-            `, [idP]);
+            `);
         resp.json(proyect);
 
     }

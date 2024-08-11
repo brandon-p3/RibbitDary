@@ -21,12 +21,16 @@
                     <li *ngFor="let proyecto of socio.proyectos">{{ proyecto.nombre }}</li>
                 </ul>
             </div>
-            <div class="actions">
+            <div *ngFor="let user of user">
+            <div class="actions"  *ngIf="user.idTipo !== 3">
                 <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Borrar</button>
+                <button class="delete-btn" (click)="deleteSocio(socio.idU)">Borrar</button>
             </div>
         </div>
     </div>
 
-    <a routerLink="/crear-socios" class="add-btn">+</a>
+    <div *ngFor="let user of user">
+    <a [routerLink]="['/crear-socios/', idU]" class="add-btn" *ngIf="user.idTipo !== 3">+</a>
+    </div>
+ 
 </div>

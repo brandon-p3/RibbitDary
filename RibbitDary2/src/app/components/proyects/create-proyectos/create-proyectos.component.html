@@ -21,9 +21,7 @@
               [(ngModel)]="proyect.idType"
             >
               <option value="opcion1">Tipo de Proyecto</option>
-              <option value="1">Escolar</option>
-              <option value="2">Trabajo</option>
-              <option value="3">Personal</option>
+              <option  *ngFor="let tp of tipoProy" value="{{tp.idType}}">{{tp.tipoProyecto}}</option>
             </select>
             <div class="contProyectoFechas">
               <div class="contProyectoFechas1">

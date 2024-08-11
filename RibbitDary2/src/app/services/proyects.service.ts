@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { Proyect, Tarea, Proyectxcolab, Material, Usuario } from '../models/Proyect';
+import { Observable, ObservedValueOf, of } from 'rxjs';
+import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUser } from '../models/Proyect';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +27,10 @@ export class ProyectsService {
     return this.http.post<any>(this.loginUrl, { correo, password });
   }
 
-  crearUsuario(usuario:Usuario):Observable <Usuario> {
-    return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`,usuario);
+  crearUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`, usuario);
   }
 
-  getsocios():Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/usuario`);
-   }
 
 
   //User x User
@@ -41,8 +38,38 @@ export class ProyectsService {
     return this.http.get<string[]>(`${this.API_BASE_URL}/userxuser/${idU}`);
   }
 
+  getsocios(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.API_BASE_URL}/usuario`);
+  }
 
+  crearUserxUser(UserxUser: UserxUser): Observable<string>{
+    return this.http.post<string>(`${this.API_BASE_URL}/userxuser/`, UserxUser);
+  }
 
+  deleteUserxUser(idU: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_BASE_URL}/userxuser/${idU}`);
+  }
+
+  // Obtener un tipo de proyecto por ID
+  getTipoproyecto(idType: string): Observable<TipoProyecto> {
+    return this.http.get<TipoProyecto>(`${this.API_BASE_URL}/tipoproyecto/${idType}`);
+  }
+
+  getTiposProyectos(): Observable<TipoProyecto> {
+    return this.http.get<TipoProyecto>(`${this.API_BASE_URL}/tipoproyecto`);
+  }
+
+  createTipoProyecto(tipoProyecto: TipoProyecto): Observable<TipoProyecto> {
+    return this.http.post<TipoProyecto>(`${this.API_BASE_URL}/tipoproyecto`, tipoProyecto);
+  }
+
+  deleteTipoProyecto(idType: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_BASE_URL}/tipoproyecto/${idType}`);
+  }
+  
+  updateTipoProyecto(idType: string, tipoProyecto: TipoProyecto): Observable<TipoProyecto> {
+    return this.http.put<TipoProyecto>(`${this.API_BASE_URL}/tipoproyecto/${idType}`, tipoProyecto);
+  }
 
 
   // Proyectos
@@ -74,22 +101,12 @@ export class ProyectsService {
     return this.http.put<Proyect>(`${this.API_BASE_URL}/proyects/${idP}`, updatedProyect);
   }
 
-  getProgreso(idP: string): Observable<any>{
+  getProgreso(idP: string): Observable<any> {
     return this.http.get<any>(`${this.API_BASE_URL}/progreso/${idP}`);
   }
 
   estatusProyecto(idP: number, updatedProyect: Proyect): Observable<Proyect> {
     return this.http.put<Proyect>(`${this.API_BASE_URL}/proyects/estatusProyecto/${idP}`, updatedProyect);
-  }
-
-  
-
-
-
-
-  //Tipo de proyecto
-  getTipoproyecto(idType: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/tipoproyecto/${idType}`);
   }
 
 
@@ -169,7 +186,7 @@ export class ProyectsService {
   }
 
 
- //Filtrado de proyectos
+  //Filtrado de proyectos
   getProyectosActivos(idU: string): Observable<Proyect[]> {
     return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/activos/${idU}`);
   }
@@ -177,7 +194,7 @@ export class ProyectsService {
   getProyectosBajaTemporal(idU: string): Observable<Proyect[]> {
     return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/bajaTemporal/${idU}`);
   }
-  
+
   getProyectosCancelados(idU: string): Observable<Proyect[]> {
     return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/cancelados/${idU}`);
   }
@@ -187,7 +204,7 @@ export class ProyectsService {
   getMaterialesTarea(idT: string): Observable<Material> {
     return this.http.get<Material>(`${this.API_BASE_URL}/materiales/${idT}`);
   }
-  
+
   saveMaterial(material: Material): Observable<Material> {
     return this.http.post<Material>(`${this.API_BASE_URL}/materiales`, material);
   }

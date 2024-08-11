@@ -64,18 +64,26 @@ class ProyectsController {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU, idP } = req.params;
             try {
-                const query = `
-                SELECT proyecto.*
-                FROM proyecto
-                LEFT JOIN proyectxcolab ON proyecto.idP = proyectxcolab.idP
-                WHERE (proyecto.idP = ? AND proyecto.idU = ?) OR (proyecto.idP = ? AND proyectxcolab.idColaborador = ?)
-            `;
-                const result = yield database_1.default.query(query, [idP, idU, idP, idU]);
-                if (result.length > 0) {
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 1) {
+                    const result = yield database_1.default.query(`SELECT * FROM proyecto WHERE idP = ?`, [idP]);
                     resp.json(result[0]);
                 }
                 else {
-                    resp.status(404).json({ message: 'Proyecto no encontrado' });
+                    const query = `
+                SELECT proyecto.*
+                FROM proyecto
+                LEFT JOIN proyectxcolab ON proyecto.idP = proyectxcolab.idP
+                WHERE (proyecto.idP = ? AND proyecto.idU = ?) 
+                OR (proyecto.idP = ? AND proyectxcolab.idColaborador = ?)
+            `;
+                    const result = yield database_1.default.query(query, [idP, idU, idP, idU]);
+                    if (result.length > 0) {
+                        resp.json(result[0]);
+                    }
+                    else {
+                        resp.status(404).json({ message: 'Proyecto no encontrado' });
+                    }
                 }
             }
             catch (error) {

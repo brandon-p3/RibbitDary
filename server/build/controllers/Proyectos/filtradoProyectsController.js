@@ -21,8 +21,19 @@ class FiltradoProyectosController {
             const { idU } = req.params;
             try {
                 const [checar] = yield database_1.default.query('SELECT * FROM userxuser WHERE idColaborador = ?', [idU]);
-                if (checar) { // Verificar si hay resultados
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 1) {
                     const proyectos = yield database_1.default.query(`
+                    SELECT * 
+                    FROM proyecto 
+                    WHERE estatus = "Activo"
+                    ORDER BY fechaI
+                    `, [idU]);
+                    resp.json(proyectos);
+                }
+                else {
+                    if (checar) { // Verificar si hay resultados
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     INNER JOIN proyectxcolab 
@@ -31,16 +42,17 @@ class FiltradoProyectosController {
                     AND estatus = "Activo"
                     ORDER BY fechaI
                     `, [idU]);
-                    resp.json(proyectos);
-                }
-                else {
-                    const proyectos = yield database_1.default.query(`
+                        resp.json(proyectos);
+                    }
+                    else {
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     WHERE proyecto.idU = ?
                     AND estatus = "Activo"
                     ORDER BY fechaI`, [idU]);
-                    resp.json(proyectos);
+                        resp.json(proyectos);
+                    }
                 }
             }
             catch (error) {
@@ -54,8 +66,19 @@ class FiltradoProyectosController {
             const { idU } = req.params;
             try {
                 const [checar] = yield database_1.default.query('SELECT * FROM userxuser WHERE idColaborador = ?', [idU]);
-                if (checar) { // Verificar si hay resultados
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 1) {
                     const proyectos = yield database_1.default.query(`
+                    SELECT * 
+                    FROM proyecto 
+                    WHERE estatus = "Baja Temporal"
+                    ORDER BY fechaI
+                    `, [idU]);
+                    resp.json(proyectos);
+                }
+                else {
+                    if (checar) { // Verificar si hay resultados
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     INNER JOIN proyectxcolab 
@@ -64,16 +87,17 @@ class FiltradoProyectosController {
                     AND estatus = "Baja Temporal"
                     ORDER BY fechaI
                     `, [idU]);
-                    resp.json(proyectos);
-                }
-                else {
-                    const proyectos = yield database_1.default.query(`
+                        resp.json(proyectos);
+                    }
+                    else {
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     WHERE proyecto.idU = ?
                     AND estatus = "Baja Temporal"
                     ORDER BY fechaI`, [idU]);
-                    resp.json(proyectos);
+                        resp.json(proyectos);
+                    }
                 }
             }
             catch (error) {
@@ -87,8 +111,19 @@ class FiltradoProyectosController {
             const { idU } = req.params;
             try {
                 const [checar] = yield database_1.default.query('SELECT * FROM userxuser WHERE idColaborador = ?', [idU]);
-                if (checar) { // Verificar si hay resultados
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 1) {
                     const proyectos = yield database_1.default.query(`
+                    SELECT * 
+                    FROM proyecto 
+                    WHERE estatus = "Cancelado"
+                    ORDER BY fechaI
+                    `, [idU]);
+                    resp.json(proyectos);
+                }
+                else {
+                    if (checar) { // Verificar si hay resultados
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     INNER JOIN proyectxcolab 
@@ -97,16 +132,17 @@ class FiltradoProyectosController {
                     AND estatus = "Cancelado"
                     ORDER BY fechaI
                     `, [idU]);
-                    resp.json(proyectos);
-                }
-                else {
-                    const proyectos = yield database_1.default.query(`
+                        resp.json(proyectos);
+                    }
+                    else {
+                        const proyectos = yield database_1.default.query(`
                     SELECT proyecto.* 
                     FROM proyecto 
                     WHERE proyecto.idU = ?
                     AND estatus = "Cancelado"
                     ORDER BY fechaI`, [idU]);
-                    resp.json(proyectos);
+                        resp.json(proyectos);
+                    }
                 }
             }
             catch (error) {

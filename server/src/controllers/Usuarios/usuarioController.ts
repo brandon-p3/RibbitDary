@@ -35,12 +35,14 @@ class UsuarioController {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       // Guardar el usuario con la contraseña hasheada
-      await pool.query(
+     const result = await pool.query(
         'INSERT INTO usuario SET ?',
         [{ ...userData, password: hashedPassword }]
       );
 
-      resp.json({ message: 'Usuario guardado' });
+      const idU = result.insertId;
+
+      resp.json({ message: 'Usuario guardado', idU: idU });
     } catch (error) {
       console.error('Error al guardar el usuario', error);
       resp.status(500).json({ message: 'Error al guardar el usuario' });
@@ -56,9 +58,13 @@ class UsuarioController {
 
   public async delete(req: Request, resp: Response) {
     const { idU } = req.params;
-    await pool.query(
-      'delete from usuario  where idU = ?', [idU]);
-    resp.json({ message: 'se elimino el usuario' + req.params.idU });
+    try {
+      await pool.query('delete from userxuser  where idU = ?', [idU]);
+      await pool.query('delete from usuario  where idU = ?', [idU]);
+
+    } catch (err) {
+      resp.json({ message: 'se elimino el usuario' + req.params.idU });
+    }
 
   }
 }

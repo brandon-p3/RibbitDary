@@ -1,40 +1,47 @@
 <header>
-    <app-navigation></app-navigation>
-    <app-nav-nar-lat></app-nav-nar-lat>
+  <app-navigation></app-navigation>
+  <app-nav-nar-lat></app-nav-nar-lat>
 </header>
 
 <body class="body">
-    <div class="form-wrapper">
-        <h1>Agregar Nuevo Usuario</h1>
-        <form class="user-form">
-            <label for="nombres">Nombres:</label>
-            <input type="text" id="nombres" name="nombres" required [(ngModel)]="creaSocio.nombres">
+  <div class="body1">
+      <div class="container">
+          
+          <form class="user-form">
+            <h1 class="bienvenido">Crea tus socios</h1>
+              <label for="nombres">Nombres:</label>
+              <input type="text" id="nombres" name="nombres" required [(ngModel)]="creaSocio.nombres">
 
-            <label for="aPuP">Apellido Paterno:</label>
-            <input type="text" id="aPuP" name="aPuP" required [(ngModel)]="creaSocio.aPuP">
+              <label for="aPuP">Apellido Paterno:</label>
+              <input type="text" id="aPuP" name="aPuP" required [(ngModel)]="creaSocio.aPuP">
 
-            <label for="aPuM">Apellido Materno:</label>
-            <input type="text" id="aPuM" name="aPuM" required [(ngModel)]="creaSocio.aPuM">
+              <label for="aPuM">Apellido Materno:</label>
+              <input type="text" id="aPuM" name="aPuM" required [(ngModel)]="creaSocio.aPuM">
 
-            <label for="usuario">Correo Electronico:</label>
-            <input type="text" id="usuario" name="usuario" required [(ngModel)]="creaSocio.usuario">
+              <label for="usuario">Correo Electrónico:</label>
+              <input type="text" id="usuario" name="usuario" required [(ngModel)]="creaSocio.usuario">
 
-            <label for="contraseña">Contraseña:</label>
-            <input type="password" id="contraseña" name="contraseña" required [(ngModel)]="creaSocio.password">
+              <label for="contraseña">Contraseña:</label>
+              <input type="password" id="contraseña" name="contraseña" required [(ngModel)]="creaSocio.password">
 
-            <label for="contraseña">Confima Contraseña:</label>
-            <input type="password" id="contraseña" name="contraseña" required [(ngModel)]="creaSocio.password">
+              <label for="contraseñaconfirma">Confirma Contraseña:</label>
+              <input type="password" id="contraseñaconfirma" name="contraseña" required [(ngModel)]="confirmpass">
 
-            <label for="icono">Icono:</label>
-            <select id="icono" name="icono" required [(ngModel)]="creaSocio.icono">
-                <option value="" disabled selected>Selecciona un ícono</option>
-                <option value="icon1">Icono 1</option>
-                <option value="icon2">Icono 2</option>
-                <option value="icon3">Icono 3</option>
-                <!-- Agrega más opciones según tus iconos disponibles -->
-            </select>
+              <label for="icono">Avatar:</label>
+              <select id="icono" name="icono" required [(ngModel)]="creaSocio.icono">
+                  <option value="" disabled selected>Selecciona un icono</option>
+                  <option value="../../../../assets/img/Icon-User/icon-user-1.jpg">Rana simple</option>
+                  <option value="../../../../assets/img/Icon-User/icon-user-2.jpg">Rana rizada</option>
+                  <option value="../../../../assets/img/Icon-User/icon-user-3.jpg">Rana de la alta curnia</option>
+                  <option value="../../../../assets/img/Icon-User/icon-user-4.jpg">Rana de gym</option>
+                  <option value="../../../../assets/img/Icon-User/icon-user-5.jpg">Rana cute</option>
+              </select>
 
-            <button type="submit">Crear Socio </button>
-        </form>
-    </div>
+              <button type="submit" (click)="crearSocios()">Crear Socio</button>
+          </form>
+      </div>
+      <div class="container2">
+          <img [src]="creaSocio.icono"/>
+      </div>
+  </div>
 </body>

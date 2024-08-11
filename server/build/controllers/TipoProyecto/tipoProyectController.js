@@ -22,5 +22,39 @@ class TipoProyectoController {
             resp.json(tipoProyecto);
         });
     }
+    getTipoProyecto(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tipoProyecto = yield database_1.default.query('SELECT * FROM tipoproyecto WHERE idType != 0');
+            resp.json(tipoProyecto);
+        });
+    }
+    create(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            yield database_1.default.query('INSERT INTO tipoproyecto SET ?', [req.body]);
+            resp.json({ message: 'Tipo de proyecto creado' });
+        });
+    }
+    update(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idType } = req.params;
+            yield database_1.default.query('UPDATE tipoproyecto SET ? WHERE idType = ?', [req.body, idType]);
+            resp.json({ message: 'Tipo de proyecto actualizado' + req.params.id });
+        });
+    }
+    delete(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idType } = req.params;
+            // Ejecutar la primera consulta
+            yield database_1.default.query(`
+            UPDATE proyecto SET idType = 0 WHERE idType = ?;
+        `, [idType]);
+            // Ejecutar la segunda consulta
+            yield database_1.default.query(`
+            DELETE FROM tipoproyecto WHERE idType = ?;
+        `, [idType]);
+            resp.json({ message: 'Tipo de proyecto eliminado ' + idType });
+        });
+    }
 }
 exports.tipoProyectoController = new TipoProyectoController();

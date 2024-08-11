@@ -60,8 +60,9 @@ class UsuarioController {
                 // Hashear la contraseña
                 const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
                 // Guardar el usuario con la contraseña hasheada
-                yield database_1.default.query('INSERT INTO usuario SET ?', [Object.assign(Object.assign({}, userData), { password: hashedPassword })]);
-                resp.json({ message: 'Usuario guardado' });
+                const result = yield database_1.default.query('INSERT INTO usuario SET ?', [Object.assign(Object.assign({}, userData), { password: hashedPassword })]);
+                const idU = result.insertId;
+                resp.json({ message: 'Usuario guardado', idU: idU });
             }
             catch (error) {
                 console.error('Error al guardar el usuario', error);
@@ -79,8 +80,13 @@ class UsuarioController {
     delete(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
-            yield database_1.default.query('delete from usuario  where idU = ?', [idU]);
-            resp.json({ message: 'se elimino el usuario' + req.params.idU });
+            try {
+                yield database_1.default.query('delete from userxuser  where idU = ?', [idU]);
+                yield database_1.default.query('delete from usuario  where idU = ?', [idU]);
+            }
+            catch (err) {
+                resp.json({ message: 'se elimino el usuario' + req.params.idU });
+            }
         });
     }
 }

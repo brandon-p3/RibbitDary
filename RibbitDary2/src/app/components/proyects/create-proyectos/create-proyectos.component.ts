@@ -32,6 +32,8 @@ export class CreateProyectosComponent implements OnInit {
   idU: string | null = null;
   edit: boolean = false;
 
+  tipoProy: any =[];
+
   constructor(
     private proyectsService: ProyectsService,
     private router: Router,
@@ -58,6 +60,7 @@ export class CreateProyectosComponent implements OnInit {
 
     this.getUserxUser();
     this.getColaboradores();
+    this.getTipoProyectos();
   }
 
   //Obtener cosas del proyecto
@@ -192,4 +195,13 @@ export class CreateProyectosComponent implements OnInit {
   }
   
 
+  //Obtener los tipos de proyectos que hay
+  getTipoProyectos() {
+    this.proyectsService.getTiposProyectos().subscribe(
+      resp => {
+        this.tipoProy = resp;
+      },
+      err => console.error('Error al obtener tipos Proyectos:', err)
+    )
+  }
 }

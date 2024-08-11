@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
 import { CrearUsuarioComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
+import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,9 +20,11 @@ const routes: Routes = [
     redirectTo: '/presentacion',
     pathMatch: 'full'
   },
+
+  //Para usuarios Admin y Comun
   //Usuarios
-  {path:'socios', component: SociosComponent},
-  {path:'crear-socios', component: CrearSociosComponent},
+  {path:'socios/:idU', component: SociosComponent},
+  {path:'crear-socios/:idU', component: CrearSociosComponent},
   {path: 'crear-usuarios', component: CrearUsuarioComponent},
 
 
@@ -44,6 +47,12 @@ const routes: Routes = [
 
   // Home
   { path: 'home/:idU', component: HomeComponent },
+
+
+  //Para usuarios Admin
+  {path: 'tipo-proyecto/:idU', component: TipoProyectoComponent},
+  {path: 'tipo-proyecto/edit/:idU/:idType', component: TipoProyectoComponent}
+
 ];
 
 @NgModule({

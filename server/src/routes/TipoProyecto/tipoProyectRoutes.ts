@@ -10,6 +10,10 @@ class TipoProyectoRoutes {
 
     config(): void {
         this.router.get('/:idType', tipoProyectoController.proyectoTipo);
+        this.router.get('/', tipoProyectoController.getTipoProyecto);
+        this.router.post('/', tipoProyectoController.create);
+        this.router.put('/:idType', tipoProyectoController.update);
+        this.router.delete('/:idType', tipoProyectoController.delete);
     }
     
    

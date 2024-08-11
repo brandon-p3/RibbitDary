@@ -9,6 +9,8 @@ class UserxuserRoutes {
     }
     config() {
         this.router.get('/:idU', userxuserController_1.userxuserController.getUserxuser);
+        this.router.post('/', userxuserController_1.userxuserController.createUserxUser);
+        this.router.delete('/:idColaborador', userxuserController_1.userxuserController.deleteUserxUser);
     }
 }
 const userxuserRoutes = new UserxuserRoutes();

@@ -20,6 +20,7 @@ import { BienvenidaComponent } from './components/usuarios/bienvenida/bienvenida
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
 import { CrearUsuarioComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
 import { SociosComponent } from './components/usuarios/socios/socios.component';
+import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
     SociosComponent,
     CrearSociosComponent,
     CrearUsuarioComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    TipoProyectoComponent
   ],
   imports: [
     BrowserModule,

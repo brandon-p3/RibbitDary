@@ -1,68 +1,85 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e8f5e9; /* Verde pastel muy claro */
-    margin: 0;
-    padding: 0;
+/* Cuerpo 1 */
+.body1 {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    background-color: #9cd3db;
+    padding-bottom: 50px;
+}
+body{
+    background-color: #9cd3db;
 }
 
+.container {
+    padding: 60px;
+    background-color: white;
+    width: 40%;
+    height: auto;
+    font-family: 'CascadiaMonoExtraLight', monospace;
+    border-radius: 0% 50% 50% 0%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    
+}
 
-.form-container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff; /* Fondo blanco para el formulario */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.container button {
+    padding: 10px 20px;
+    background-color: #438a3e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.container2 {
+    width: 50%;
+}
+
+.container2 img {
+    width: 60%;
+    height: 100%;
+    padding-left: 20%;
+    height: auto;
+
 }
 
 .user-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    margin-right: 20%;
+    margin-top: 7%;
+
 }
 
 .user-form label {
-    font-weight: bold;
-    color: #004d40; /* Verde oscuro */
-    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #333;
 }
 
-.user-form input, .user-form select {
-    padding: 12px;
-    border: 1px solid #a5d6a7; /* Borde verde pastel */
-    border-radius: 8px;
-    font-size: 1em;
-    transition: border-color 0.3s, box-shadow 0.3s;
+.user-form input {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 0.9em;
 }
 
-.user-form input:focus, .user-form select:focus {
-    border-color: #00796b; /* Verde más oscuro en el enfoque */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    outline: none;
+.user-form select{
+    padding: 8px;
+    background-color: azure;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 0.9em;
 }
 
-.user-form button {
-    background-color: #a5d6a7; /* Verde pastel */
-    color: #004d40; /* Verde oscuro para el texto */
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s, transform 0.2s;
+.user-form select img{
+    width: 100;
 }
 
-.user-form button:hover {
-    background-color: #2d897a;/* Verde más oscuro para hover */
-    color: white;
-    transform: scale(1.05);
-}
-
-.user-form button:active {
-    background-color: #2d897a; /* Verde aún más oscuro para clic */
-    transform: scale(1);
+.bienvenido {
+    color: #438a3e; /* Verde */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
 }

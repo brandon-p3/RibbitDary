@@ -19,7 +19,19 @@ class FiltradoTareasController {
     tareasUrgentes(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
-            const proyect = yield database_1.default.query(`
+            const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+            if (user.length > 0 && user[0].idTipo === 1) {
+                const proyect = yield database_1.default.query(`
+                SELECT * FROM tarea
+                WHERE DATEDIFF(fechaF, CURDATE()) < 10
+                AND DATEDIFF(fechaF, CURDATE()) >= 0
+                AND estatus != "Terminada"
+                ORDER BY fechaF
+            `, [idU, idU]);
+                resp.json(proyect);
+            }
+            else {
+                const proyect = yield database_1.default.query(`
             SELECT * FROM tarea
             WHERE (idU = ? OR idColaborador = ?)
             AND DATEDIFF(fechaF, CURDATE()) < 10
@@ -27,13 +39,26 @@ class FiltradoTareasController {
             AND estatus != "Terminada"
             ORDER BY fechaF
         `, [idU, idU]);
-            resp.json(proyect);
+                resp.json(proyect);
+            }
         });
     }
     tareasMedias(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
-            const proyect = yield database_1.default.query(`
+            const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+            if (user.length > 0 && user[0].idTipo === 1) {
+                const proyect = yield database_1.default.query(`
+                SELECT * FROM tarea
+                WHERE DATEDIFF(fechaF, CURDATE()) < 20
+                AND DATEDIFF(fechaF, CURDATE()) >= 10
+                AND estatus != "Terminada"
+                ORDER BY fechaF
+            `, [idU, idU]);
+                resp.json(proyect);
+            }
+            else {
+                const proyect = yield database_1.default.query(`
             SELECT * FROM tarea
             WHERE (idU = ? OR idColaborador = ?)
             AND DATEDIFF(fechaF, CURDATE()) < 20
@@ -41,33 +66,58 @@ class FiltradoTareasController {
             AND estatus != "Terminada"
             ORDER BY fechaF
         `, [idU, idU]);
-            resp.json(proyect);
+                resp.json(proyect);
+            }
         });
     }
     tareasNoUrgentes(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
-            const proyect = yield database_1.default.query(`
+            const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+            if (user.length > 0 && user[0].idTipo === 1) {
+                const proyect = yield database_1.default.query(`
+                SELECT * FROM tarea
+                WHERE  DATEDIFF(fechaF, CURDATE()) >= 20
+                AND estatus != "Terminada"
+                ORDER BY fechaF
+            `, [idU, idU]);
+                resp.json(proyect);
+            }
+            else {
+                const proyect = yield database_1.default.query(`
             SELECT * FROM tarea
             WHERE (idU = ? OR idColaborador = ?)
             AND DATEDIFF(fechaF, CURDATE()) >= 20
             AND estatus != "Terminada"
             ORDER BY fechaF
         `, [idU, idU]);
-            resp.json(proyect);
+                resp.json(proyect);
+            }
         });
     }
     tareasVencidas(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
-            const proyect = yield database_1.default.query(`
+            const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+            if (user.length > 0 && user[0].idTipo === 1) {
+                const proyect = yield database_1.default.query(`
+                SELECT * FROM tarea
+                WHERE fechaF < CURDATE()
+                AND estatus != "Terminada"
+                ORDER BY fechaF
+            `, [idU, idU]);
+                resp.json(proyect);
+            }
+            else {
+                const proyect = yield database_1.default.query(`
             SELECT * FROM tarea
             WHERE (idU = ? OR idColaborador = ?)
             AND fechaF < CURDATE()
             AND estatus != "Terminada"
             ORDER BY fechaF
         `, [idU, idU]);
-            resp.json(proyect);
+                resp.json(proyect);
+            }
         });
     }
 }

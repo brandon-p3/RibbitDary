@@ -15,7 +15,7 @@ class ProyectsController {
             const [checar] = await pool.query('SELECT * FROM userxuser WHERE idColaborador = ?', [idU]);
             const user: any[] = await pool.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
 
-            if (user.length > 0 && user[0].idTipo === 1) { 
+            if (user.length > 0 && user[0].idTipo === 1) {
                 // Si el usuario es del tipo 1 (administrador, por ejemplo)
                 const proyect = await pool.query('SELECT * FROM proyecto');
                 resp.json(proyect);
@@ -52,20 +52,31 @@ class ProyectsController {
         const { idU, idP } = req.params;
 
         try {
-            const query = `
+            const user: any[] = await pool.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+
+            if (user.length > 0 && user[0].idTipo === 1) {
+                const result = await pool.query(
+                `SELECT * FROM proyecto WHERE idP = ?`, [idP]);
+                resp.json(result[0]);
+
+            } else {
+                const query = `
                 SELECT proyecto.*
                 FROM proyecto
                 LEFT JOIN proyectxcolab ON proyecto.idP = proyectxcolab.idP
-                WHERE (proyecto.idP = ? AND proyecto.idU = ?) OR (proyecto.idP = ? AND proyectxcolab.idColaborador = ?)
+                WHERE (proyecto.idP = ? AND proyecto.idU = ?) 
+                OR (proyecto.idP = ? AND proyectxcolab.idColaborador = ?)
             `;
 
-            const result = await pool.query(query, [idP, idU, idP, idU]);
-
-            if (result.length > 0) {
-                resp.json(result[0]);
-            } else {
-                resp.status(404).json({ message: 'Proyecto no encontrado' });
+                const result = await pool.query(query, [idP, idU, idP, idU]);
+                if (result.length > 0) {
+                    resp.json(result[0]);
+                } else {
+                    resp.status(404).json({ message: 'Proyecto no encontrado' });
+                }
             }
+
+
         } catch (error) {
             console.error('Error al obtener proyecto:', error);
             resp.status(500).json({ message: 'Error interno del servidor' });

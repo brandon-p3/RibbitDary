@@ -59,3 +59,13 @@ export interface Proyect {
     icono?: string
   }
   
+
+  export interface TipoProyecto {
+    idType?: string; // La propiedad debería ser opcional si no siempre está presente
+    tipoProyecto: string;
+  }
+  
+  export interface UserxUser {
+    idU?: string,
+    idColaborador?: string,
+  }

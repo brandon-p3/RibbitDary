@@ -22,6 +22,7 @@ export class TareasComponent implements OnInit {
 
   idP: string | null = null;
   idU: string | null = null;
+  idUP: string | null = null;
 
   constructor(
     private proyectsService: ProyectsService,
@@ -66,9 +67,6 @@ export class TareasComponent implements OnInit {
     this.idP = this.route.snapshot.paramMap.get('idP');
     this.idU = this.route.snapshot.paramMap.get('idU');
 
-
-
-
     if (this.idP && this.idU) {
       this.proyectsService.getTareaP(this.idU, this.idP).subscribe(
         resp => {
@@ -89,9 +87,10 @@ export class TareasComponent implements OnInit {
     this.proyectsService.getProyectT(idU, idP).subscribe(
       resp => {
         this.proyects = resp;
+        this.idUP = this.proyects.idU;
       },
       err => console.error('Error al obtener proyectos:', err)
-    );
+    );    
   }
 
   getMateriales(idT: string) {

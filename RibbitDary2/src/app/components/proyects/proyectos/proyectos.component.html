@@ -1,13 +1,7 @@
 <header>
-  <app-navigation *ngIf="router.url !== '/presentacion'"></app-navigation>
+  <app-navigation></app-navigation>
 </header>
-<app-nav-nar-lat
-  *ngIf="
-    router.url !== '/presentacion' &&
-    router.url !== '/comentarios' &&
-    router.url !== '/login'
-  "
-></app-nav-nar-lat>
+<app-nav-nar-lat></app-nav-nar-lat>
 
 <body class="body">
   <div class="search-filter-container">

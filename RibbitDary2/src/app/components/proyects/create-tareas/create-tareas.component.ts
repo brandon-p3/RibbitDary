@@ -16,7 +16,7 @@ export class CreateTareasComponent implements OnInit {
     descripcion: '',
     fechaF: '',
     idColaborador: 'opcion1',
-    estatus:'No iniciada'
+    estatus: 'No iniciada'
   };
 
   newMaterial: string = '';
@@ -52,7 +52,7 @@ export class CreateTareasComponent implements OnInit {
     this.getMateriales();
   }
 
-  //Get cosas
+  //Cuando se edita se pide el proyecto
   async getProyect(idP: string) {
     this.proyectsService.getProyect(idP).subscribe(
       resp => {
@@ -62,6 +62,7 @@ export class CreateTareasComponent implements OnInit {
     );
   }
 
+  //Tambien obtener a sus colaboradres cuando se edita
   async getColaboradores(idP: string) {
     this.proyectsService.getColaboradores(idP).subscribe(
       resp => {
@@ -71,6 +72,7 @@ export class CreateTareasComponent implements OnInit {
     );
   }
 
+  //Tambien obetner el usuaio que
   async getUsuario(idU: string) {
     this.proyectsService.getUsuario(idU).subscribe(
       resp => {
@@ -103,7 +105,7 @@ export class CreateTareasComponent implements OnInit {
     }
   }
 
-  volver(){
+  volver() {
     const idP = this.route.snapshot.paramMap.get('idP');
     const idU = this.route.snapshot.paramMap.get('idU');
     this.router.navigate([`/tareas/${idU}/${idP}`]);
@@ -184,7 +186,7 @@ export class CreateTareasComponent implements OnInit {
       }
 
       this.saveNewMaterials(number.toString(), number2.toString());
-      
+
       this.volver();
     } catch (err) {
       console.error('Error al actualizar la tarea:', err);

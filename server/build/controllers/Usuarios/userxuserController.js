@@ -19,18 +19,63 @@ class UserxuserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { idU } = req.params;
             try {
-                const userxuser = yield database_1.default.query(`
-                SELECT usuario.* FROM usuario 
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 1) {
+                    const userxuser = yield database_1.default.query(`SELECT * FROM usuario`);
+                    res.json(userxuser);
+                }
+                else if (user.length > 0 && user[0].idTipo === 3) {
+                    const result = yield database_1.default.query('SELECT idU FROM userxuser WHERE idColaborador = ?', [idU]);
+                    const id = result[0].idU;
+                    const userxuser = yield database_1.default.query(`
+                        SELECT usuario.* FROM usuario
+                        INNER JOIN userxuser 
+                        ON userxuser.idColaborador = usuario.idU
+                        WHERE userxuser.idU = ?
+                    `, [id]);
+                    res.json(userxuser);
+                }
+                else {
+                    const userxuser = yield database_1.default.query(`
+                SELECT usuario.* FROM usuario
                 INNER JOIN userxuser 
                 ON userxuser.idColaborador = usuario.idU
                 WHERE userxuser.idU = ?
             `, [idU]);
-                // Enviar la respuesta al cliente
-                res.json(userxuser);
+                    res.json(userxuser);
+                }
             }
             catch (error) {
                 console.error('Error al obtener usuarios:', error);
                 res.status(500).json({ message: 'Error al obtener usuarios' });
+            }
+        });
+    }
+    createUserxUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield database_1.default.query('INSERT INTO userxuser SET ?', [req.body]);
+                res.json({ message: 'userxuser' });
+            }
+            catch (error) {
+                console.error('Error al crear userxuser', error);
+                res.status(500).json({ message: 'Error al crear usuario' });
+            }
+        });
+    }
+    deleteUserxUser(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idColaborador } = req.params;
+            try {
+                yield database_1.default.query('UPDATE tarea SET idColaborador = 0 WHERE idColaborador = ? ', [idColaborador]);
+                yield database_1.default.query('DELETE FROM proyectxcolab WHERE idColaborador = ? ', [idColaborador]);
+                yield database_1.default.query('DELETE FROM userxuser WHERE idColaborador = ?', [idColaborador]);
+                yield database_1.default.query('DELETE FROM usuario WHERE idU = ? ', [idColaborador]);
+                resp.json({ message: 'Socio deleted' });
+            }
+            catch (error) {
+                console.error('Error al borrar socio', error);
+                resp.status(500).json({ message: 'Error al crear usuario' });
             }
         });
     }

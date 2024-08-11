@@ -17,12 +17,10 @@ const database_1 = __importDefault(require("../../database"));
 class TareasController {
     list(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idP } = req.params;
             const proyect = yield database_1.default.query(`
             SELECT * FROM tarea
-            WHERE idP = ?
             ORDER BY fechaI
-            `, [idP]);
+            `);
             resp.json(proyect);
         });
     }
