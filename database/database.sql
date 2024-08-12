@@ -21,6 +21,7 @@ CREATE TABLE Usuario (
     password VARCHAR(255) NOT NULL,
     nombres VARCHAR(30),
     idTipo TINYINT NOT NULL,
+    icono VARCHAR(255),
     CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES TipoUsuario(idTipo),
     CONSTRAINT unique_usuario UNIQUE (usuario)
 );
@@ -89,13 +90,14 @@ CREATE TABLE Proyecto (
     idU INT NOT NULL,
     idType INT NOT NULL,
     estatus VARCHAR(50),
+    presupuesto INT,
     CONSTRAINT idU_Pro_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
     CONSTRAINT idType_FK FOREIGN KEY (idType) REFERENCES TipoProyecto(idType)
 );
 
 -- Crear tabla ProyectXColab
 CREATE TABLE ProyectXColab (
-    idColaboradores INT NOT NULL,
+    idColaborador INT NOT NULL,
     idP INT NOT NULL,
     PRIMARY KEY (idColaborador, idP),
     CONSTRAINT idColab_Pro_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
@@ -112,7 +114,7 @@ CREATE TABLE Tarea (
     idU INT NOT NULL,
     idColaborador INT NOT NULL,
     idP INT NOT NULL,
-    estatus BOOLEAN,
+    estatus VARCHAR(60) NOT NULL,
     CONSTRAINT idU_Tar_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
     CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
     CONSTRAINT idP_Tar_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
