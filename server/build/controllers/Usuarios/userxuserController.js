@@ -79,5 +79,22 @@ class UserxuserController {
             }
         });
     }
+    getOne(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idU } = req.params;
+            try {
+                const usuario = yield database_1.default.query(`
+                    SELECT usuario.* 
+                    FROM usuario 
+                    WHERE usuario.idU = ?
+                    `, [idU]);
+                resp.json(usuario);
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error retrieving usuario' });
+            }
+        });
+    }
 }
 exports.userxuserController = new UserxuserController();

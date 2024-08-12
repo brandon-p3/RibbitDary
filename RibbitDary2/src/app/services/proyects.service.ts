@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
-import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUser } from '../models/Proyect';
+import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUser, CreaSocio } from '../models/Proyect';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class ProyectsService {
 
 
   //Usuarios
-  getUsuario(idU: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/usuario/${idU}`);
+  getUsuario(idU: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_BASE_URL}/usuario/${idU}`);
   }
 
   login(correo: string, password: string): Observable<any> {
@@ -31,24 +31,33 @@ export class ProyectsService {
     return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`, usuario);
   }
 
+  updateUsuario(idU: string, usuario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/${idU}`, usuario);
+  }
+
 
 
   //User x User
-  getUserxUser(idU: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/userxuser/${idU}`);
+  getUserxUser(idU: string): Observable<any> {
+    return this.http.get<any>(`${this.API_BASE_URL}/userxuser/${idU}`);
   }
 
-  getsocios(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/usuario`);
+  getsocios(): Observable<any> {
+    return this.http.get<any>(`${this.API_BASE_URL}/usuario`);
   }
 
-  crearUserxUser(UserxUser: UserxUser): Observable<string>{
-    return this.http.post<string>(`${this.API_BASE_URL}/userxuser/`, UserxUser);
+  crearUserxUser(UserxUser: UserxUser): Observable<UserxUser>{
+    return this.http.post<UserxUser>(`${this.API_BASE_URL}/userxuser/`, UserxUser);
   }
 
   deleteUserxUser(idU: string): Observable<void> {
     return this.http.delete<void>(`${this.API_BASE_URL}/userxuser/${idU}`);
   }
+
+  getUsuarioEdit(idU: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_BASE_URL}/usuario/edit/${idU}`);
+  }
+
 
   // Obtener un tipo de proyecto por ID
   getTipoproyecto(idType: string): Observable<TipoProyecto> {
@@ -115,8 +124,8 @@ export class ProyectsService {
 
 
   // Colaboradores
-  getColaboradores(idP: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.API_BASE_URL}/proyectxcolab/${idP}`);
+  getColaboradores(idP: string): Observable<any> {
+    return this.http.get<any>(`${this.API_BASE_URL}/proyectxcolab/${idP}`);
   }
 
   savePColaboradores(proyectxcolab: Proyectxcolab): Observable<Proyectxcolab> {
@@ -126,10 +135,6 @@ export class ProyectsService {
   deletePColaborador(idP: string, idC: string): Observable<Proyectxcolab> {
     return this.http.delete<Proyectxcolab>(`${this.API_BASE_URL}/proyectxcolab/${idP}/${idC}`);
   }
-
-
-
-
 
 
 
@@ -169,34 +174,34 @@ export class ProyectsService {
 
 
   // Estado de tarea
-  getTareasUrgentes(idU: string): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.API_BASE_URL}/filtrado/tareasUrgentes/${idU}`);
+  getTareasUrgentes(idU: string): Observable<Tarea> {
+    return this.http.get<Tarea>(`${this.API_BASE_URL}/filtrado/tareasUrgentes/${idU}`);
   }
 
-  getTareasMedias(idU: string): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.API_BASE_URL}/filtrado/tareasMedias/${idU}`);
+  getTareasMedias(idU: string): Observable<Tarea> {
+    return this.http.get<Tarea>(`${this.API_BASE_URL}/filtrado/tareasMedias/${idU}`);
   }
 
-  getTareasNoUrgentes(idU: string): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.API_BASE_URL}/filtrado/tareasNoUrgentes/${idU}`);
+  getTareasNoUrgentes(idU: string): Observable<Tarea> {
+    return this.http.get<Tarea>(`${this.API_BASE_URL}/filtrado/tareasNoUrgentes/${idU}`);
   }
 
-  getTareasVencidas(idU: string): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.API_BASE_URL}/filtrado/tareasVencidas/${idU}`);
+  getTareasVencidas(idU: string): Observable<Tarea> {
+    return this.http.get<Tarea>(`${this.API_BASE_URL}/filtrado/tareasVencidas/${idU}`);
   }
 
 
   //Filtrado de proyectos
-  getProyectosActivos(idU: string): Observable<Proyect[]> {
-    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/activos/${idU}`);
+  getProyectosActivos(idU: string): Observable<Proyect> {
+    return this.http.get<Proyect>(`${this.API_BASE_URL}/filtradoP/activos/${idU}`);
   }
 
-  getProyectosBajaTemporal(idU: string): Observable<Proyect[]> {
-    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/bajaTemporal/${idU}`);
+  getProyectosBajaTemporal(idU: string): Observable<Proyect> {
+    return this.http.get<Proyect>(`${this.API_BASE_URL}/filtradoP/bajaTemporal/${idU}`);
   }
 
-  getProyectosCancelados(idU: string): Observable<Proyect[]> {
-    return this.http.get<Proyect[]>(`${this.API_BASE_URL}/filtradoP/cancelados/${idU}`);
+  getProyectosCancelados(idU: string): Observable<Proyect> {
+    return this.http.get<Proyect>(`${this.API_BASE_URL}/filtradoP/cancelados/${idU}`);
   }
 
 

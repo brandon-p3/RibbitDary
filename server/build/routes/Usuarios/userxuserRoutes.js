@@ -11,6 +11,7 @@ class UserxuserRoutes {
         this.router.get('/:idU', userxuserController_1.userxuserController.getUserxuser);
         this.router.post('/', userxuserController_1.userxuserController.createUserxUser);
         this.router.delete('/:idColaborador', userxuserController_1.userxuserController.deleteUserxUser);
+        this.router.get('/:idU', userxuserController_1.userxuserController.getOne);
     }
 }
 const userxuserRoutes = new UserxuserRoutes();

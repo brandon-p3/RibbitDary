@@ -50,6 +50,28 @@ class UsuarioController {
             }
         });
     }
+    getOneEdit(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idU } = req.params;
+            try {
+                const usuario = yield database_1.default.query(`
+                SELECT usuario.* 
+                FROM usuario 
+                WHERE usuario.idU = ?
+                `, [idU]);
+                if (usuario.length > 0) {
+                    resp.json(usuario[0]);
+                }
+                else {
+                    resp.status(404).json({ usuario: 'Tarea not found' });
+                }
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error retrieving usuario' });
+            }
+        });
+    }
     create(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

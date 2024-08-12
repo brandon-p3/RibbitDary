@@ -21,11 +21,14 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  //Para usuarios Admin y Comun
   //Usuarios
+  {path: 'crear-usuarios', component: CrearUsuarioComponent},
+  {path:'edit-usuario/edit/:idU', component: CrearSociosComponent},
+
+  //Socios
   {path:'socios/:idU', component: SociosComponent},
   {path:'crear-socios/:idU', component: CrearSociosComponent},
-  {path: 'crear-usuarios', component: CrearUsuarioComponent},
+  {path:'edit-socios/edit/:idU/:idColaborador', component: CrearSociosComponent},
 
 
   // Presentacion

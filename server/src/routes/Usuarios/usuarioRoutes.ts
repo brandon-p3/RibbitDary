@@ -11,6 +11,7 @@ class UsuarioRoutes{
     config():void{
         this.router.get('/', usuarioController.list); 
         this.router.get('/:idU', usuarioController.getOne); 
+        this.router.get('/edit/:idU', usuarioController.getOneEdit);
         this.router.post('/', usuarioController.create); 
         this.router.put('/:idU',usuarioController.update);
         this.router.delete('/:idU',usuarioController.delete);

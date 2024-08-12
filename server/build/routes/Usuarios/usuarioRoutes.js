@@ -10,6 +10,7 @@ class UsuarioRoutes {
     config() {
         this.router.get('/', usuarioController_1.usuarioController.list);
         this.router.get('/:idU', usuarioController_1.usuarioController.getOne);
+        this.router.get('/edit/:idU', usuarioController_1.usuarioController.getOneEdit);
         this.router.post('/', usuarioController_1.usuarioController.create);
         this.router.put('/:idU', usuarioController_1.usuarioController.update);
         this.router.delete('/:idU', usuarioController_1.usuarioController.delete);

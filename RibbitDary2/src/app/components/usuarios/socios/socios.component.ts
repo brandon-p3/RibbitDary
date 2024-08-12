@@ -11,7 +11,7 @@ export class SociosComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   socios: any = [];
-  proyectos: any = [];
+  proyectos: any = {};
   idU: string | null = null;
   user : any =[];
 
@@ -32,9 +32,9 @@ export class SociosComponent implements OnInit {
         },
         err => console.error('Error al cargar los tipos de usuario', err)
       )
-
     }
   }
+
 
   getsocios() {
     const idU = this.route.snapshot.paramMap.get('idU');
@@ -43,6 +43,9 @@ export class SociosComponent implements OnInit {
         resp => {
           console.log('Datos recibidos:', resp);
           this.socios = resp;
+          this.socios.forEach((socio: any) => {
+            this.getProyectos(socio.idU);
+          });
         },
         err => console.error('Error al obtener socios', err)
       );
@@ -56,6 +59,15 @@ export class SociosComponent implements OnInit {
         this.getsocios();
       },
       err => console.error('Error al eliminar socio', err)
+    );
+  }
+
+  getProyectos(idU: string) {
+    this.proyectsService.getProyect(idU).subscribe(
+      resp => {
+        this.proyectos[idU] = resp;
+      },
+      err => console.error('Error al obtener proyectos', err)
     );
   }
 

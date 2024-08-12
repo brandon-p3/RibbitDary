@@ -24,6 +24,26 @@ class UsuarioController {
     }
   }
 
+  public async getOneEdit(req: Request, resp: Response) {
+    const { idU } = req.params;
+    try {
+      const usuario = await pool.query(`
+                SELECT usuario.* 
+                FROM usuario 
+                WHERE usuario.idU = ?
+                `, [idU]);
+
+      if (usuario.length > 0) {
+        resp.json(usuario[0]);
+    } else {
+        resp.status(404).json({ usuario: 'Tarea not found' });
+    }
+    } catch (error) {
+      console.error(error);
+      resp.status(500).json({ message: 'Error retrieving usuario' });
+    }
+  }
+
   public async create(req: Request, resp: Response) {
     try {
       const { password, ...userData } = req.body;
