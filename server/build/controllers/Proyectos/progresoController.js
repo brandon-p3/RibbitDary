@@ -20,9 +20,9 @@ class ProgresoController {
             const { idP } = req.params;
             try {
                 const progreso = yield database_1.default.query(`
-                SELECT ((SELECT COUNT(*) FROM Tarea WHERE idP = ? AND estatus = "Terminada")/
+                SELECT ((SELECT COUNT(*) FROM tarea WHERE idP = ? AND estatus = "Terminada")/
                 (COUNT(*) )*100) as progreso 
-                FROM Tarea WHERE idP = ?
+                FROM tarea WHERE idP = ?
                 `, [idP, idP]);
                 resp.json(progreso);
             }
