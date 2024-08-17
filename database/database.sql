@@ -1,19 +1,20 @@
 -- Crear la base de datos RibbitDary
-CREATE DATABASE RibbitDary;
+CREATE DATABASE ribbitdary;
 GO
 
 -- Usar la base de datos RibbitDary
-USE RibbitDary;
-GO
+USE ribbitdary;
+
 
 -- Crear tabla TipoUsuario
-CREATE TABLE TipoUsuario (
+CREATE TABLE tipousuario (
     idTipo TINYINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nombre VARCHAR(15) NOT NULL
 );
 
+
 -- Crear tabla Usuario
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
     idU INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(20) NOT NULL,
     aPuP VARCHAR(20) NOT NULL,
@@ -22,21 +23,21 @@ CREATE TABLE Usuario (
     nombres VARCHAR(30),
     idTipo TINYINT NOT NULL,
     icono VARCHAR(255),
-    CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES TipoUsuario(idTipo),
+    CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES tipousuario(idTipo),
     CONSTRAINT unique_usuario UNIQUE (usuario)
 );
 
 -- Crear tabla UserXUser
-CREATE TABLE UserXUser (
+CREATE TABLE userxuser (
     idU INT NOT NULL,
     idColaborador INT NOT NULL,
     PRIMARY KEY (idU, idColaborador),
-    CONSTRAINT idU_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
-    CONSTRAINT idColaborador_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU)
+    CONSTRAINT idU_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
+    CONSTRAINT idColaborador_FK FOREIGN KEY (idColaborador) REFERENCES usuario(idU)
 );
 
 -- Crear tabla Tarjeta
-CREATE TABLE Tarjeta (
+CREATE TABLE tarjeta (
     numTarjeta INT NOT NULL PRIMARY KEY,
     cvv INT NOT NULL,
     numTelefono INT NOT NULL,
@@ -45,11 +46,11 @@ CREATE TABLE Tarjeta (
     expira_year INT NOT NULL CHECK (expira_year >= 1900 AND expira_year <= 2100),
     expira_month TINYINT NOT NULL CHECK (expira_month >= 1 AND expira_month <= 12),
     idU INT NOT NULL,
-    CONSTRAINT idU_Tarjeta_FK FOREIGN KEY (idU) REFERENCES Usuario(idU)
+    CONSTRAINT idU_Tarjeta_FK FOREIGN KEY (idU) REFERENCES usuario(idU)
 );
 
 -- Crear tabla Paquete
-CREATE TABLE Paquete (
+CREATE TABLE paquete (
     idPaquete INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     tiempo VARCHAR(10) NOT NULL,
     cantidadProy INT NOT NULL,
@@ -61,26 +62,26 @@ CREATE TABLE Paquete (
 );
 
 -- Crear tabla DetallesPago
-CREATE TABLE DetallesPago (
+CREATE TABLE detallespago (
     idU INT NOT NULL,
     idPaquete INT NOT NULL,
     numTarjeta INT NOT NULL,
     fechaI DATE NOT NULL,
     fechaF DATE NOT NULL,
     PRIMARY KEY (idU, idPaquete, numTarjeta),
-    CONSTRAINT idU_DP_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
-    CONSTRAINT idPaquete_DP_FK FOREIGN KEY (idPaquete) REFERENCES Paquete(idPaquete),
-    CONSTRAINT numTarjeta_FK FOREIGN KEY (numTarjeta) REFERENCES Tarjeta(numTarjeta)
+    CONSTRAINT idU_DP_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
+    CONSTRAINT idPaquete_DP_FK FOREIGN KEY (idPaquete) REFERENCES paquete(idPaquete),
+    CONSTRAINT numTarjeta_FK FOREIGN KEY (numTarjeta) REFERENCES tarjeta(numTarjeta)
 );
 
 -- Crear tabla TipoProyecto
-CREATE TABLE TipoProyecto (
+CREATE TABLE tipoproyecto (
     idType INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     tipoProyecto VARCHAR(20) NOT NULL
 );
 
 -- Crear tabla Proyecto
-CREATE TABLE Proyecto (
+CREATE TABLE proyecto (
     idP INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nameProyect VARCHAR(30) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
@@ -91,21 +92,21 @@ CREATE TABLE Proyecto (
     idType INT NOT NULL,
     estatus VARCHAR(50),
     presupuesto INT,
-    CONSTRAINT idU_Pro_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
-    CONSTRAINT idType_FK FOREIGN KEY (idType) REFERENCES TipoProyecto(idType)
+    CONSTRAINT idU_Pro_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
+    CONSTRAINT idType_FK FOREIGN KEY (idType) REFERENCES tipoproyecto(idType)
 );
 
 -- Crear tabla ProyectXColab
-CREATE TABLE ProyectXColab (
+CREATE TABLE proyectxcolab (
     idColaborador INT NOT NULL,
     idP INT NOT NULL,
     PRIMARY KEY (idColaborador, idP),
-    CONSTRAINT idColab_Pro_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
-    CONSTRAINT idP_Pro_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
+    CONSTRAINT idColab_Pro_FK FOREIGN KEY (idColaborador) REFERENCES usuario(idU),
+    CONSTRAINT idP_Pro_FK FOREIGN KEY (idP) REFERENCES proyecto(idP)
 );
 
 -- Crear tabla Tarea
-CREATE TABLE Tarea (
+CREATE TABLE tarea (
     idT INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nomTarea VARCHAR(100) NOT NULL,
     descripcion VARCHAR(255),
@@ -115,17 +116,18 @@ CREATE TABLE Tarea (
     idColaborador INT NOT NULL,
     idP INT NOT NULL,
     estatus VARCHAR(60) NOT NULL,
-    CONSTRAINT idU_Tar_FK FOREIGN KEY (idU) REFERENCES Usuario(idU),
-    CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaborador) REFERENCES Usuario(idU),
-    CONSTRAINT idP_Tar_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
+    CONSTRAINT idU_Tar_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
+    CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaborador) REFERENCES usuario(idU),
+    CONSTRAINT idP_Tar_FK FOREIGN KEY (idP) REFERENCES proyecto(idP)
 );
 
 -- Crear tabla Material
-CREATE TABLE Material (
+CREATE TABLE material (
     idMt INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombreMaterial VARCHAR(50) NOT NULL,
     idT INT NOT NULL,
     idP INT NOT NULL,
-    CONSTRAINT idT_FK FOREIGN KEY (idT) REFERENCES Tarea(idT),
-    CONSTRAINT idP_Mat_FK FOREIGN KEY (idP) REFERENCES Proyecto(idP)
+    CONSTRAINT idT_FK FOREIGN KEY (idT) REFERENCES tarea(idT),
+    CONSTRAINT idP_Mat_FK FOREIGN KEY (idP) REFERENCES proyecto(idP)
 );
+
