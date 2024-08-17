@@ -94,9 +94,25 @@ class UsuarioController {
     }
     update(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idU } = req.params;
-            yield database_1.default.query('update usuario set ? where idU= ?', [req.body, idU]);
-            resp.json({ message: 'se actualizo el usuario' + req.params.idU });
+            try {
+                const { idU } = req.params;
+                const _a = req.body, { password } = _a, userData = __rest(_a, ["password"]);
+                if (password) {
+                    // Encriptar la nueva contraseña si se proporciona
+                    const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
+                    // Actualizar los datos del usuario incluyendo la contraseña encriptada
+                    yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [Object.assign(Object.assign({}, userData), { password: hashedPassword }), idU]);
+                }
+                else {
+                    // Actualizar los datos del usuario sin cambiar la contraseña
+                    yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [userData, idU]);
+                }
+                resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
+            }
+            catch (error) {
+                console.error('Error al actualizar el usuario', error);
+                resp.status(500).json({ message: 'Error al actualizar el usuario' });
+            }
         });
     }
     delete(req, resp) {

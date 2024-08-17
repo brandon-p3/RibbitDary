@@ -23,7 +23,7 @@ const routes: Routes = [
 
   //Usuarios
   {path: 'crear-usuarios', component: CrearUsuarioComponent},
-  {path:'edit-usuario/edit/:idU', component: CrearSociosComponent},
+  {path:'edit-usuario/edit/:idU/:e', component: CrearSociosComponent},
 
   //Socios
   {path:'socios/:idU', component: SociosComponent},

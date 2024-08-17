@@ -70,11 +70,33 @@ class UsuarioController {
   }
 
   public async update(req: Request, resp: Response) {
-    const { idU } = req.params;
-    await pool.query(
-      'update usuario set ? where idU= ?', [req.body, idU]);
-    resp.json({ message: 'se actualizo el usuario' + req.params.idU });
+    try {
+      const { idU } = req.params;
+      const { password, ...userData } = req.body;
+  
+      if (password) {
+        // Encriptar la nueva contraseña si se proporciona
+        const hashedPassword = await bcrypt.hash(password, 10);
+        // Actualizar los datos del usuario incluyendo la contraseña encriptada
+        await pool.query(
+          'UPDATE usuario SET ? WHERE idU = ?',
+          [{ ...userData, password: hashedPassword }, idU]
+        );
+      } else {
+        // Actualizar los datos del usuario sin cambiar la contraseña
+        await pool.query(
+          'UPDATE usuario SET ? WHERE idU = ?',
+          [userData, idU]
+        );
+      }
+  
+      resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
+    } catch (error) {
+      console.error('Error al actualizar el usuario', error);
+      resp.status(500).json({ message: 'Error al actualizar el usuario' });
+    }
   }
+  
 
   public async delete(req: Request, resp: Response) {
     const { idU } = req.params;

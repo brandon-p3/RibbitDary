@@ -49,6 +49,7 @@ export class CrearSociosComponent implements OnInit {
   ngOnInit() {
     const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
     const idU = this.route.snapshot.paramMap.get('idU');
+    const e = this.route.snapshot.paramMap.get('e');
 
     if (idColaborador && idU) {
       this.proyectService.getUsuarioEdit(idColaborador).subscribe(
@@ -56,29 +57,31 @@ export class CrearSociosComponent implements OnInit {
           console.log(resp);
           this.crearSocio = resp;
           this.edit = true;
+          this.confirmpass = this.crearSocio.password || '';
         },
         err => console.error(err)
       );
-    } else if(idU){
+    } else if (idU && e) {
       this.proyectService.getUsuarioEdit(idU).subscribe(
         resp => {
           console.log(resp);
           this.crearSocio = resp;
           this.edit = true;
+          this.confirmpass = this.crearSocio.password || '';
         },
         err => console.error(err)
       );
-    }else{
+    } else {
       console.error('No se pudo obtener el idP de la ruta.');
     }
   }
-  volver(){
+  volver() {
     const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
     const idU = this.route.snapshot.paramMap.get('idU');
 
-    if(idColaborador && idU){
+    if (idColaborador && idU) {
       this.router.navigate([`/socios/${idU}`]);
-    }else{
+    } else {
       this.router.navigate([`/home/${idU}`]);
     }
   }
@@ -124,24 +127,28 @@ export class CrearSociosComponent implements OnInit {
     const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
     const idU = this.route.snapshot.paramMap.get('idU');
 
-    if (idColaborador && idU){
-      this.proyectService.updateUsuario(idColaborador, this.crearSocio).subscribe(
-        resp => {
-          console.log(resp);
-        },
-        err => console.error('Error al actualizar al usuario', err)
-      );
-      this.volver();
-    } else if(idU){
-      this.proyectService.updateUsuario(idU, this.crearSocio).subscribe(
-        resp => {
-          console.log(resp);
-        },
-        err => console.error('Error al actualizar al usuario', err)
-      );
-      this.volver();
-    }else {
-      alert('No se pudo actualizar al usuario');
+    if (this.confirmpass === this.crearSocio.password) {
+      if (idColaborador && idU) {
+        this.proyectService.updateUsuario(idColaborador, this.crearSocio).subscribe(
+          resp => {
+            console.log(resp);
+          },
+          err => console.error('Error al actualizar al usuario', err)
+        );
+        this.volver();
+      } else if (idU) {
+        this.proyectService.updateUsuario(idU, this.crearSocio).subscribe(
+          resp => {
+            console.log(resp);
+          },
+          err => console.error('Error al actualizar al usuario', err)
+        );
+        this.volver();
+      } else {
+        alert('No se pudo actualizar al usuario');
+      }
+    } else {
+      alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');
     }
   }
 }

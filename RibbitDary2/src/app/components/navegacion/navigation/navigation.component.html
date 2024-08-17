@@ -23,7 +23,7 @@
         </div>
       </div>
       
-      <a [routerLink]="['/edit-usuario/edit/', user.idU]">
+      <a [routerLink]="['/edit-usuario/edit/', user.idU, user.id]">
       <div  *ngIf="router.url !== '/login'" >
         <div class="user-info" *ngFor="let user of usuario">
         <img [src]="user.icono" />
