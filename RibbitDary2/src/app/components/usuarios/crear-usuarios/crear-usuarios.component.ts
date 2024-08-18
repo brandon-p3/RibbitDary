@@ -8,7 +8,7 @@ import { ProyectsService } from '../../../services/proyects.service';
   templateUrl: './crear-usuarios.component.html',
   styleUrl: './crear-usuarios.component.css'
 })
-export class CrearUsuarioComponent implements OnInit {
+export class CrearUsuariosComponent implements OnInit {
   usuario: Usuario = {
     nombres: '',
     aPuP: '',

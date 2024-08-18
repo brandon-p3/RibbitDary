@@ -18,7 +18,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BienvenidaComponent } from './components/usuarios/bienvenida/bienvenida.component';
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
-import { CrearUsuarioComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
+import { CrearUsuariosComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
 import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
 
@@ -43,7 +43,7 @@ const routes: Routes = [
     HomeComponent,
     SociosComponent,
     CrearSociosComponent,
-    CrearUsuarioComponent,
+    CrearUsuariosComponent,
     BienvenidaComponent,
     TipoProyectoComponent
   ],
