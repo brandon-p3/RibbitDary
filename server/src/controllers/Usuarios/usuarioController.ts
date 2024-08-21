@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 import pool from "../../database";
 import bcrypt from 'bcryptjs';
 
@@ -35,9 +35,9 @@ class UsuarioController {
 
       if (usuario.length > 0) {
         resp.json(usuario[0]);
-    } else {
+      } else {
         resp.status(404).json({ usuario: 'Tarea not found' });
-    }
+      }
     } catch (error) {
       console.error(error);
       resp.status(500).json({ message: 'Error retrieving usuario' });
@@ -55,7 +55,7 @@ class UsuarioController {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       // Guardar el usuario con la contraseña hasheada
-     const result = await pool.query(
+      const result = await pool.query(
         'INSERT INTO usuario SET ?',
         [{ ...userData, password: hashedPassword }]
       );
@@ -70,33 +70,11 @@ class UsuarioController {
   }
 
   public async update(req: Request, resp: Response) {
-    try {
-      const { idU } = req.params;
-      const { password, ...userData } = req.body;
-  
-      if (password) {
-        // Encriptar la nueva contraseña si se proporciona
-        const hashedPassword = await bcrypt.hash(password, 10);
-        // Actualizar los datos del usuario incluyendo la contraseña encriptada
-        await pool.query(
-          'UPDATE usuario SET ? WHERE idU = ?',
-          [{ ...userData, password: hashedPassword }, idU]
-        );
-      } else {
-        // Actualizar los datos del usuario sin cambiar la contraseña
-        await pool.query(
-          'UPDATE usuario SET ? WHERE idU = ?',
-          [userData, idU]
-        );
-      }
-  
-      resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
-    } catch (error) {
-      console.error('Error al actualizar el usuario', error);
-      resp.status(500).json({ message: 'Error al actualizar el usuario' });
-    }
+    const { idU } = req.params;
+    await pool.query('UPDATE usuario SET ? WHERE idU = ?', [req.body, idU]);
+    resp.json({ message: 'Updating a usuario ' + req.params.id });
   }
-  
+
 
   public async delete(req: Request, resp: Response) {
     const { idU } = req.params;
@@ -109,6 +87,26 @@ class UsuarioController {
     }
 
   }
+
+  public async updatePassword(req: Request, resp: Response) {
+    try {
+      const { idU } = req.params;
+      const { password } = req.body;
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      await pool.query(
+        'UPDATE usuario SET password = ? WHERE idU = ?',
+        [hashedPassword, idU]
+      );
+      
+      resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
+    } catch (error) {
+      console.error('Error al actualizar el usuario', error);
+      resp.status(500).json({ message: 'Error al actualizar el usuario' });
+    }
+  }
+
 }
 
 export const usuarioController = new UsuarioController();

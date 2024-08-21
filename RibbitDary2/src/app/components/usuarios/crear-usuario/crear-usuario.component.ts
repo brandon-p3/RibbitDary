@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../../../models/Proyect';
 import { ProyectsService } from '../../../services/proyects.service';
 
+
 @Component({
-  selector: 'app-crear-usuarios',
-  templateUrl: './crear-usuarios.component.html',
-  styleUrl: './crear-usuarios.component.css'
+  selector: 'app-crear-usuario',
+  templateUrl: './crear-usuario.component.html',
+  styleUrl: './crear-usuario.component.css'
 })
-export class CrearUsuariosComponent implements OnInit {
+export class CrearUsuarioComponent implements OnInit {
   usuario: Usuario = {
     nombres: '',
     aPuP: '',

@@ -18,9 +18,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BienvenidaComponent } from './components/usuarios/bienvenida/bienvenida.component';
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
-import { CrearUsuariosComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
 import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
+import { CrearUsuarioComponent } from './components/usuarios/crear-usuario/crear-usuario.component';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -43,9 +43,9 @@ const routes: Routes = [
     HomeComponent,
     SociosComponent,
     CrearSociosComponent,
-    CrearUsuariosComponent,
     BienvenidaComponent,
-    TipoProyectoComponent
+    TipoProyectoComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,8 @@ import { CreateTareasComponent } from './components/proyects/create-tareas/creat
 import { HomeComponent } from './components/home/home.component';
 import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
-import { CrearUsuariosComponent } from './components/usuarios/crear-usuarios/crear-usuarios.component';
 import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
+import { CrearUsuarioComponent } from './components/usuarios/crear-usuario/crear-usuario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
 
   //Usuarios
-  {path: 'crear-usuarios', component: CrearUsuariosComponent},
+  {path: 'crear-usuario', component: CrearUsuarioComponent},
   {path:'edit-usuario/edit/:idU/:e', component: CrearSociosComponent},
 
   //Socios

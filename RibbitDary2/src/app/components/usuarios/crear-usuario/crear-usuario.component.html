@@ -1,0 +1,95 @@
+<header>
+    <app-navigation></app-navigation>
+  </header>
+  
+  <body>
+  
+    <div class="body1">
+      <div class="container">
+        <div class="form-container">
+          <form class="user-form">
+            <h1 class="bienvenido">BIENVENIDO</h1>
+            <label for="nombres">Nombre:</label>
+            <input
+              type="text"
+              id="nombres"
+              name="nombres"
+              required
+              [(ngModel)]="usuario.nombres"
+            />
+  
+            <label for="aPuP">Apellido Paterno:</label>
+            <input
+              type="text"
+              id="aPuP"
+              name="aPuP"
+              required
+              [(ngModel)]="usuario.aPuP"
+            />
+  
+            <label for="aPuM">Apellido Materno:</label>
+            <input
+              type="text"
+              id="aPuM"
+              name="aPuM"
+              required
+              [(ngModel)]="usuario.aPuM"
+            />
+  
+            <label for="usuario">Correo electrónico:</label>
+            <input
+              type="text"
+              id="usuario"
+              name="usuario"
+              required
+              [(ngModel)]="usuario.usuario"
+            />
+  
+            <label for="contraseña">Contraseña:</label>
+            <input
+              type="password"
+              id="contraseña"
+              name="contraseña"
+              required
+              [(ngModel)]="usuario.password"
+            />
+  
+            <label for="confirmacontraseña">Confirma Contraseña:</label>
+            <input
+              type="password"
+              id="contraseñaconfirma"
+              name="contraseña"
+              required
+              [(ngModel)]="confirmpass"
+            />
+  
+            <label for="icono">Avatar:</label>
+            <select id="icono" name="icono" required [(ngModel)]="usuario.icono">
+              <option value="" disabled selected>Selecciona un icono</option>
+              <option value="../../../../assets/img/Icon-User/icon-user-1.jpg">
+                Rana simple
+              </option>
+              <option value="../../../../assets/img/Icon-User/icon-user-2.jpg">
+               Rana rizada
+              </option>
+              <option value="../../../../assets/img/Icon-User/icon-user-3.jpg">
+                Rana de la alta curnia
+              </option>
+              <option value="../../../../assets/img/Icon-User/icon-user-4.jpg">
+               Rana de gym
+              </option>
+              <option value="../../../../assets/img/Icon-User/icon-user-5.jpg">
+               Rana cute
+              </option>
+            </select>
+  
+            <button type="submit" (click)="crearUsuario()">Crear cuenta</button>
+          </form>
+        </div>
+      </div>
+      <div class="container2">
+        <img src="../assets/img/Ribbit_Dary_Logo.jpg" />
+      </div>
+    </div>
+  </body>
+  

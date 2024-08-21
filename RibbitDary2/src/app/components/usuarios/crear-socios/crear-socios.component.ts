@@ -20,15 +20,10 @@ export class CrearSociosComponent implements OnInit {
     icono: ''
   };
 
-  usuario: Usuario = {
-    nombres: '',
-    aPuP: '',
-    aPuM: '',
-    usuario: '',
+  password: Usuario ={
     password: '',
-    idTipo: '2',
-    icono: ''
-  };
+  }
+
 
   userxUser: UserxUser = {
     idU: '',
@@ -38,6 +33,7 @@ export class CrearSociosComponent implements OnInit {
   edit: boolean = false;
   user: boolean = false;
   confirmpass = '';
+  confirmpass2='';
 
 
   constructor(
@@ -56,6 +52,7 @@ export class CrearSociosComponent implements OnInit {
         resp => {
           console.log(resp);
           this.crearSocio = resp;
+          this.password = resp;
           this.edit = true;
           this.confirmpass = this.crearSocio.password || '';
         },
@@ -66,6 +63,7 @@ export class CrearSociosComponent implements OnInit {
         resp => {
           console.log(resp);
           this.crearSocio = resp;
+          this.password = resp;
           this.edit = true;
           this.confirmpass = this.crearSocio.password || '';
         },
@@ -75,6 +73,7 @@ export class CrearSociosComponent implements OnInit {
       console.error('No se pudo obtener el idP de la ruta.');
     }
   }
+
   volver() {
     const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
     const idU = this.route.snapshot.paramMap.get('idU');
@@ -138,6 +137,35 @@ export class CrearSociosComponent implements OnInit {
         this.volver();
       } else if (idU) {
         this.proyectService.updateUsuario(idU, this.crearSocio).subscribe(
+          resp => {
+            console.log(resp);
+          },
+          err => console.error('Error al actualizar al usuario', err)
+        );
+        this.volver();
+      } else {
+        alert('No se pudo actualizar al usuario');
+      }
+    } else {
+      alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');
+    }
+  }
+
+  updatePassword(): void{
+    const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
+    const idU = this.route.snapshot.paramMap.get('idU');
+
+    if (this.confirmpass2 === this.password.password) {
+      if (idColaborador && idU) {
+        this.proyectService.updateUsuarioPassword(idColaborador, this.password).subscribe(
+          resp => {
+            console.log(resp);
+          },
+          err => console.error('Error al actualizar al usuario', err)
+        );
+        this.volver();
+      } else if (idU) {
+        this.proyectService.updateUsuarioPassword(idU, this.password).subscribe(
           resp => {
             console.log(resp);
           },

@@ -35,6 +35,9 @@ export class ProyectsService {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/${idU}`, usuario);
   }
 
+  updateUsuarioPassword(idU: string, usuario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/password/edit/${idU}`, usuario);
+  }
 
 
   //User x User

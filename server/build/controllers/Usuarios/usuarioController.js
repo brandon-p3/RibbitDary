@@ -94,25 +94,9 @@ class UsuarioController {
     }
     update(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { idU } = req.params;
-                const _a = req.body, { password } = _a, userData = __rest(_a, ["password"]);
-                if (password) {
-                    // Encriptar la nueva contraseña si se proporciona
-                    const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
-                    // Actualizar los datos del usuario incluyendo la contraseña encriptada
-                    yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [Object.assign(Object.assign({}, userData), { password: hashedPassword }), idU]);
-                }
-                else {
-                    // Actualizar los datos del usuario sin cambiar la contraseña
-                    yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [userData, idU]);
-                }
-                resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
-            }
-            catch (error) {
-                console.error('Error al actualizar el usuario', error);
-                resp.status(500).json({ message: 'Error al actualizar el usuario' });
-            }
+            const { idU } = req.params;
+            yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [req.body, idU]);
+            resp.json({ message: 'Updating a usuario ' + req.params.id });
         });
     }
     delete(req, resp) {
@@ -124,6 +108,21 @@ class UsuarioController {
             }
             catch (err) {
                 resp.json({ message: 'se elimino el usuario' + req.params.idU });
+            }
+        });
+    }
+    updatePassword(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { idU } = req.params;
+                const { password } = req.body;
+                const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
+                yield database_1.default.query('UPDATE usuario SET password = ? WHERE idU = ?', [hashedPassword, idU]);
+                resp.json({ message: 'Se actualizó el usuario con ID ' + idU });
+            }
+            catch (error) {
+                console.error('Error al actualizar el usuario', error);
+                resp.status(500).json({ message: 'Error al actualizar el usuario' });
             }
         });
     }

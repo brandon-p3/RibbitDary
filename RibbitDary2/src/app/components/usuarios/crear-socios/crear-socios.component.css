@@ -8,6 +8,7 @@
 
 body {
     background-color: #9cd3db;
+     font-family: 'CascadiaMonoExtraLight', monospace;
 }
 
 .container {
@@ -16,12 +17,11 @@ body {
     margin-top: -40px;
     width: 40%;
     height: auto;
-    font-family: 'CascadiaMonoExtraLight', monospace;
     border-radius: 0% 50% 50% 0%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
-.container button {
+ button {
     padding: 10px 20px;
     background-color: #438a3e;
     color: white;
@@ -37,15 +37,30 @@ body {
 .container2 {
     width: 50%;
 }
+.container3 {
+    width: 50%;
+}
+
 
 .container2 img {
     height: 150%;
     margin-left: 20%;
     border-radius: 100%;
 }
+
+.container3 img {
+    height: 150%;
+    margin-left: 20%;
+    border-radius: 100%;
+    margin-bottom: 40%;
+}
+
 .user-form {
     display: grid;
     margin-right: 20%;
+
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .user-form label {
@@ -65,4 +80,11 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2em;
+}
+
+.bienvenido2{
+    color: #438a3e;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
 }
