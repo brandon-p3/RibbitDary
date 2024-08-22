@@ -7,15 +7,11 @@ import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUs
   providedIn: 'root'
 })
 export class ProyectsService {
-  getAgregarP(idU: any) {
-    throw new Error('Method not implemented.');
-  }
+
   private API_BASE_URL = 'http://localhost:5000/api';
   private loginUrl = 'http://localhost:5000/api/login';
-  proyect_created_at: any;
 
   constructor(private http: HttpClient) { }
-
 
 
   //Usuarios
