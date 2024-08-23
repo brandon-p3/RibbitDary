@@ -8,8 +8,8 @@ import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUs
 })
 export class ProyectsService {
 
-  private API_BASE_URL = 'https://server-production-6a9f.up.railway.app/api';
-  private loginUrl = 'https://server-production-6a9f.up.railway.app/api/login';
+  private API_BASE_URL = 'http://autorack.proxy.rlwy.net:27778/api';
+  private loginUrl = 'http://autorack.proxy.rlwy.net:27778/api/login';
 
   constructor(private http: HttpClient) { }
 
