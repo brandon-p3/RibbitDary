@@ -8,8 +8,8 @@ import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUs
 })
 export class ProyectsService {
 
-  private API_BASE_URL = 'http://localhost:5000/api';
-  private loginUrl = 'http://localhost:5000/api/login';
+  private API_BASE_URL = 'https://592e-2806-102e-11-225d-a00-27ff-fe7d-4033.ngrok-free.app/api';
+  private loginUrl = 'https://592e-2806-102e-11-225d-a00-27ff-fe7d-4033.ngrok-free.app/api/login';
 
   constructor(private http: HttpClient) { }
 
