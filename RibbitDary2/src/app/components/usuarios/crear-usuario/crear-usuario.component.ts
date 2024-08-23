@@ -34,7 +34,8 @@ export class CrearUsuarioComponent implements OnInit {
     this.pryectsServices.crearUsuario(this.usuario).subscribe(
       resp => {
         console.log(resp);
-        this.router.navigate(['/usuarios'])
+        this.router.navigate(['/usuarios']);
+        this.router.navigate([`/login`]);
       },
       err => console.error('Error al guardar al usuario', err)
 
