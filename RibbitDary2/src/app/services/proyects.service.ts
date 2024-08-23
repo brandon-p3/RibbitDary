@@ -8,8 +8,8 @@ import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUs
 })
 export class ProyectsService {
 
-  private API_BASE_URL = 'http://localhost:5000/api';
-  private loginUrl = 'http://localhost:5000/api/login';
+  private API_BASE_URL = 'https://server-production-11e4.up.railway.app/api';
+  private loginUrl = 'https://server-production-11e4.up.railway.app/api/login';
 
   constructor(private http: HttpClient) { }
 
