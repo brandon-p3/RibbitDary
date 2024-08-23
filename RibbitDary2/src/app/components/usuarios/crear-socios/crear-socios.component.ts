@@ -20,7 +20,7 @@ export class CrearSociosComponent implements OnInit {
     icono: ''
   };
 
-  password: Usuario ={
+  pass: Usuario ={
     password: '',
   }
 
@@ -34,6 +34,11 @@ export class CrearSociosComponent implements OnInit {
   user: boolean = false;
   confirmpass = '';
   confirmpass2='';
+  showPassword: boolean = false;
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 
 
   constructor(
@@ -52,7 +57,7 @@ export class CrearSociosComponent implements OnInit {
         resp => {
           console.log(resp);
           this.crearSocio = resp;
-          this.password = resp;
+          this.pass = resp;
           this.edit = true;
           this.confirmpass = this.crearSocio.password || '';
         },
@@ -63,7 +68,7 @@ export class CrearSociosComponent implements OnInit {
         resp => {
           console.log(resp);
           this.crearSocio = resp;
-          this.password = resp;
+          this.pass = resp;
           this.edit = true;
           this.confirmpass = this.crearSocio.password || '';
         },
@@ -155,9 +160,9 @@ export class CrearSociosComponent implements OnInit {
     const idColaborador = this.route.snapshot.paramMap.get('idColaborador');
     const idU = this.route.snapshot.paramMap.get('idU');
 
-    if (this.confirmpass2 === this.password.password) {
+    if (this.confirmpass2 === this.pass.password) {
       if (idColaborador && idU) {
-        this.proyectService.updateUsuarioPassword(idColaborador, this.password).subscribe(
+        this.proyectService.updateUsuarioPassword(idColaborador, this.pass).subscribe(
           resp => {
             console.log(resp);
           },
@@ -165,7 +170,7 @@ export class CrearSociosComponent implements OnInit {
         );
         this.volver();
       } else if (idU) {
-        this.proyectService.updateUsuarioPassword(idU, this.password).subscribe(
+        this.proyectService.updateUsuarioPassword(idU, this.pass).subscribe(
           resp => {
             console.log(resp);
           },

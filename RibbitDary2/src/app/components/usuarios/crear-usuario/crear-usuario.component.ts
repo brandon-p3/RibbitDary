@@ -10,7 +10,7 @@ import { ProyectsService } from '../../../services/proyects.service';
   styleUrl: './crear-usuario.component.css'
 })
 export class CrearUsuarioComponent implements OnInit {
-  usuario: Usuario = {
+  user: Usuario = {
     nombres: '',
     aPuP: '',
     aPuM: '',
@@ -20,6 +20,12 @@ export class CrearUsuarioComponent implements OnInit {
     icono: ''
   };
   confirmpass = '';
+  showPassword: boolean = false;
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+  
   constructor(public router: Router,
     private pryectsServices: ProyectsService,
     private route: ActivatedRoute,
@@ -30,15 +36,14 @@ export class CrearUsuarioComponent implements OnInit {
 
   crearUsuario() {
 
-    if(this.usuario.password === this.confirmpass){
-    this.pryectsServices.crearUsuario(this.usuario).subscribe(
+    if(this.user.password === this.confirmpass){
+    this.pryectsServices.crearUsuario(this.user).subscribe(
       resp => {
         console.log(resp);
         this.router.navigate(['/usuarios']);
         this.router.navigate([`/login`]);
       },
-      err => console.error('Error al guardar al usuario', err)
-
+      err =>  alert('Ese correo ya existe, intente otro.')
     )
     }else{
       alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');

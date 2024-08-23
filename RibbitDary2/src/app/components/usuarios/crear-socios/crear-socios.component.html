@@ -86,29 +86,47 @@
         </button>
       </form>
       <!--Formulario para cambiar la contraseña -->
-      <form class="user-form" *ngIf="edit">
+      <form class="user-form" *ngIf="edit" #userForm="ngForm" >
         <h1 class="bienvenido2">Cambia tu contraseña</h1>
+      
+        <div>
+          <label for="contraseña">Contraseña:</label>
+          <div class="password-container">
+            <input
+            type="{{ showPassword  ? 'text' : 'password' }}"
+              id="contraseña"
+              name="contraseña"
+              required
+              [(ngModel)]="pass.password"
+              #password="ngModel"
+              [ngClass]="{'error': password.invalid && password.touched}"
+              pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!#%*?&]{8,}"
+              title="La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo."
+            />
+            <button type="button" (click)="togglePasswordVisibility()" class="button-eye">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <p *ngIf="password.invalid && password.touched" class="error-message">
+            La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo.
+          </p>
+      
+          <label for="contraseñaconfirma">Confirma Contraseña:</label>
+          <div class="password-container">
+            <input
+              id="contraseñaconfirma"
+              name="contraseñaconfirma"
+              required
+              [(ngModel)]="confirmpass2"
+                />
 
-        <label for="contraseña">Contraseña:</label>
-        <input
-          type="password"
-          id="contraseña"
-          name="contraseña"
-          [(ngModel)]="password.password"
-        />
+          </div>
 
-        <label for="contraseñaconfirma">Confirma Contraseña:</label>
-        <input
-          type="password"
-          id="contraseñaconfirma"
-          name="contraseñaconfirma"
-          [(ngModel)]="confirmpass2"
-        />
-
-        <button type="button" (click)="updatePassword()">
-          Actualizar Contraseña
-        </button>
+          <button [disabled]="userForm.invalid" type="button" (click)="updatePassword()">Actualizar Contraseña</button>
+       
+        </div>
       </form>
+      
     </div>
 
     <div [ngClass]="edit ? 'container3' : 'container2'">

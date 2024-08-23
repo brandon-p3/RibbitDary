@@ -83,3 +83,37 @@ body{
     margin-bottom: 20px;
     font-size: 2em;
 }
+/* Clase para el ícono del ojo */
+.eye-icon {
+    color: rgb(247, 0, 0);
+    font-size: 1.2em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 35px;
+  }
+  
+  .eye-icon:hover {
+    color: #ff0000; /* Un tono más claro al hacer hover */
+  }
+  
+  .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+  }
+  
+  input[type="password"], input[type="text"] {
+    width: 100%; /* Mantiene el campo de entrada en su tamaño completo */
+    padding-right: 40px; /* Espacio para el ícono */
+  }
+  
+  form .button-eye{
+    width: 50px;
+    margin-top: -1%;
+    height: 35px;
+    padding: 4px;
+  }
