@@ -1,0 +1,26 @@
+<header>
+    <app-navigation></app-navigation>
+    <app-nav-nar-lat></app-nav-nar-lat>
+  </header>
+<body class = "body">
+    <div class="tarjeta-container">
+        <div class="tarjeta" *ngFor="let tarjeta of tarjetas">
+          <div class="tarjeta-info">
+            <p><strong>Número de Tarjeta:</strong> {{tarjeta.numTarjeta}}</p>
+            <p><strong>CVV:</strong> {{tarjeta.cvv}}</p>
+            <p><strong>Dirección:</strong> {{tarjeta.direccion}}</p>
+            <p><strong>Expira Mes:</strong> {{tarjeta.expira_month}}</p>
+            <p><strong>Expira Año:</strong> {{tarjeta.expira_year}}</p>
+            <p><strong>Titular:</strong> {{tarjeta.titular}}</p>
+          </div>
+          <div class="tarjeta-actions">
+            <button class="edit-btn" [routerLink]="['/edit-tarjeta/edit',idU,tarjeta.numTarjeta]">Editar</button>
+            <button class="delete-btn" (click)="eliminarTarjeta(tarjeta.numTarjeta)">Borrar</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botón para agregar más tarjetas -->
+      <button class="add-btn" [routerLink]="['/crear-tarjeta', idU]">+</button>
+      
+</body>  

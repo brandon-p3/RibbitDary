@@ -13,6 +13,9 @@ import tipoProyectoRoutes from './routes/TipoProyecto/tipoProyectRoutes';
 import progresoRoutes from './routes/Proyectos/progresoRoutes';
 import filtradoTareasRoutes from './routes/Tareas/filtradoTareasRoutes';
 import filtradoProyectosRoutes from './routes/Proyectos/filtradoProyectosRoutes';
+import paquetesRoutes from './routes/Pagos/paquetesRoutes';
+import detallesPagoRoutes from './routes/Pagos/detallesPagoRoutes';
+import tarjetaRoutes from './routes/Pagos/tarjetaRoutes';
 
 class Server {
     public app: Application;
@@ -44,6 +47,10 @@ class Server {
         this.app.use('/api/progreso', progresoRoutes);
         this.app.use('/api/filtrado', filtradoTareasRoutes)
         this.app.use('/api/filtradoP', filtradoProyectosRoutes);
+        this.app.use('/api/paquete', paquetesRoutes);
+        this.app.use('/api/tarjeta', tarjetaRoutes);
+        this.app.use('/api/detallespago', detallesPagoRoutes);
+
     }
 
     start(): void {

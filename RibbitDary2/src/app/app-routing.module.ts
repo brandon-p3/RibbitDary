@@ -12,6 +12,11 @@ import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-socios.component';
 import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
 import { CrearUsuarioComponent } from './components/usuarios/crear-usuario/crear-usuario.component';
+import { TarjetaComponent } from './components/pagos/tarjeta/tarjeta.component';
+import { CrearTarjetaComponent } from './components/pagos/crear-tarjeta/crear-tarjeta.component';
+import { PaquetesComponent } from './components/pagos/paquetes/paquetes.component';
+import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
+import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -54,7 +59,20 @@ const routes: Routes = [
 
   //Para usuarios Admin
   {path: 'tipo-proyecto/:idU', component: TipoProyectoComponent},
-  {path: 'tipo-proyecto/edit/:idU/:idType', component: TipoProyectoComponent}
+  {path: 'tipo-proyecto/edit/:idU/:idType', component: TipoProyectoComponent},
+
+  //Tarjeta
+  {path:'tarjeta/:idU', component: TarjetaComponent},
+  {path: 'crear-tarjeta/:idU', component: CrearTarjetaComponent},
+  { path: 'edit-tarjeta/edit/:idU/:numTarjeta', component: CrearTarjetaComponent },
+
+  //Paquetes
+  {path:'paquetes/:idU', component: PaquetesComponent},
+  {path: 'crear-paquetes/:idU', component: CrearPaquetesComponent},
+  {path: 'edit-paquetes/edit/:idU/:idPaquete', component: CrearPaquetesComponent},
+
+  //Detalles pago
+  {path: 'pagos', component: DetallesPagoComponent},
 
 ];
 

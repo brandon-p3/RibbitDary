@@ -109,3 +109,45 @@ a {
 .nav-infoNP h2 {
   font-size: 1.5em;
 }
+
+/*Barra*/
+.user-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu ul a li {
+  padding: 10px;
+  text-align: left;
+}
+
+.dropdown-menu ul a li  {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: #82c45d;
+}
+
+.user-dropdown.open .dropdown-menu {
+  display: block;
+}

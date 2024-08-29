@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f9f4;
+  }
+  
+  .tarjeta-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  .tarjeta {
+    background-color: #d9f7d9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+    text-align: left;
+    transition: transform 0.2s;
+  }
+  
+  .tarjeta:hover {
+    transform: scale(1.05);
+  }
+  
+  .tarjeta-info {
+    margin-bottom: 15px;
+  }
+  
+  .tarjeta-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-btn, .delete-btn {
+    background-color: #8dc88d;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #76b276;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff6b6b;
+  }
+  
+  .add-btn {
+    background-color: #76b276;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    padding: 15px 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-btn:hover {
+    background-color: #64a064;
+  }
+  

@@ -10,9 +10,10 @@ import { ProyectsService } from '../../../services/proyects.service';
 export class NavigationComponent {
   @HostBinding('class') classes = 'row';
   usuario: any = [];
+  isMenuOpen = false;
 
   constructor(private proyectsService: ProyectsService,
-    private route: ActivatedRoute, public router: Router) {}
+    private route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
     const idU = this.route.snapshot.paramMap.get('idU');
@@ -33,5 +34,10 @@ export class NavigationComponent {
 
   }
 
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log('Menú desplegable abierto:', this.isMenuOpen);
+  }
+  
 
 }

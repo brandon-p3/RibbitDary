@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
-import { Proyect, Tarea, Proyectxcolab, Material, Usuario, TipoProyecto, UserxUser, CreaSocio } from '../models/Proyect';
+import {
+  Proyect, Tarea, Proyectxcolab, Material, Usuario,
+  TipoProyecto, UserxUser, CreaSocio, Paquete, DetallesPago, Tarjeta
+} from '../models/Proyect';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectsService {
 
-  private API_BASE_URL = 'https://server-production-11e4.up.railway.app/api';
-  private loginUrl = 'https://server-production-11e4.up.railway.app/api/login';
+  //private API_BASE_URL = 'https://server-production-11e4.up.railway.app/api';
+  //private loginUrl = 'https://server-production-11e4.up.railway.app/api/login';
+
+  private API_BASE_URL = 'http://localhost:5000/api';
+  private loginUrl = 'http://localhost:5000/api/login';
 
   constructor(private http: HttpClient) { }
 
@@ -27,11 +33,11 @@ export class ProyectsService {
     return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`, usuario);
   }
 
-  updateUsuario(idU: string, usuario: Usuario): Observable<Usuario>{
+  updateUsuario(idU: string, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/${idU}`, usuario);
   }
 
-  updateUsuarioPassword(idU: string, usuario: Usuario): Observable<Usuario>{
+  updateUsuarioPassword(idU: string, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/password/edit/${idU}`, usuario);
   }
 
@@ -45,7 +51,7 @@ export class ProyectsService {
     return this.http.get<any>(`${this.API_BASE_URL}/usuario`);
   }
 
-  crearUserxUser(UserxUser: UserxUser): Observable<UserxUser>{
+  crearUserxUser(UserxUser: UserxUser): Observable<UserxUser> {
     return this.http.post<UserxUser>(`${this.API_BASE_URL}/userxuser/`, UserxUser);
   }
 
@@ -74,7 +80,7 @@ export class ProyectsService {
   deleteTipoProyecto(idType: string): Observable<void> {
     return this.http.delete<void>(`${this.API_BASE_URL}/tipoproyecto/${idType}`);
   }
-  
+
   updateTipoProyecto(idType: string, tipoProyecto: TipoProyecto): Observable<TipoProyecto> {
     return this.http.put<TipoProyecto>(`${this.API_BASE_URL}/tipoproyecto/${idType}`, tipoProyecto);
   }
@@ -215,6 +221,66 @@ export class ProyectsService {
 
   deleteMaterial(idMt: string): Observable<Material> {
     return this.http.delete<Tarea>(`${this.API_BASE_URL}/materiales/${idMt}`);
+  }
+
+  //Detalles de pago
+  getDP(idU: string): Observable<DetallesPago[]> {
+    return this.http.get<DetallesPago[]>(`${this.API_BASE_URL}/detallespago/${idU}`);
+  }
+
+  createDetalle(detallePago: DetallesPago): Observable<DetallesPago> {
+    return this.http.post<DetallesPago>(`${this.API_BASE_URL}/detallespago`, detallePago);
+  }
+
+  updateDetalle(idDetallePago: string, detallePago: DetallesPago): Observable<DetallesPago> {
+    return this.http.put<DetallesPago>(`${this.API_BASE_URL}/detallespago/${idDetallePago}`, detallePago);
+  }
+
+  deleteDetalle(idDetallePago: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_BASE_URL}/detallespago/${idDetallePago}`);
+  }
+
+  //Tarjeta
+  getTarjetas(idU: string): Observable<Tarjeta[]> {
+    return this.http.get<Tarjeta[]>(`${this.API_BASE_URL}/tarjeta/${idU}`);
+  }
+  
+  getTarjeta(numTarjeta: string): Observable<Tarjeta> {
+    return this.http.get<Tarjeta>(`${this.API_BASE_URL}/tarjeta/edit/${numTarjeta}`);
+  }
+
+  createTarjeta(tarjeta: Tarjeta): Observable<Tarjeta> {
+    return this.http.post<Tarjeta>(`${this.API_BASE_URL}/tarjeta`, tarjeta);
+  }
+
+  updateTarjeta(numTarjeta: string, tarjeta: Tarjeta): Observable<Tarjeta> {
+    return this.http.put<Tarjeta>(`${this.API_BASE_URL}/tarjeta/${numTarjeta}`, tarjeta);
+  }
+
+  deleteTarjeta(numTarjeta: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_BASE_URL}/tarjeta/${numTarjeta}`);
+  }
+
+  //Paquetes
+  getPaquetes(): Observable<Paquete[]> {
+    return this.http.get<Paquete[]>(`${this.API_BASE_URL}/paquete`);
+  }
+
+  getPaqueteById(idPaquete: string): Observable<Paquete> {
+    return this.http.get<Paquete>(`${this.API_BASE_URL}/paquete/edit/${idPaquete}`);
+  }
+
+
+  crearPaquetes(paquete: Paquete): Observable<Paquete> {
+    return this.http.post<Paquete>(`${this.API_BASE_URL}/paquete`, paquete);
+  }
+
+  actualizarPaquete(idPaquete: string, paquete: Paquete): Observable<Paquete> {
+    return this.http.put<Paquete>(`${this.API_BASE_URL}/paquete/${idPaquete}`, paquete);
+  }
+
+  eliminarPaquete(idPaquete: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_BASE_URL}/paquete/${idPaquete}`);
   }
 
 }

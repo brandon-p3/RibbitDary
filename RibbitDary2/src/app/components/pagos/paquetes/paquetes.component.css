@@ -1,0 +1,117 @@
+.paquetes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  font-family: 'Montserrat', sans-serif;
+  gap: 20px;
+  padding: 40px;
+}
+
+.img-Paquetes {
+  width: 40%;
+  border-radius: 100%;
+  margin-bottom: 20px; 
+  background-color: #9cd3db;
+  position: relative; 
+  z-index: 1; 
+}
+
+.paquete-conte {
+  text-align: center;
+}
+
+.paquete-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  margin-top: -20%;
+}
+
+.paquete-conte:hover {
+  transform: translateY(-10px);
+}
+
+.paquete-header {
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  position: relative;
+}
+
+.paquete-header h3 {
+  margin: 0;
+  font-size: 60px;
+  margin-top: 5%;
+}
+
+.paquete-price {
+  font-size: 18px;
+  font-weight: bold;
+  bottom: 10px;
+  right: 20px;
+}
+
+.paquete-details {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos en columna */
+  align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+  padding: 60px;
+  margin-top: -60px;
+  margin-bottom: -60px;
+}
+
+.paquete-details p {
+  margin: 10px 0;
+  font-size: 18px; /* Ajusta el tamaño de la fuente para una mejor legibilidad */
+  line-height: 1.6; /* Aumenta el interlineado para más separación entre líneas */
+  font-weight: normal; /* Asegura que el texto no esté en negrita */
+}
+
+.paquete-details strong {
+  font-weight: bold; /* Hace que el texto en negrita se destaque más */
+  color: #333; /* Color del texto en negrita */
+}
+
+.paquete-actions {
+  padding: 20px;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  flex-direction: column; /* Asegura que los botones estén uno debajo del otro */
+  gap: 10px; /* Espacio entre botones */
+}
+
+.paquete-actions button {
+  background-color: #64b5f6; /* Azul pastel */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 0; /* Ajusta el margen para que el espaciado sea vertical */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.paquete-actions button:hover {
+  background-color: #4fa3e0; /* Azul pastel más oscuro */
+}
+
+.add-btn {
+  background-color: #76b276;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  padding: 15px 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #64a064;
+}

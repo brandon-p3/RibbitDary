@@ -69,3 +69,35 @@ export interface Proyect {
     idU?: string,
     idColaborador?: string,
   }
+
+  export interface DetallesPago{
+    idDetallePago: string,
+    idU: string,
+    numTarjeta: string,
+    fechaI: string,
+    idPaquete: string,
+    fechaF: string,
+  }
+
+  export interface Paquete{
+    idPaquete: string,
+    tiempo: string,
+    cantidadProy: string,
+    cantidadTareas: string,
+    numPersonas: string,
+    namePaquete: string,
+    precio: string,
+    capacidad: string
+  }
+
+  export interface Tarjeta{
+    numTarjeta: string,
+    cvv: string,
+    direccion: string,
+    expira_year: string,
+    expira_month: string,
+    titular: string,
+    idU: string,
+    tipoTarjeta: string
+
+  }

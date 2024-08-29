@@ -21,6 +21,11 @@ import { CrearSociosComponent } from './components/usuarios/crear-socios/crear-s
 import { SociosComponent } from './components/usuarios/socios/socios.component';
 import { TipoProyectoComponent } from './components/proyects/tipo-proyecto/tipo-proyecto.component';
 import { CrearUsuarioComponent } from './components/usuarios/crear-usuario/crear-usuario.component';
+import { TarjetaComponent } from './components/pagos/tarjeta/tarjeta.component';
+import { CrearTarjetaComponent } from './components/pagos/crear-tarjeta/crear-tarjeta.component';
+import { PaquetesComponent } from './components/pagos/paquetes/paquetes.component';
+import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
+import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -45,7 +50,12 @@ const routes: Routes = [
     CrearSociosComponent,
     BienvenidaComponent,
     TipoProyectoComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    TarjetaComponent,
+    CrearTarjetaComponent,
+    PaquetesComponent,
+    CrearPaquetesComponent,
+    DetallesPagoComponent
   ],
   imports: [
     BrowserModule,

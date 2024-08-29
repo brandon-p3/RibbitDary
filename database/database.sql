@@ -38,11 +38,12 @@ CREATE TABLE userxuser (
 
 -- Crear tabla Tarjeta
 CREATE TABLE tarjeta (
-    numTarjeta INT NOT NULL PRIMARY KEY,
+    numTarjeta VARCHAR(255) NOT NULL PRIMARY KEY,
     cvv INT NOT NULL,
     numTelefono INT NOT NULL,
     tipoTarjeta VARCHAR(15) NOT NULL,
     direccion VARCHAR(100),
+    titular VARCHAR(255),
     expira_year INT NOT NULL CHECK (expira_year >= 1900 AND expira_year <= 2100),
     expira_month TINYINT NOT NULL CHECK (expira_month >= 1 AND expira_month <= 12),
     idU INT NOT NULL,
@@ -63,12 +64,12 @@ CREATE TABLE paquete (
 
 -- Crear tabla DetallesPago
 CREATE TABLE detallespago (
+    idDetallePago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idU INT NOT NULL,
     idPaquete INT NOT NULL,
-    numTarjeta INT NOT NULL,
+    numTarjeta VARCHAR(255) NOT NULL,
     fechaI DATE NOT NULL,
     fechaF DATE NOT NULL,
-    PRIMARY KEY (idU, idPaquete, numTarjeta),
     CONSTRAINT idU_DP_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
     CONSTRAINT idPaquete_DP_FK FOREIGN KEY (idPaquete) REFERENCES paquete(idPaquete),
     CONSTRAINT numTarjeta_FK FOREIGN KEY (numTarjeta) REFERENCES tarjeta(numTarjeta)
