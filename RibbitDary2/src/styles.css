@@ -2,3 +2,11 @@
     padding-left: 17%;
     padding-top: 8%;
 }
+
+/* Para pantallas móviles */
+@media (max-width: 480px) {
+    .body {
+        padding-left: 0%;
+        padding-top: 25%;
+    }
+}

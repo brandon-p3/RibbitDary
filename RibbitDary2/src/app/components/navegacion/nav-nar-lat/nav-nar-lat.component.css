@@ -41,3 +41,26 @@ body {
     background-color: #82c45d;
     color: white;
 }
+
+
+@media (max-width: 768px) {
+    .sidebar {
+      display: none; /* Ocultar la barra lateral en pantallas pequeñas */
+    }
+    
+    .menu-icon {
+      display: block; /* Mostrar el ícono del menú en pantallas pequeñas */
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 2em;
+      cursor: pointer;
+      color: #333;
+    }
+  }
+  
+  /* Opcional: Mostrar la barra lateral al hacer clic en el ícono del menú */
+  .show-sidebar {
+    display: flex; /* Mostrar la barra lateral cuando esté activa */
+  }
+  

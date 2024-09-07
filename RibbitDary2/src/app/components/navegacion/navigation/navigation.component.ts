@@ -11,6 +11,7 @@ export class NavigationComponent {
   @HostBinding('class') classes = 'row';
   usuario: any = [];
   isMenuOpen = false;
+  isSidebarOpen = false;
 
   constructor(private proyectsService: ProyectsService,
     private route: ActivatedRoute, public router: Router) { }
@@ -22,6 +23,12 @@ export class NavigationComponent {
       this.getUsuario(idU);
     }
 
+  }
+
+
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   getUsuario(idU: string) {

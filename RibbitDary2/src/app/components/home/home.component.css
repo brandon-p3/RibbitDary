@@ -119,3 +119,40 @@
   font-family: 'Roboto', sans-serif; /* Fuente moderna para los títulos */
   color: #0d2208; /* Verde oscuro */
 }
+
+/* Estilos para la clase .containerTa */
+.containerTa {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas en la rejilla */
+  gap: 20px;
+  width: 100%;
+}
+
+/* Responsivo para pantallas de tamaño medio (tabletas) */
+@media (max-width: 768px) {
+  .task-grid {
+    grid-template-columns: repeat(1, 1fr); /* Dos columnas en la rejilla */
+    gap: 15px;
+  }
+
+  .task-card {
+    width: 90%;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .task-user img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .task-user span {
+    font-size: 1em;
+  }
+
+}

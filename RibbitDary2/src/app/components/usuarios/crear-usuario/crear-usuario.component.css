@@ -117,3 +117,51 @@ body{
     height: 35px;
     padding: 4px;
   }
+
+
+  @media (max-width: 768px) {
+    .container {
+      width: 80%; 
+      padding: 20px; 
+      border-radius: 0% 30% 30% 0%; 
+      margin-top: 100px;
+      border-radius: 20px;
+      padding: 30px;
+    }
+  
+    .container2 img {
+      width: 80%; 
+      padding-left: 10%; 
+      margin-top: 20px;
+    }
+  
+    .nav-button button {
+      font-size: 0.9em; 
+      padding: 8px 16px; 
+    }
+  
+    .user-form {
+      margin-right: 0;
+      margin-top: 5%; 
+    }
+  
+    .user-form label, .user-form input {
+      font-size: 0.8em; 
+    }
+  
+    .eye-icon {
+      right: 10px; 
+      top: 30px;
+      font-size: 1em; 
+    }
+  
+    .bienvenido {
+      font-size: 1.5em; 
+    }
+  
+    .body1 {
+      flex-direction: column; /* Alinear los elementos en columna en lugar de fila */
+      padding-bottom: 20px; /* Reducir el padding inferior */
+    }
+  }
+  

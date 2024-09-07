@@ -158,3 +158,53 @@
 .btn-remove i {
   font-size: 18px;
 }
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .formProyectos {
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    gap: 10px; /* Espacio entre elementos en pantallas pequeñas */
+    align-items: center; /* Centra los elementos */
+  }
+
+  .contentForm {
+    width: 90%; /* Ajusta el ancho para dispositivos móviles */
+    margin: 0 auto; /* Centra el contenido */
+    padding: 2%; /* Reduce el padding */
+    box-shadow: none; /* Elimina la sombra para un diseño más limpio */
+    border-radius: 10px; /* Ajusta el radio del borde */
+  }
+
+  .contentForm label {
+    font-size: 1.2em; /* Ajusta el tamaño del texto */
+  }
+
+
+
+  .contTareasFechas {
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    gap: 10px; /* Espacio entre elementos */
+  }
+
+  .contTareasFechas1 {
+    gap: 10%; /* Ajusta el espacio entre elementos */
+  }
+
+  .submit-button {
+    width: 100%; /* Ajusta el ancho del botón */
+    font-size: 1em; /* Ajusta el tamaño de la fuente */
+    padding: 12px; /* Ajusta el padding */
+  }
+
+  .materiales-lista {
+    width: 95%; /* Ajusta el ancho */
+    padding: 10px; /* Ajusta el padding */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+
+
+  .btn-remove {
+    font-size: 18px; /* Ajusta el tamaño del icono */
+  }
+}

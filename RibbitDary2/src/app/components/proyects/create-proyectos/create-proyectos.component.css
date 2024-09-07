@@ -299,3 +299,61 @@
   margin-top: 10px;
   border-radius: 4px;
 }
+
+
+/* Estilos responsivos */
+
+/* Para pantallas de tamaño medio (tabletas) */
+@media (max-width: 768px) {
+  .formProyectos {
+      margin-top: 5%;
+  }
+  
+  .contentForm {
+      flex-direction: column;
+  }
+  
+  .contTP {
+      width: 100%;
+  }
+
+  .contTP label {
+      font-size: 1.2em;
+  }
+
+  .contTP input, .contTP select {
+      font-size: 0.9em;
+      height: 35px;
+  }
+
+  .contProyecto {
+      margin-bottom: 3%;
+  }
+
+  .contProyectoFechas {
+      gap: 20%;
+  }
+
+  .perNotType {
+      flex-direction: column;
+  }
+
+  .perNotType-Container {
+      width: 100%;
+  }
+
+  .personas-container {
+      margin-left: 0;
+      margin-top: 10px;
+  }
+
+  .submit-button {
+      width: 100%;
+      margin-left: 0;
+  }
+
+  .success-message {
+      font-size: 14px;
+  }
+}
+
