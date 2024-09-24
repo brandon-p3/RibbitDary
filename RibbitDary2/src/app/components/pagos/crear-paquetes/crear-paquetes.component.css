@@ -89,3 +89,30 @@ button:hover {
 .form-group-item input {
   width: 92%;
 }
+
+
+
+
+@media (max-width: 480px) {
+  .container {
+    display:grid;
+  }
+  
+  .user-form {
+    padding: 35px;
+    width: 77%;
+  }
+
+  .bienvenido {
+    font-size: 1.5em;
+  }
+
+  button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .container2 img, .container3 img {
+    height: 200px;
+  }
+}

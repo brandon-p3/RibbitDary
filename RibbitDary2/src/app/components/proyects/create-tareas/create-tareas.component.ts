@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tarea, Material } from '../../../models/Proyect';
 import { ProyectsService } from '../../../services/proyects.service';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-create-tareas',
@@ -18,11 +19,13 @@ export class CreateTareasComponent implements OnInit {
     idColaborador: 'opcion1',
     estatus: 'No iniciada'
   };
+  private map: L.Map | undefined;
 
   newMaterial: string = '';
   idMaterialSelect: string[] = [];
   materiales: Material[] = [];
   materialSelect: any = [];
+  tareaUbi: any=[];
 
   proyects: any = [];
   colaboradores: any = [];
@@ -88,6 +91,8 @@ export class CreateTareasComponent implements OnInit {
         console.log(resp);
         this.tarea = resp;
         this.edit = true;
+        this.tareaUbi = resp;
+        this.initMap();
       },
       err => console.error('Error al obtener tarea:', err)
     )
@@ -197,5 +202,102 @@ export class CreateTareasComponent implements OnInit {
   deleteMateriales(idMt: string) {
     this.idMaterialSelect.push(idMt);
   }
+
+  private initMap(): void {
+    const greenIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+  
+    const redIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    const yellowIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+  
+    // Inicializar el mapa si aún no existe
+    if (!this.map) {
+      this.map = L.map('mi_mapa').setView([21.47268, -101.22288], 15);
+  
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this.map);
+    }
+  
+    // Mostrar la ubicación actual del usuario si se permite la geolocalización
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLocation: L.LatLngTuple = [
+            position.coords.latitude,
+            position.coords.longitude,
+          ];
+  
+          if (this.map) {
+            this.map.setView(userLocation, 15);
+  
+            // Añadir un marcador en la ubicación del usuario
+            L.marker(userLocation, {icon: redIcon})
+              .addTo(this.map)
+              .bindPopup("Estás aquí")
+              .openPopup();
+          }
+        },
+        () => {
+          alert('No se pudo obtener tu ubicación.');
+        }
+      );
+    } else {
+      alert('Geolocalización no soportada por tu navegador.');
+    }
+  
+    // Agregar marcadores para los colaboradores
+    if (this.map && this.colaboradores.length > 0) {
+      this.colaboradores.forEach((usuario: any) => {
+        const location: L.LatLngTuple = [usuario.lat, usuario.lng];
+        L.marker(location, {icon: greenIcon})
+          .addTo(this.map!)
+          .bindPopup(`${usuario.nombres} está aquí`);
+      });
+    }
+  
+    // Mostrar el marcador de la tarea si estamos en modo de edición
+    if (this.map && this.edit) {
+      const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
+      L.marker(tareaLocation, {icon: yellowIcon})
+        .addTo(this.map!)
+        .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
+        .openPopup();
+    }
+  
+    // Permitir al usuario seleccionar una nueva ubicación para la tarea
+    this.map.on('click', (e: L.LeafletMouseEvent) => {
+      alert(`Has seleccionado la siguiente ubicación: ${e.latlng.toString()}`);
+      this.tarea.lng = e.latlng.lng;
+      this.tarea.lat = e.latlng.lat;
+  
+      // Remover el marcador anterior si existe, y agregar uno nuevo
+      L.marker(e.latlng, {icon: redIcon})
+        .addTo(this.map!)
+        .bindPopup(`Nueva ubicación seleccionada para la tarea: ${this.tarea.nomTarea}`)
+        .openPopup();
+    });
+  }
+  
 
 }

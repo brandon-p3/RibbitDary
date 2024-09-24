@@ -23,6 +23,8 @@ CREATE TABLE usuario (
     nombres VARCHAR(30),
     idTipo TINYINT NOT NULL,
     icono VARCHAR(255),
+    lat DOUBLE,
+    lng DOUBLE,
     CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES tipousuario(idTipo),
     CONSTRAINT unique_usuario UNIQUE (usuario)
 );
@@ -117,6 +119,8 @@ CREATE TABLE tarea (
     idColaborador INT NOT NULL,
     idP INT NOT NULL,
     estatus VARCHAR(60) NOT NULL,
+    lat DOUBLE,
+    lng DOUBLE,
     CONSTRAINT idU_Tar_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
     CONSTRAINT idColab_Tar_FK FOREIGN KEY (idColaborador) REFERENCES usuario(idU),
     CONSTRAINT idP_Tar_FK FOREIGN KEY (idP) REFERENCES proyecto(idP)

@@ -12,7 +12,6 @@ export interface Proyect {
   estatus?:string;
 }
 
-
   export interface Tarea{
     idT?: string,
     idP?: string,
@@ -23,6 +22,8 @@ export interface Proyect {
     estatus?: string,
     idU?: string,
     idColaborador?: string,
+    lng?: number,
+    lat?: number
   }
 
   export interface Proyectxcolab{
@@ -38,6 +39,8 @@ export interface Proyect {
   }
 
   export interface Usuario {
+    lng?: number,
+    lat?: number,
     idU?: string,
     nombres?: string,
     aPuP?: string,
@@ -46,6 +49,7 @@ export interface Proyect {
     password?: string,
     idTipo?: string,
     icono?: string
+    
   }
   
   export interface CreaSocio {

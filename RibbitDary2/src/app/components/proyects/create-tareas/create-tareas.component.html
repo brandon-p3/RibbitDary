@@ -76,42 +76,51 @@
           />
         </div>
       </div>
-      <button type="submit" class="submit-button" (click)="edit ? updateTarea() : saveNewTarea()">
+      <button
+        type="submit"
+        class="submit-button"
+        (click)="edit ? updateTarea() : saveNewTarea()"
+      >
         Subir tarea
       </button>
     </div>
 
     <!-- Lista de materiales añadidos -->
-    <div class="materiales-lista">
-      <h4>Materiales Añadidos:</h4>
-      <ul class="list-group">
-        <li *ngFor="let material of materiales" class="list-group-item">
-          {{ material.nombreMaterial }}
-          <!-- Botón para borrar los materiales -->
-          <button
-            type="button"
-            class="btn-remove"
-            (click)="removeMaterial(material)"
-          >
-            <i class="fas fa-trash"></i>
-          </button>
-        </li>
-      </ul>
+    <div class="mat-ubi">
+      <div>
+        <h4>Ubica tus usuarios: </h4>
+        <div id="mi_mapa" style="height: 200px; width: 100%; "></div>
+      </div>
+      <div class="materiales-lista">
+        <h4>Materiales Añadidos:</h4>
+        <ul class="list-group">
+          <li *ngFor="let material of materiales" class="list-group-item">
+            {{ material.nombreMaterial }}
+            <!-- Botón para borrar los materiales -->
+            <button
+              type="button"
+              class="btn-remove"
+              (click)="removeMaterial(material)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </li>
+        </ul>
 
-      <ul class="list-group"  *ngIf="edit">
-        <li *ngFor="let material of materialSelect" class="list-group-item">
-          {{ material.nombreMaterial }}
-          <!-- Botón para borrar los materiales -->
-          <button
-            type="button"
-            class="btn-remove"
-            (click)="deleteMateriales(material.idMt)"
-          >
-            <i class="fas fa-trash"></i>
-          </button>
-        </li>
-      </ul>
+        <ul class="list-group" *ngIf="edit">
+          <li *ngFor="let material of materialSelect" class="list-group-item">
+            {{ material.nombreMaterial }}
+            <!-- Botón para borrar los materiales -->
+            <button
+              type="button"
+              class="btn-remove"
+              (click)="deleteMateriales(material.idMt)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-    
   </form>
 </body>

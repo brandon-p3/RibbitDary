@@ -111,6 +111,13 @@ class UsuarioController {
             }
         });
     }
+    ubicacion(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idU } = req.params;
+            yield database_1.default.query('UPDATE usuario SET ? WHERE idU = ?', [req.body, idU]);
+            resp.json({ message: 'Updating a ubicacion del usuario ' + req.params.id });
+        });
+    }
     updatePassword(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CreaSocio, UserxUser, Usuario } from '../../../models/Proyect';
+import {UserxUser, Usuario } from '../../../models/Proyect';
 import { ProyectsService } from '../../../services/proyects.service';
 
 @Component({
@@ -17,11 +17,13 @@ export class CrearSociosComponent implements OnInit {
     usuario: '',
     password: '',
     idTipo: '3',
-    icono: ''
+    icono: '',
+    lng: 0,
+    lat: 0
   };
 
   pass: Usuario ={
-    password: '',
+    password: ''
   }
 
 

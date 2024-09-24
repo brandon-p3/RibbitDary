@@ -17,7 +17,9 @@ export class CrearUsuarioComponent implements OnInit {
     usuario: '',
     password: '',
     idTipo: '2',
-    icono: ''
+    icono: '',
+    lng: 0,
+    lat: 0
   };
   confirmpass = '';
   showPassword: boolean = false;

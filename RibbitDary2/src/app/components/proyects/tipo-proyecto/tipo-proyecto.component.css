@@ -95,3 +95,56 @@
 .Formulario-TP .submit-button:hover {
     background-color: #5ca65c;
 }
+
+
+@media (max-width: 768px) {
+    .tp-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tp {
+        padding: 10px;
+    }
+
+    .Formulario-TP {
+        padding: 15px;
+    }
+
+    .Formulario-TP input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .Formulario-TP .submit-button {
+        padding: 10px;
+    }
+
+    .Contenedor-Todo {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .Contenedor-TP, .Formulario-TP {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .tp h2 {
+        font-size: 16px;
+    }
+
+    .tp button {
+        padding: 8px 10px;
+    }
+
+    .Formulario-TP input {
+        padding: 7px;
+    }
+
+    .Formulario-TP label {
+        font-size: 14px;
+    }
+
+    .Formulario-TP .submit-button {
+        padding: 8px;
+    }
+}

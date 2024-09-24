@@ -45,8 +45,17 @@ class DetallesPagoController {
     createDetalle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield database_1.default.query('INSERT INTO detallespago SET?', [req.body]);
-                res.json({ message: 'Detalle de pago creado' });
+                const idU = req.params.idU;
+                const user = yield database_1.default.query('SELECT idTipo FROM usuario WHERE idU = ?', [idU]);
+                if (user.length > 0 && user[0].idTipo === 3) {
+                    yield database_1.default.query('INSERT INTO detallespago SET?', [req.body]);
+                    yield database_1.default.query('UPDATE usuario SET idTipo = 2 WHERE idU = ?', [idU]);
+                    res.json({ message: 'Detalle de pago creado' });
+                }
+                else {
+                    yield database_1.default.query('INSERT INTO detallespago SET?', [req.body]);
+                    res.json({ message: 'Detalle de pago creado' });
+                }
             }
             catch (error) {
                 console.log(error);

@@ -10,7 +10,7 @@ class DetallesPagoRoutes{
 
     config():void{
         this.router.get('/:idU',detallesPagoController.listDP); 
-        this.router.post('/', detallesPagoController.createDetalle);  
+        this.router.post('/:idU', detallesPagoController.createDetalle);  
         this.router.put('/:idDetallePago', detallesPagoController.updateDetalle); 
         this.router.delete('/:idDetallePago', detallesPagoController.deleteDetalle); 
     }

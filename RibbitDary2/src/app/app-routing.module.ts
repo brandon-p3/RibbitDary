@@ -72,7 +72,7 @@ const routes: Routes = [
   {path: 'edit-paquetes/edit/:idU/:idPaquete', component: CrearPaquetesComponent},
 
   //Detalles pago
-  {path: 'pagos', component: DetallesPagoComponent},
+  {path: 'detalles-pago/:idU', component: DetallesPagoComponent},
 
 ];
 

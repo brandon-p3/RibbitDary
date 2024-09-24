@@ -5,6 +5,50 @@
   <div class="bodyT">
     <h1>Tareas:</h1>
     <div class="containerTa">
+      <div class="containerP">
+        <div class="container-Col-Pro2">
+          <div class="cont-Col-Info-Pro2">
+            <div>
+              <h3>Nombre del proyecto:</h3>
+            </div>
+            <div class="usersCol2">
+              <p>{{ proyects.nameProyect }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col-Pro">
+          <div class="cont-Col-Info-Pro">
+            <div>
+              <h3>Descripción del proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <p>{{ proyects.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col-Pro">
+          <div class="cont-Col-Info-Pro">
+            <div>
+              <h3>Notas del proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <p>{{ proyects.notas }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col">
+          <div class="cont-Col-Info">
+            <div>
+              <h3>Personas en el proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <ng-container *ngFor="let user of colaboradores">
+                <img [src]="user.icono" />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="containerT">
         <div class="container-Tarea" *ngFor="let tarea of tareas">
           <div class="cont-Tarea-Info">
@@ -60,15 +104,15 @@
           </div>
           <div *ngFor="let user of user">
             <div class="edit-delete-buttons" *ngIf="user.idTipo !== 3">
-              <button>
+              <button   [routerLink]="[
+              '/edit-tarea/edit/',
+              tarea.idU,
+              tarea.idP,
+              tarea.idT
+            ]">
                 <i
                   class="fas fa-edit"
-                  [routerLink]="[
-                    '/edit-tarea/edit/',
-                    tarea.idU,
-                    tarea.idP,
-                    tarea.idT
-                  ]"
+                
                 ></i>
               </button>
               <button (click)="deleteTarea(tarea.idT)">
@@ -89,50 +133,7 @@
         </div>
       </div>
 
-      <div class="containerP">
-        <div class="container-Col-Pro2">
-          <div class="cont-Col-Info-Pro2">
-            <div>
-              <h3>Nombre del proyecto:</h3>
-            </div>
-            <div class="usersCol2">
-              <p>{{ proyects.nameProyect }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="container-Col-Pro">
-          <div class="cont-Col-Info-Pro">
-            <div>
-              <h3>Descripción del proyecto:</h3>
-            </div>
-            <div class="usersCol">
-              <p>{{ proyects.descripcion }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="container-Col-Pro">
-          <div class="cont-Col-Info-Pro">
-            <div>
-              <h3>Notas del proyecto:</h3>
-            </div>
-            <div class="usersCol">
-              <p>{{ proyects.notas }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="container-Col">
-          <div class="cont-Col-Info">
-            <div>
-              <h3>Personas en el proyecto:</h3>
-            </div>
-            <div class="usersCol">
-              <ng-container *ngFor="let user of colaboradores">
-                <img [src]="user.icono" />
-              </ng-container>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </body>

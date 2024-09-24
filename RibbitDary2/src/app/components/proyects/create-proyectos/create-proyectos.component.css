@@ -90,7 +90,6 @@
 /*Personas dentro del proyecto*/
 .perContainer {
   width: 100%;
-
 }
 
 .personas-container {
@@ -306,7 +305,7 @@
 /* Para pantallas de tamaño medio (tabletas) */
 @media (max-width: 768px) {
   .formProyectos {
-      margin-top: 5%;
+      margin-top: 15%;
   }
   
   .contentForm {
@@ -354,6 +353,12 @@
 
   .success-message {
       font-size: 14px;
+  }
+  .Presupuesto input {
+    width: 100%;
+  }
+  .perNotType-Container{
+    width: 100%;
   }
 }
 

@@ -87,6 +87,11 @@ class UsuarioController {
     }
 
   }
+  public async ubicacion(req: Request, resp: Response) {
+    const { idU } = req.params;
+    await pool.query('UPDATE usuario SET ? WHERE idU = ?', [req.body, idU]);
+    resp.json({ message: 'Updating a ubicacion del usuario ' + req.params.id });
+  }
 
   public async updatePassword(req: Request, resp: Response) {
     try {

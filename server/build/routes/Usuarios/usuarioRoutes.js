@@ -15,6 +15,7 @@ class UsuarioRoutes {
         this.router.put('/:idU', usuarioController_1.usuarioController.update);
         this.router.delete('/:idU', usuarioController_1.usuarioController.delete);
         this.router.put('/password/edit/:idU', usuarioController_1.usuarioController.updatePassword);
+        this.router.put('/ubi/edit/:idU', usuarioController_1.usuarioController.ubicacion);
     }
 }
 const usuarioRoutes = new UsuarioRoutes;

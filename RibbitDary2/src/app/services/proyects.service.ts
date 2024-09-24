@@ -41,6 +41,10 @@ export class ProyectsService {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/password/edit/${idU}`, usuario);
   }
 
+  updateUbicacionUser(idU: string, usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/ubi/edit/${idU}`, usuario);
+  }
+
 
   //User x User
   getUserxUser(idU: string): Observable<any> {
@@ -228,8 +232,8 @@ export class ProyectsService {
     return this.http.get<DetallesPago[]>(`${this.API_BASE_URL}/detallespago/${idU}`);
   }
 
-  createDetalle(detallePago: DetallesPago): Observable<DetallesPago> {
-    return this.http.post<DetallesPago>(`${this.API_BASE_URL}/detallespago`, detallePago);
+  createDetalle(idU:String, detallePago: DetallesPago): Observable<DetallesPago> {
+    return this.http.post<DetallesPago>(`${this.API_BASE_URL}/detallespago/${idU}`, detallePago);
   }
 
   updateDetalle(idDetallePago: string, detallePago: DetallesPago): Observable<DetallesPago> {

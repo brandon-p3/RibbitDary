@@ -26,6 +26,9 @@ import { CrearTarjetaComponent } from './components/pagos/crear-tarjeta/crear-ta
 import { PaquetesComponent } from './components/pagos/paquetes/paquetes.component';
 import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
 import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
+import { MapaComponent } from './components/mapas/mapa/mapa.component';
+import { MapasTareaComponent } from './components/mapas/mapas-tarea/mapas-tarea.component';
+import { TareaComponent } from './components/proyects/tarea/tarea.component';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -55,7 +58,10 @@ const routes: Routes = [
     CrearTarjetaComponent,
     PaquetesComponent,
     CrearPaquetesComponent,
-    DetallesPagoComponent
+    DetallesPagoComponent,
+    MapaComponent,
+    MapasTareaComponent,
+    TareaComponent
   ],
   imports: [
     BrowserModule,

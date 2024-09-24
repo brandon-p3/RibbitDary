@@ -293,3 +293,58 @@ button:active {
 .container-Col-Cal img {
     width: 100%;
 }
+
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+
+    .containerTa {
+        flex-direction: column; 
+        gap: 20px;
+    }
+
+    .container-Col-Pro{
+        display: none;
+    }
+
+    .containerT, .containerP {
+        width: 100%; 
+    }
+
+    .containerTa {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .containerT, .containerP {
+        width: 100%;
+    }
+    .container-Tarea {
+        margin-bottom: 20px;
+        background-color: #66bb6a;
+    }
+
+    .cont-Tarea-Info {
+        padding: 4%;
+    }
+
+    /* Información de la tarea */
+    .container-Tarea-Div1,
+    .container-Tarea-Div2,
+    .container-Tarea-Div3 {
+        width: 100%;
+    }
+
+    .container-Tarea-Div1 h2, .container-Tarea-Div2 h2, .container-Tarea-Div3 h2 {
+        font-size: 1rem;
+    }
+
+    .container-Tarea-Div1 p, .container-Tarea-Div2 ul, .container-Tarea-Div3 p {
+        font-size: 1rem;
+    }
+
+    /* Contenedores laterales */
+    .container-Col, .container-Col-Pro, .container-Col-Pro2, .container-Col-Cal {
+        width: 100%;
+    }
+}

@@ -119,10 +119,18 @@
   }
 
   /*Materiales*/
+
+  .mat-ubi{
+    width: 40%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    height: 100%;
+  }
 /* Materiales */
 .materiales-lista {
   background-color: #a0f8b2;
-  width: 40%;
+  width: 95%;
+  margin-top: 2%;
   border-radius: 10px;
   padding: 10px 20px;
   height: 100%;
@@ -166,12 +174,13 @@
     flex-direction: column; /* Cambia la dirección del flex a columna */
     gap: 10px; /* Espacio entre elementos en pantallas pequeñas */
     align-items: center; /* Centra los elementos */
+    margin-top: 17%; /* Elimina el margen superior */
   }
 
   .contentForm {
     width: 90%; /* Ajusta el ancho para dispositivos móviles */
     margin: 0 auto; /* Centra el contenido */
-    padding: 2%; /* Reduce el padding */
+    padding: 5%; /* Reduce el padding */
     box-shadow: none; /* Elimina la sombra para un diseño más limpio */
     border-radius: 10px; /* Ajusta el radio del borde */
   }
@@ -197,8 +206,15 @@
     padding: 12px; /* Ajusta el padding */
   }
 
+  .mat-ubi{
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    height: 100%;
+  }
+
   .materiales-lista {
-    width: 95%; /* Ajusta el ancho */
+    width: 100%; /* Ajusta el ancho */
     padding: 10px; /* Ajusta el padding */
     box-sizing: border-box; /* Incluye el padding en el ancho total */
   }
@@ -207,4 +223,5 @@
   .btn-remove {
     font-size: 18px; /* Ajusta el tamaño del icono */
   }
+  
 }

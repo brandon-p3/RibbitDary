@@ -114,9 +114,6 @@
     transform: scale(1.05);
 }
 
-header app-navigation, header app-nav-nar-lat {
-    /* Estilos para elementos personalizados en el encabezado */
-}
 
 /* Estilos para el botón circular "Más" */
 .add-btn {
@@ -142,3 +139,47 @@ header app-navigation, header app-nav-nar-lat {
     background-color: #00796b; /* Verde más oscuro para hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .user-card {
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .user-info img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-details h1 {
+        font-size: 1em;
+    }
+
+    .projects h2 {
+        font-size: 0.9em;
+    }
+
+    .projects li {
+        font-size: 0.7em;
+        padding: 5px 8px;
+    }
+
+    .actions button {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+
+    .add-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5em;
+    }
+}
+
+
