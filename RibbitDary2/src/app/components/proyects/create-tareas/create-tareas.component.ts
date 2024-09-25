@@ -293,7 +293,7 @@ export class CreateTareasComponent implements OnInit {
       this.tarea.lat = e.latlng.lat;
   
       // Remover el marcador anterior si existe, y agregar uno nuevo
-      L.marker(e.latlng, {icon: redIcon})
+      L.marker(e.latlng, {icon: yellowIcon})
         .addTo(this.map!)
         .bindPopup(`Nueva ubicación seleccionada para la tarea: ${this.tarea.nomTarea}`)
         .openPopup();
