@@ -70,6 +70,7 @@ export class CreateTareasComponent implements OnInit {
     this.proyectsService.getColaboradores(idP).subscribe(
       resp => {
         this.colaboradores = resp;
+        this.initMap();
       },
       err => console.error('Error al obtener colaboradores:', err)
     );
