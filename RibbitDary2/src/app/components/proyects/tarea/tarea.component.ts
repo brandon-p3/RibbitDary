@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectsService } from '../../../services/proyects.service';
 import { Tarea, Material } from '../../../models/Proyect';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine'; // Importa el módulo de rutas
 
 @Component({
   selector: 'app-tarea',
@@ -16,7 +17,6 @@ export class TareaComponent implements OnInit {
   colaUbi: any = [];
   colaboradorTareas: any = [];
   materiales: any = [];
-
 
   constructor(
     private proyectsService: ProyectsService,
@@ -32,10 +32,7 @@ export class TareaComponent implements OnInit {
     if (idT && idP && idU) {
       this.getTarea(idU, idP, idT);
     }
-
   }
-
-
 
   getTarea(idU: string, idP: string, idT: string) {
     this.proyectsService.getTarea(idU, idP, idT).subscribe(
@@ -44,17 +41,17 @@ export class TareaComponent implements OnInit {
         this.tarea = resp;
         this.tareaUbi = resp;
         this.getUsuario(this.tarea.idColaborador);
-        this.getMateriales(this.tarea.idT);  // Obtener y almacenar materiales de la tarea
+        this.getMateriales(this.tarea.idT); // Obtener y almacenar materiales de la tarea
       },
       err => console.error('Error al obtener tarea:', err)
-    )
+    );
   }
 
   getUsuario(idU: string) {
     this.proyectsService.getUsuario(idU).subscribe(
       resp => {
         this.colaboradorTareas = resp;
-        this.colaUbi = resp;  // Almacenar datos de usuario en un objeto usando idU como clave
+        this.colaUbi = resp; // Almacenar datos de usuario en un objeto usando idU como clave
         this.initMap();
       },
       err => console.error('Error al obtener usuario:', err)
@@ -64,20 +61,17 @@ export class TareaComponent implements OnInit {
   getMateriales(idT: string) {
     this.proyectsService.getMaterialesTarea(idT).subscribe(
       resp => {
-        this.materiales = resp;  // Almacenar materiales en un objeto usando idT como clave
+        this.materiales = resp; // Almacenar materiales en un objeto usando idT como clave
       },
       err => console.error('Error al obtener materiales:', err)
     );
   }
-
 
   volver() {
     const idP = this.route.snapshot.paramMap.get('idP');
     const idU = this.route.snapshot.paramMap.get('idU');
     this.router.navigate([`/tareas/${idU}/${idP}`]);
   }
-
-
 
   private initMap(): void {
     const greenIcon = new L.Icon({
@@ -88,7 +82,7 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
+  
     const redIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -97,6 +91,7 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
+  
     const yellowIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -105,17 +100,15 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
-    // Inicializar el mapa si aún no existe
+  
     if (!this.map) {
       this.map = L.map('mi_mapa').setView([21.47268, -101.22288], 15);
-
+  
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
     }
-
-    // Mostrar la ubicación actual del usuario si se permite la geolocalización
+  
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -123,15 +116,33 @@ export class TareaComponent implements OnInit {
             position.coords.latitude,
             position.coords.longitude,
           ];
-
+  
           if (this.map) {
             this.map.setView(userLocation, 15);
-
-            // Añadir un marcador en la ubicación del usuario
+  
             L.marker(userLocation, { icon: redIcon })
               .addTo(this.map)
               .bindPopup("Estás aquí")
               .openPopup();
+            
+            // Verificar que la ubicación de la tarea esté disponible
+            if (this.tareaUbi.lat && this.tareaUbi.lng) {
+              const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
+  
+              L.marker(tareaLocation, { icon: yellowIcon })
+                .addTo(this.map)
+                .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
+                .openPopup();
+  
+              // Trazar la ruta usando leaflet-routing-machine
+              L.Routing.control({
+                waypoints: [
+                  L.latLng(userLocation[0], userLocation[1]),
+                  L.latLng(tareaLocation[0], tareaLocation[1])
+                ],
+                routeWhileDragging: true
+              }).addTo(this.map);
+            }
           }
         },
         () => {
@@ -141,18 +152,8 @@ export class TareaComponent implements OnInit {
     } else {
       alert('Geolocalización no soportada por tu navegador.');
     }
-
-
-    if (this.tareaUbi.lat && this.tareaUbi.lng) {
-      const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-      L.marker(tareaLocation, { icon: yellowIcon })
-        .addTo(this.map!)
-        .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
-        .openPopup();
-    }
-
-    // Agregar marcadores para los colaboradores
-    if (this.map && this.colaboradorTareas.length > 0) {
+  
+    if (this.colaboradorTareas.length > 0) {
       this.colaboradorTareas.forEach((usuario: any) => {
         const location: L.LatLngTuple = [usuario.lat, usuario.lng];
         L.marker(location, { icon: greenIcon })
@@ -160,12 +161,6 @@ export class TareaComponent implements OnInit {
           .bindPopup(`${usuario.nombres} está aquí`);
       });
     }
-
-
-    this.map.on('click', function (e: L.LeafletMouseEvent) {
-      alert(`Has clickeado en la posición ${e.latlng.toString()}`);
-    });
   }
-
-
+  
 }
