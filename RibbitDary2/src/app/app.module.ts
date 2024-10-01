@@ -9,7 +9,7 @@ import { TareasComponent } from './components/proyects/tareas/tareas.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { CreateProyectosComponent } from './components/proyects/create-proyectos/create-proyectos.component';
 import { CreateTareasComponent } from './components/proyects/create-tareas/create-tareas.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NavNarLatComponent } from './components/navegacion/nav-nar-lat/nav-nar-lat.component';
 import { ProyectosComponent } from './components/proyects/proyectos/proyectos.component';
 import { ProyectsService } from './services/proyects.service';
@@ -36,43 +36,37 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    PresentacionComponent,
-    NavigationComponent,
-    TareasComponent,
-    ComentariosComponent,
-    NavNarLatComponent,
-    CreateProyectosComponent,
-    CreateTareasComponent,
-    ProyectosComponent,
-    HomeComponent,
-    SociosComponent,
-    CrearSociosComponent,
-    BienvenidaComponent,
-    TipoProyectoComponent,
-    CrearUsuarioComponent,
-    TarjetaComponent,
-    CrearTarjetaComponent,
-    PaquetesComponent,
-    CrearPaquetesComponent,
-    DetallesPagoComponent,
-    MapaComponent,
-    MapasTareaComponent,
-    TareaComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,    
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot(routes), // Asegúrate de que `routes` esté definido
-  ],
-  providers: [
-    ProyectsService
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        PresentacionComponent,
+        NavigationComponent,
+        TareasComponent,
+        ComentariosComponent,
+        NavNarLatComponent,
+        CreateProyectosComponent,
+        CreateTareasComponent,
+        ProyectosComponent,
+        HomeComponent,
+        SociosComponent,
+        CrearSociosComponent,
+        BienvenidaComponent,
+        TipoProyectoComponent,
+        CrearUsuarioComponent,
+        TarjetaComponent,
+        CrearTarjetaComponent,
+        PaquetesComponent,
+        CrearPaquetesComponent,
+        DetallesPagoComponent,
+        MapaComponent,
+        MapasTareaComponent,
+        TareaComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        RouterModule.forRoot(routes)], providers: [
+        ProyectsService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

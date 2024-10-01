@@ -288,14 +288,13 @@ export class CreateTareasComponent implements OnInit {
   
     // Permitir al usuario seleccionar una nueva ubicación para la tarea
     this.map.on('click', (e: L.LeafletMouseEvent) => {
-      alert(`Has seleccionado la siguiente ubicación: ${e.latlng.toString()}`);
       this.tarea.lng = e.latlng.lng;
       this.tarea.lat = e.latlng.lat;
   
       // Remover el marcador anterior si existe, y agregar uno nuevo
       L.marker(e.latlng, {icon: yellowIcon})
         .addTo(this.map!)
-        .bindPopup(`Nueva ubicación seleccionada para la tarea: ${this.tarea.nomTarea}`)
+        .bindPopup(`Ubicación seleccionada para la tarea: ${this.tarea.nomTarea}`)
         .openPopup();
     });
   }

@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectsService } from '../../../services/proyects.service';
 import { Tarea, Material } from '../../../models/Proyect';
 import * as L from 'leaflet';
-import 'leaflet-routing-machine'; // Importa el módulo de rutas
+import 'leaflet-routing-machine';
+
 
 @Component({
   selector: 'app-tarea',
@@ -82,7 +83,7 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-  
+
     const redIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -91,7 +92,7 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-  
+
     const yellowIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -100,15 +101,15 @@ export class TareaComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-  
+
     if (!this.map) {
       this.map = L.map('mi_mapa').setView([21.47268, -101.22288], 15);
-  
+
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
     }
-  
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -116,33 +117,34 @@ export class TareaComponent implements OnInit {
             position.coords.latitude,
             position.coords.longitude,
           ];
-  
+
           if (this.map) {
             this.map.setView(userLocation, 15);
-  
-            L.marker(userLocation, { icon: redIcon })
-              .addTo(this.map)
-              .bindPopup("Estás aquí")
-              .openPopup();
-            
+
             // Verificar que la ubicación de la tarea esté disponible
             if (this.tareaUbi.lat && this.tareaUbi.lng) {
+
               const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-  
-              L.marker(tareaLocation, { icon: yellowIcon })
-                .addTo(this.map)
-                .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
-                .openPopup();
-  
               // Trazar la ruta usando leaflet-routing-machine
-              L.Routing.control({
+              L.routing.control({
                 waypoints: [
                   L.latLng(userLocation[0], userLocation[1]),
                   L.latLng(tareaLocation[0], tareaLocation[1])
                 ],
                 routeWhileDragging: true
               }).addTo(this.map);
+
+
+              L.marker(tareaLocation, { icon: yellowIcon })
+                .addTo(this.map)
+                .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
+                .openPopup();
             }
+            
+            L.marker(userLocation, { icon: redIcon })
+              .addTo(this.map)
+              .bindPopup("Estás aquí")
+              .openPopup();
           }
         },
         () => {
@@ -152,7 +154,7 @@ export class TareaComponent implements OnInit {
     } else {
       alert('Geolocalización no soportada por tu navegador.');
     }
-  
+
     if (this.colaboradorTareas.length > 0) {
       this.colaboradorTareas.forEach((usuario: any) => {
         const location: L.LatLngTuple = [usuario.lat, usuario.lng];
@@ -162,5 +164,7 @@ export class TareaComponent implements OnInit {
       });
     }
   }
-  
+
+
+
 }

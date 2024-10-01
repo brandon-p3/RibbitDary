@@ -100,6 +100,14 @@
                   <option value="Terminada">Terminada</option>
                 </select>
               </div>
+              <div class = "complet">
+                <button [routerLink]="[
+                  '/tarea',
+                  tarea.idU,
+                  tarea.idP,
+                  tarea.idT
+                  ]">Detalles</button>
+              </div>
             </div>
           </div>
           <div *ngFor="let user of user">

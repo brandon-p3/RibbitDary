@@ -17,6 +17,8 @@ import { CrearTarjetaComponent } from './components/pagos/crear-tarjeta/crear-ta
 import { PaquetesComponent } from './components/pagos/paquetes/paquetes.component';
 import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
 import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
+import { TareaComponent } from './components/proyects/tarea/tarea.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -40,6 +42,7 @@ const routes: Routes = [
   { path: 'presentacion', component: PresentacionComponent },
 
   // Rutas de tareas
+  { path: 'tarea/:idU/:idP/:idT', component: TareaComponent },
   { path: 'tareas/:idU/:idP', component: TareasComponent },
   { path: 'crear-tareas/:idU/:idP', component: CreateTareasComponent },
   { path: 'edit-tarea/edit/:idU/:idP/:idT', component: CreateTareasComponent },
