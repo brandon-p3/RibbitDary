@@ -9,6 +9,7 @@ class AuthRoutes {
     }
     config() {
         this.router.post('/login', authController_1.authController.login); // Asegúrate de que el controlador esté correctamente asignado
+        this.router.post('/auth/facebook', authController_1.authController.loginWithFacebook);
     }
 }
 const authRoutes = new AuthRoutes();

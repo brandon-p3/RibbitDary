@@ -15,6 +15,23 @@
         <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
         <button type="submit">Entrar</button>
       </form>
+      <!--<div>
+        <button (click)="signInWithGoogle()">
+          <i class="fa fa-google">
+            Iniciar con google
+          </i>
+        </button>
+      </div>-->
+      <div>
+        <button (click)="signInWithFB()">
+          <i class="fa fa-google">
+            Iniciar con facebook
+          </i>
+        </button>
+      </div>
+      <div *ngIf="loggedIn">
+        <img src="{{user.response.picture.data.url}}" style="width: 100px;"/>
+      </div>
       <div class="message">
         ¿No tienes una cuenta?
         <div><a routerLink="/crear-usuario">Crea una cuenta aquí</a></div>

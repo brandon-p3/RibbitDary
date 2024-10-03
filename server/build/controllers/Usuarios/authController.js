@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.authController = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const database_1 = __importDefault(require("../../database")); // Asegúrate de que esta ruta sea correcta
+const axios_1 = __importDefault(require("axios"));
 class AuthController {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -35,6 +36,31 @@ class AuthController {
             catch (error) {
                 console.error('Error en el login:', error);
                 res.status(500).json({ message: 'Error en el servidor' });
+            }
+        });
+    }
+    loginWithFacebook(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { fbToken } = req.body;
+            try {
+                // Verifica el token con la API de Facebook, incluyendo el campo "picture" para obtener la imagen de perfil
+                const fbResponse = yield axios_1.default.get(`https://graph.facebook.com/me?access_token=${fbToken}&fields=id,name,email,picture.type(large)`);
+                const { id: fb_id, name, email, picture } = fbResponse.data;
+                const icono = picture.data.url; // URL de la imagen de perfil del usuario
+                // Verifica si el usuario ya existe en la base de datos por el fb_id
+                const [user] = yield database_1.default.query('SELECT * FROM usuario WHERE fb_id = ?', [fb_id]);
+                if (!user) {
+                    // Si el usuario no existe, crea uno nuevo con los datos de Facebook, incluyendo el icono
+                    const result = yield database_1.default.query('INSERT INTO usuario (usuario, nombres, fb_id, idTipo, icono) VALUES (?, ?, ?, ?, ?)', [email, name, fb_id, 2, icono]);
+                    const userId = result.insertId;
+                    return res.json({ message: 'Usuario creado con Facebook', userId: userId });
+                }
+                // Si el usuario ya existe, simplemente devuelve su ID
+                res.json({ message: 'Login exitoso con Facebook', userId: user.idU, icono: user.icono });
+            }
+            catch (error) {
+                console.error('Error al verificar el token de Facebook:', error);
+                return res.status(500).json({ message: 'Error en el servidor al verificar el token de Facebook' });
             }
         });
     }

@@ -35,38 +35,75 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
 ];
+//Modulos para inicios de sesion con redes
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
 
-@NgModule({ declarations: [
-        AppComponent,
-        LoginComponent,
-        PresentacionComponent,
-        NavigationComponent,
-        TareasComponent,
-        ComentariosComponent,
-        NavNarLatComponent,
-        CreateProyectosComponent,
-        CreateTareasComponent,
-        ProyectosComponent,
-        HomeComponent,
-        SociosComponent,
-        CrearSociosComponent,
-        BienvenidaComponent,
-        TipoProyectoComponent,
-        CrearUsuarioComponent,
-        TarjetaComponent,
-        CrearTarjetaComponent,
-        PaquetesComponent,
-        CrearPaquetesComponent,
-        DetallesPagoComponent,
-        MapaComponent,
-        MapasTareaComponent,
-        TareaComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        RouterModule.forRoot(routes)], providers: [
-        ProyectsService,
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    PresentacionComponent,
+    NavigationComponent,
+    TareasComponent,
+    ComentariosComponent,
+    NavNarLatComponent,
+    CreateProyectosComponent,
+    CreateTareasComponent,
+    ProyectosComponent,
+    HomeComponent,
+    SociosComponent,
+    CrearSociosComponent,
+    BienvenidaComponent,
+    TipoProyectoComponent,
+    CrearUsuarioComponent,
+    TarjetaComponent,
+    CrearTarjetaComponent,
+    PaquetesComponent,
+    CrearPaquetesComponent,
+    DetallesPagoComponent,
+    MapaComponent,
+    MapasTareaComponent,
+    TareaComponent
+  ],
+  
+  bootstrap: 
+  [AppComponent
+
+  ],
+   imports: [BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    SocialLoginModule
+  ], 
+    providers: [
+      ProyectsService,
+      provideHttpClient(withInterceptorsFromDi()),
+        {
+          provide: 'SocialAuthServiceConfig',
+          useValue: {
+            autoLogin: false,
+            providers: [
+              {
+                id: GoogleLoginProvider.PROVIDER_ID,
+                provider: new GoogleLoginProvider(
+                  'clientId'
+                )
+              },
+              {
+                id: FacebookLoginProvider.PROVIDER_ID,
+                provider: new FacebookLoginProvider('389036777592742')
+              }
+            ],
+            onError: (err) => {
+              console.error(err);
+            }
+          } as SocialAuthServiceConfig,
+        }
+    ]
+})
 export class AppModule { }

@@ -28,7 +28,11 @@ export class ProyectsService {
   login(correo: string, password: string): Observable<any> {
     return this.http.post<any>(this.loginUrl, { correo, password });
   }
-
+  
+  loginWithFacebook(fbToken: string): Observable<any> {
+    return this.http.post<any>(`${this.API_BASE_URL}/auth/facebook`, { fbToken });
+  }
+  
   crearUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`, usuario);
   }
