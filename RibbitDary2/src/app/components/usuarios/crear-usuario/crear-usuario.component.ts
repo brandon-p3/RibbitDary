@@ -9,7 +9,7 @@ import { ProyectsService } from '../../../services/proyects.service';
   templateUrl: './crear-usuario.component.html',
   styleUrl: './crear-usuario.component.css'
 })
-export class CrearUsuarioComponent implements OnInit {
+export class CrearUsuarioComponent{
   user: Usuario = {
     nombres: '',
     aPuP: '',
@@ -32,9 +32,7 @@ export class CrearUsuarioComponent implements OnInit {
     private pryectsServices: ProyectsService,
     private route: ActivatedRoute,
   ) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   crearUsuario() {
 
@@ -45,7 +43,7 @@ export class CrearUsuarioComponent implements OnInit {
         this.router.navigate(['/usuarios']);
         this.router.navigate([`/login`]);
       },
-      err =>  alert('Ese correo ya existe, intente otro.')
+      err =>  alert(err)
     )
     }else{
       alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');

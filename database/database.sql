@@ -25,8 +25,11 @@ CREATE TABLE usuario (
     icono VARCHAR(255),
     lat DOUBLE,
     lng DOUBLE,
+    fb_id VARCHAR(255),
     CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES tipousuario(idTipo),
-    CONSTRAINT unique_usuario UNIQUE (usuario)
+    CONSTRAINT unique_usuario UNIQUE (usuario),
+    email_verified BOOLEAN,
+    verification_token VARCHAR(255),
 );
 
 -- Crear tabla UserXUser
