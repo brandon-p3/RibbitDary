@@ -16,6 +16,7 @@ import filtradoProyectosRoutes from './routes/Proyectos/filtradoProyectosRoutes'
 import paquetesRoutes from './routes/Pagos/paquetesRoutes';
 import detallesPagoRoutes from './routes/Pagos/detallesPagoRoutes';
 import tarjetaRoutes from './routes/Pagos/tarjetaRoutes';
+import correosRoutes from './routes/Correos/correosRoutes';
 
 class Server {
     public app: Application;
@@ -50,6 +51,7 @@ class Server {
         this.app.use('/api/paquete', paquetesRoutes);
         this.app.use('/api/tarjeta', tarjetaRoutes);
         this.app.use('/api/detallespago', detallesPagoRoutes);
+        this.app.use('/api/correo', correosRoutes);
 
     }
 

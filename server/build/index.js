@@ -21,6 +21,7 @@ const filtradoProyectosRoutes_1 = __importDefault(require("./routes/Proyectos/fi
 const paquetesRoutes_1 = __importDefault(require("./routes/Pagos/paquetesRoutes"));
 const detallesPagoRoutes_1 = __importDefault(require("./routes/Pagos/detallesPagoRoutes"));
 const tarjetaRoutes_1 = __importDefault(require("./routes/Pagos/tarjetaRoutes"));
+const correosRoutes_1 = __importDefault(require("./routes/Correos/correosRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -50,6 +51,7 @@ class Server {
         this.app.use('/api/paquete', paquetesRoutes_1.default);
         this.app.use('/api/tarjeta', tarjetaRoutes_1.default);
         this.app.use('/api/detallespago', detallesPagoRoutes_1.default);
+        this.app.use('/api/correo', correosRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

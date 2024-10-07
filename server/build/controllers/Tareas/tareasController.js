@@ -17,11 +17,17 @@ const database_1 = __importDefault(require("../../database"));
 class TareasController {
     list(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const proyect = yield database_1.default.query(`
-            SELECT * FROM tarea
-            ORDER BY fechaI
+            try {
+                const proyect = yield database_1.default.query(`
+                SELECT * FROM tarea
+                ORDER BY fechaI
             `);
-            resp.json(proyect);
+                resp.json(proyect);
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error retrieving tasks' });
+            }
         });
     }
     listP(req, resp) {
@@ -37,11 +43,11 @@ class TareasController {
                 }
                 else {
                     const tareas = yield database_1.default.query(`
-                SELECT *
-                FROM tarea
-                WHERE idP = ? AND (idU = ? OR idColaborador = ?)
-                ORDER BY fechaI
-            `, [idP, idU, idU]);
+                    SELECT *
+                    FROM tarea
+                    WHERE idP = ? AND (idU = ? OR idColaborador = ?)
+                    ORDER BY fechaI
+                `, [idP, idU, idU]);
                     resp.json(tareas);
                 }
             }
@@ -53,10 +59,16 @@ class TareasController {
     }
     create(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const result = yield database_1.default.query('INSERT INTO tarea SET ?', [req.body]);
-            const idT = result.insertId;
-            resp.json({ message: 'Tarea Saved', idT: idT });
+            try {
+                console.log(req.body);
+                const result = yield database_1.default.query('INSERT INTO tarea SET ?', [req.body]);
+                const idT = result.insertId;
+                resp.json({ message: 'Tarea Saved', idT: idT });
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error saving task' });
+            }
         });
     }
     delete(req, resp) {
@@ -69,36 +81,52 @@ class TareasController {
             }
             catch (error) {
                 console.error(error);
-                resp.status(500).json({ message: 'Error retrieving tasks' });
+                resp.status(500).json({ message: 'Error deleting task' });
             }
         });
     }
     update(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idT } = req.params;
-            yield database_1.default.query('UPDATE tarea SET ? WHERE idT = ?', [req.body, idT]);
-            resp.json({ message: 'Updating a Tarea ' + req.params.id });
+            try {
+                yield database_1.default.query('UPDATE tarea SET ? WHERE idT = ?', [req.body, idT]);
+                resp.json({ message: 'Updating a Tarea ' + req.params.id });
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error updating task' });
+            }
         });
     }
     getOne(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idU } = req.params;
-            const { idP } = req.params;
-            const { idT } = req.params;
-            const tarea = yield database_1.default.query('SELECT * FROM tarea WHERE idU = ? AND idP = ? AND idT = ?', [idU, idP, idT]);
-            if (tarea.length > 0) {
-                resp.json(tarea[0]);
+            const { idU, idP, idT } = req.params;
+            try {
+                const tarea = yield database_1.default.query('SELECT * FROM tarea WHERE idU = ? AND idP = ? AND idT = ?', [idU, idP, idT]);
+                if (tarea.length > 0) {
+                    resp.json(tarea[0]);
+                }
+                else {
+                    resp.status(404).json({ message: 'Tarea not found' });
+                }
             }
-            else {
-                resp.status(404).json({ message: 'Tarea not found' });
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error retrieving task' });
             }
         });
     }
     estusTarea(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idT } = req.params;
-            yield database_1.default.query('UPDATE tarea SET ? WHERE idT = ?', [req.body, idT]);
-            resp.json({ message: 'Updating a Tarea ' + req.params.id });
+            try {
+                yield database_1.default.query('UPDATE tarea SET ? WHERE idT = ?', [req.body, idT]);
+                resp.json({ message: 'Updating a Tarea ' + req.params.id });
+            }
+            catch (error) {
+                console.error(error);
+                resp.status(500).json({ message: 'Error updating task status' });
+            }
         });
     }
 }

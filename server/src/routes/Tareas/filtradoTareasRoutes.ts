@@ -14,7 +14,6 @@ class FiltradoTareasRoutes{
         this.router.get('/tareasMedias/:idU', filtradoTareasController.tareasMedias);
         this.router.get('/tareasNoUrgentes/:idU', filtradoTareasController.tareasNoUrgentes);
         this.router.get('/tareasVencidas/:idU', filtradoTareasController.tareasVencidas);
-
     }
 }
 
