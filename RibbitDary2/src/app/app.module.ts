@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
 ];
+
 //Modulos para inicios de sesion con redes
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {

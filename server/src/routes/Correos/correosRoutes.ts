@@ -11,6 +11,7 @@ class CorreosRoutes{
     config():void{
         //Para ver las tareas por su urgencia
         this.router.post('/prueba-correo', correoController.enviarCorreo);
+        this.router.get('/correo-tareasU/:idU', correoController.tareasUrgentes);
 
     }
 }

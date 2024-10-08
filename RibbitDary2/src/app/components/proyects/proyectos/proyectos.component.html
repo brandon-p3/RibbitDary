@@ -75,7 +75,7 @@
               </div>
 
               <h2>Persona Encargada:</h2>
-              <div class="users" *ngFor="let creador of creadorProyect">
+              <div class="users" *ngFor="let creador of creadorProyect[proyect.idU]">
                 <img [src]="creador.icono" />
                 <p>{{ creador.nombres }}</p>
               </div>

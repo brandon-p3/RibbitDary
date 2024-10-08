@@ -51,7 +51,7 @@ export class ProyectosComponent implements OnInit {
   getCreador(idU: string) {
     this.proyectsService.getUsuario(idU).subscribe(
       resp => {
-        this.creadorProyect = resp;
+        this.creadorProyect[idU] = resp;
       },
       err => console.error('Error al obtener usuario:', err)
     );
