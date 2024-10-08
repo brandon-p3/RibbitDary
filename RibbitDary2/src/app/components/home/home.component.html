@@ -7,7 +7,11 @@
   <div class="bodyT">
     <h1>Bienvenido</h1>
     <h1>Tareas que tienes:</h1>
-
+    <div *ngFor="let user of user">
+    <div *ngIf="user.idTipo === 1">
+      <button (click)="sendEmail()">Enviar correos Zorra</button>
+    </div>
+    </div>
     <div>
       <h2>Urgentes:</h2>
       <div class="containerTa">

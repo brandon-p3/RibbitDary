@@ -55,6 +55,20 @@ export class HomeComponent implements OnInit {
       );
     }
   }
+  //Metodo para enviar correos
+  sendEmail(){
+    this.idU = this.route.snapshot.paramMap.get('idU');
+    if(this.idU){
+      this.proyectsService.sendCorreo(this.idU).subscribe(
+        resp => {
+          console.log('Correo enviado:', resp);
+        },
+        err => console.error('Error al enviar correo:', err)
+      );
+    } else {
+      
+    }
+  }
    // Método para actualizar la ubicación del usuario
   updateUserLocation() {
     if (navigator.geolocation) {

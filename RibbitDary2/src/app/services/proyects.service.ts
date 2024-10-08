@@ -49,6 +49,11 @@ export class ProyectsService {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/ubi/edit/${idU}`, usuario);
   }
 
+  //Mandar correo
+sendCorreo(idU: string): Observable<Usuario> {
+  return this.http.get<Usuario>(`${this.API_BASE_URL}/correo/correo-tareasU/${idU}`);
+}  
+
 
   //User x User
   getUserxUser(idU: string): Observable<any> {
