@@ -55,6 +55,7 @@ class AuthController {
                     const userId = result.insertId;
                     return res.json({ message: 'Usuario creado con Facebook', userId: userId });
                 }
+                yield database_1.default.query('UPDATE usuario SET icono = ? WHERE fb_id = ?', [icono, fb_id]);
                 // Si el usuario ya existe, simplemente devuelve su ID
                 res.json({ message: 'Login exitoso con Facebook', userId: user.idU, icono: user.icono });
             }

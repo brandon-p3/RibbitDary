@@ -133,6 +133,22 @@
   gap: 20px;
   width: 100%;
 }
+.beyonce{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.beyonce button {
+  background-color: #f44336; /* Rojo pastel */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+  font-family: 'CascadiaMonoExtraLight', monospace;
+}
 
 /* Responsivo para pantallas de tamaño medio (tabletas) */
 @media (max-width: 768px) {

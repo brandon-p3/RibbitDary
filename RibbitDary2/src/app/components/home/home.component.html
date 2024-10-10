@@ -6,10 +6,10 @@
 <body class="body">
   <div class="bodyT">
     <h1>Bienvenido</h1>
-    <h1>Tareas que tienes:</h1>
-    <div *ngFor="let user of user">
+    <div *ngFor="let user of user" class="beyonce">
+      <h1>Tareas que tienes:</h1>
     <div *ngIf="user.idTipo === 1">
-      <button (click)="sendEmail()">Enviar correos Zorra</button>
+      <button (click)="sendEmail()">Enviar correos</button>
     </div>
     </div>
     <div>
