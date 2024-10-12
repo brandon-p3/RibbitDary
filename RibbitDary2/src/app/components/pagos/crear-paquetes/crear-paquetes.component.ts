@@ -37,7 +37,7 @@ export class CrearPaquetesComponent implements OnInit {
       });
     }
   }
-
+  
   savePaquete(): void {
     if (this.isEditMode) {
       this.proyectsService.actualizarPaquete(this.paquete.idPaquete, this.paquete).subscribe(() => {

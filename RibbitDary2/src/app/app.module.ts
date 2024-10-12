@@ -29,6 +29,7 @@ import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles
 import { MapaComponent } from './components/mapas/mapa/mapa.component';
 import { MapasTareaComponent } from './components/mapas/mapas-tarea/mapas-tarea.component';
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -42,6 +43,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import { PagoComponent } from './components/pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import {
     DetallesPagoComponent,
     MapaComponent,
     MapasTareaComponent,
-    TareaComponent
+    TareaComponent,
+    PagoComponent
   ],
   
   bootstrap: 
@@ -79,7 +82,8 @@ import {
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    SocialLoginModule
+    SocialLoginModule,
+    NgxPayPalModule,
   ], 
     providers: [
       ProyectsService,

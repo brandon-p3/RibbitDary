@@ -18,6 +18,7 @@ import { PaquetesComponent } from './components/pagos/paquetes/paquetes.componen
 import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
 import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
+import { PagoComponent } from './components/pago/pago.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
   {path:'paquetes/:idU', component: PaquetesComponent},
   {path: 'crear-paquetes/:idU', component: CrearPaquetesComponent},
   {path: 'edit-paquetes/edit/:idU/:idPaquete', component: CrearPaquetesComponent},
+  {path: 'pago/:idU/:idPaquete', component: PagoComponent},
 
   //Detalles pago
   {path: 'detalles-pago/:idU', component: DetallesPagoComponent},

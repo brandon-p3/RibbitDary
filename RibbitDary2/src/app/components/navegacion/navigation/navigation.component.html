@@ -38,9 +38,9 @@
         <!-- Menú desplegable -->
         <div class="dropdown-menu" *ngIf="isMenuOpen">
           <ul>
-            <a [routerLink]="['/edit-usuario/edit/', user.idU, user.id]"><li>Usuario</li></a>
-            <a [routerLink]="['/tarjeta/', user.idU]"> <li>Tarjetas</li></a>
-            <a [routerLink]="['/detalles-pago/', user.idU]"><li>Pagos</li></a>
+            <a [routerLink]="['/edit-usuario/edit/', user.idU, user.id]"  *ngIf="!user.fd_id"><li>Usuario</li></a>
+            <!-- <a [routerLink]="['/tarjeta/', user.idU]"> <li>Tarjetas</li></a>
+            <a [routerLink]="['/detalles-pago/', user.idU]"><li>Pagos</li></a> -->
           </ul>
         </div>
       </div>
