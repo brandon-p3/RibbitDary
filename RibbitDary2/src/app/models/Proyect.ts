@@ -75,12 +75,18 @@ export interface Proyect {
   }
 
   export interface DetallesPago{
-    idDetallePago: string,
     idU: string,
-    numTarjeta: string,
-    fechaI: string,
     idPaquete: string,
-    fechaF: string,
+    fechaI: Date, 
+    fechaF: Date, 
+    create_time: Date,
+    email_address: string,
+    payer_id: string,
+    status: string,
+    orderID: string,
+    amount: number,
+    currency: string,
+    estatus: string
   }
 
   export interface Paquete{

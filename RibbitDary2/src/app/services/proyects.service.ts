@@ -296,4 +296,9 @@ sendCorreo(idU: string): Observable<Usuario> {
     return this.http.delete<void>(`${this.API_BASE_URL}/paquete/${idPaquete}`);
   }
 
+  //Configuracion Usuario
+  configUserById(idU: string): Observable<Paquete> {
+    return this.http.get<Paquete>(`${this.API_BASE_URL}/configUser/${idU}`);
+  }
+
 }

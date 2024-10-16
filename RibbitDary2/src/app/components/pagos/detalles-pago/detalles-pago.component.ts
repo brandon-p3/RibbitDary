@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./detalles-pago.component.css']
 })
 export class DetallesPagoComponent implements OnInit {
-  detallesPago: DetallesPago[] = [];
+  detallesPago: any;
   idU!: string;
 
   constructor(
@@ -33,7 +33,7 @@ export class DetallesPagoComponent implements OnInit {
     if (confirm('¿Estás seguro de eliminar este detalle de pago?')) {
       this.proyectsService.deleteDetalle(idDetallePago).subscribe(() => {
         // Después de eliminar, recargar los detalles de pago
-        this.detallesPago = this.detallesPago.filter(d => d.idDetallePago!== idDetallePago);
+  
       });
     }
   }

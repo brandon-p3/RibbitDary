@@ -72,13 +72,21 @@ CREATE TABLE detallespago (
     idDetallePago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idU INT NOT NULL,
     idPaquete INT NOT NULL,
-    numTarjeta VARCHAR(255) NOT NULL,
-    fechaI DATE NOT NULL,
-    fechaF DATE NOT NULL,
+    fechaI DATE NOT NULL, 
+    fechaF DATE NOT NULL, 
+    create_time DATETIME, -- Fecha y hora de creación del pago
+    email_address VARCHAR(255), -- Email del pagador
+    payer_id VARCHAR(255), -- ID del pagador
+    status VARCHAR(50), -- Estado del pago (e.g., COMPLETED, PENDING)
+    orderID VARCHAR(255), -- ID de la orden en PayPal
+    paymentSource VARCHAR(50), -- Fuente del pago (e.g., PayPal, card)
+    amount DECIMAL(10, 2) NOT NULL, -- Monto pagado
+    currency VARCHAR(10) DEFAULT 'MXN', -- Moneda usada en el pago
+    estatus VARCHAR(30),
     CONSTRAINT idU_DP_FK FOREIGN KEY (idU) REFERENCES usuario(idU),
-    CONSTRAINT idPaquete_DP_FK FOREIGN KEY (idPaquete) REFERENCES paquete(idPaquete),
-    CONSTRAINT numTarjeta_FK FOREIGN KEY (numTarjeta) REFERENCES tarjeta(numTarjeta)
+    CONSTRAINT idPaquete_DP_FK FOREIGN KEY (idPaquete) REFERENCES paquete(idPaquete)
 );
+
 
 -- Crear tabla TipoProyecto
 CREATE TABLE tipoproyecto (

@@ -10,6 +10,7 @@ import { ProyectsService } from '../../../services/proyects.service';
 export class NavigationComponent {
   @HostBinding('class') classes = 'row';
   usuario: any = [];
+  tipoUser: any = [];
   isMenuOpen = false;
   isSidebarOpen = false;
 
@@ -21,6 +22,7 @@ export class NavigationComponent {
 
     if (idU) {
       this.getUsuario(idU);
+      this.getTipoUser(idU);
     }
 
   }
@@ -35,6 +37,15 @@ export class NavigationComponent {
     this.proyectsService.getUsuario(idU).subscribe(
       resp => {
         this.usuario = resp;
+      },
+      err => console.error('Error al obtener usuario:', err)
+    );
+  }
+
+  getTipoUser(idU: string) {
+    this.proyectsService.configUserById(idU).subscribe(
+      resp => {
+        this.tipoUser = resp;
       },
       err => console.error('Error al obtener usuario:', err)
     );

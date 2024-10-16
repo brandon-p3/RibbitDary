@@ -17,7 +17,7 @@ class CorreoController {
                     INNER JOIN tarea as t ON u.idU = t.idU 
                     WHERE DATEDIFF(t.fechaF, CURDATE()) < 10 
                     AND DATEDIFF(t.fechaF, CURDATE()) >= 0 
-                    AND t.estatus != "Terminada"; 
+                    AND t.estatus != "Terminada";
                 `);
     
                 const transporter = nodemailer.createTransport({

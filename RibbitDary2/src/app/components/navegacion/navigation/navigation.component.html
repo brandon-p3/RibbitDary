@@ -10,7 +10,9 @@
         </a>
       </li>
       <li><h2>Ribbit Dary</h2></li>
+      
     </ul>
+    
 
     <div class="nav-info" *ngFor="let user of usuario">
       <a routerLink="/comentarios">
@@ -34,6 +36,7 @@
             <p class="user-name">{{user.nombres}}</p>
           </div>
         </div>
+        
 
         <!-- Menú desplegable -->
         <div class="dropdown-menu" *ngIf="isMenuOpen">
@@ -43,6 +46,9 @@
             <a [routerLink]="['/detalles-pago/', user.idU]"><li>Pagos</li></a> -->
           </ul>
         </div>
+      </div>
+      <div *ngFor="let tu of tipoUser">
+        <i>{{tu.namePaquete}}</i>
       </div>
     </div>
 
