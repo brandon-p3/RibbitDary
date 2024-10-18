@@ -16,6 +16,8 @@ export class ProyectsService {
 
   private API_BASE_URL = 'http://localhost:5000/api';
   private loginUrl = 'http://localhost:5000/api/login';
+  private apiKey = '31e2925f71534cbd9b020403b113357d';  // Clave API de NewsAPI
+  private apiUrl = 'https://newsapi.org/v2/top-headlines';
 
   constructor(private http: HttpClient) { }
 
@@ -299,6 +301,11 @@ sendCorreo(idU: string): Observable<Usuario> {
   //Configuracion Usuario
   configUserById(idU: string): Observable<Paquete> {
     return this.http.get<Paquete>(`${this.API_BASE_URL}/configUser/${idU}`);
+  }
+
+  //API de Noticios
+  getTopHeadlines(country: string = 'us'): Observable<any> {
+    return this.http.get(`${this.apiUrl}?country=${country}&apiKey=${this.apiKey}`);
   }
 
 }

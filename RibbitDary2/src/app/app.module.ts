@@ -44,6 +44,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { PagoComponent } from './components/pago/pago.component';
+import { NewsComponent } from './components/navegacion/news/news.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { PagoComponent } from './components/pago/pago.component';
     MapaComponent,
     MapasTareaComponent,
     TareaComponent,
-    PagoComponent
+    PagoComponent,
+    NewsComponent
   ],
   
   bootstrap: 
