@@ -1,0 +1,150 @@
+.Contenedor-Todo {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f2f8f3;
+}
+
+.Contenedor-TP {
+    width: 65%;
+    /* Ajusta el tamaño del contenedor de proyectos */
+}
+
+.tp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Tres columnas */
+    gap: 20px;
+    /* Espacio entre las tarjetas */
+}
+
+.tp {
+    background-color: #a3d9a5;
+    /* Verde pastel */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tp h2 {
+    font-size: 18px;
+    color: #3b6145;
+    /* Verde más oscuro */
+    margin-bottom: 10px;
+}
+
+.tp button {
+    background-color: #f0f4f0;
+    /* Fondo de botón suave */
+    border: none;
+    color: #3b6145;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tp button:hover {
+    background-color: #8bc98a;
+    /* Verde pastel más oscuro */
+}
+
+.Formulario-TP {
+    width: 30%;
+    /* Ajusta el tamaño del formulario */
+    background-color: #e0f0e2;
+    /* Fondo verde pastel claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Formulario-TP form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Formulario-TP label {
+    font-size: 16px;
+    color: #3b6145;
+    margin-bottom: 10px;
+}
+
+.Formulario-TP input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a3d9a5;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9fdf9;
+}
+
+.Formulario-TP .submit-button {
+    background-color: #6bb76d;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Formulario-TP .submit-button:hover {
+    background-color: #5ca65c;
+}
+
+
+@media (max-width: 768px) {
+    .tp-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tp {
+        padding: 10px;
+    }
+
+    .Formulario-TP {
+        padding: 15px;
+    }
+
+    .Formulario-TP input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .Formulario-TP .submit-button {
+        padding: 10px;
+    }
+
+    .Contenedor-Todo {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .Contenedor-TP, .Formulario-TP {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .tp h2 {
+        font-size: 16px;
+    }
+
+    .tp button {
+        padding: 8px 10px;
+    }
+
+    .Formulario-TP input {
+        padding: 7px;
+    }
+
+    .Formulario-TP label {
+        font-size: 14px;
+    }
+
+    .Formulario-TP .submit-button {
+        padding: 8px;
+    }
+}

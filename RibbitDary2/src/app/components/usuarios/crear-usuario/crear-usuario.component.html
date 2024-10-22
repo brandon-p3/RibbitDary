@@ -1,0 +1,121 @@
+<header>
+  <app-navigation></app-navigation>
+</header>
+
+<body>
+  <div class="body1">
+    <div class="container">
+      <div class="form-container">
+        <form class="user-form" #userForm="ngForm">
+          <h1 class="bienvenido">BIENVENIDO</h1>
+          <label for="nombres">Nombre:</label>
+          <input
+            type="text"
+            id="nombres"
+            name="nombres"
+            required
+            [(ngModel)]="user.nombres"
+            #nombres="ngModel"
+            [ngClass]="{ error: nombres.invalid && nombres.touched }"
+          />
+          <p *ngIf="nombres.invalid && nombres.touched" class="error-message">
+            El nombre es obligatorio.
+          </p>
+
+          <label for="aPuP">Apellido Paterno:</label>
+          <input
+            type="text"
+            id="aPuP"
+            name="aPuP"
+            required
+            [(ngModel)]="user.aPuP"
+            #aPuP="ngModel"
+            [ngClass]="{ error: aPuP.invalid && aPuP.touched }"
+          />
+          <p *ngIf="aPuP.invalid && aPuP.touched" class="error-message">
+            El apellido paterno es obligatorio.
+          </p>
+
+          <label for="aPuM">Apellido Materno:</label>
+          <input
+            type="text"
+            id="aPuM"
+            name="aPuM"
+            [(ngModel)]="user.aPuM"
+          />
+
+          <label for="usuario">Correo electrónico:</label>
+          <input
+            type="text"
+            id="usuario"
+            name="usuario"
+            required
+            [(ngModel)]="user.usuario"
+            #usuario="ngModel"
+            [ngClass]="{ error: usuario.invalid && usuario.touched }"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Por favor, ingresa un correo electrónico válido."
+          />
+          <p *ngIf="usuario.invalid && usuario.touched" class="error-message">El correo electrónico debe ser válido.</p>
+
+          <label for="contraseña">Contraseña:</label>
+          <div class="password-container">
+            <input
+              type="{{ showPassword  ? 'text' : 'password' }}"
+              id="contraseña"
+              name="contraseña"
+              required
+              [(ngModel)]="user.password"
+              #password="ngModel"
+              [ngClass]="{'error': password.invalid && password.touched}"
+              pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!#%*?&]{8,}"
+              title="La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo."
+            />
+            <button type="button" (click)="togglePasswordVisibility()" class="button-eye">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+        
+          </div>
+          <p *ngIf="password.invalid && password.touched" class="error-message">
+            La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo.
+          </p>
+          
+        
+          <label for="confirmacontraseña">Confirma Contraseña:</label>
+          <input
+            type="password"
+            id="confirmacontraseña"
+            name="confirmacontraseña"
+            required
+            [(ngModel)]="confirmpass"
+          />
+
+          <label for="icono">Avatar:</label>
+          <select id="icono" name="icono" required [(ngModel)]="user.icono">
+            <option value="" disabled selected>Selecciona un icono</option>
+            <option value="../../../../assets/img/Icon-User/icon-user-1.jpg">
+              Rana simple
+            </option>
+            <option value="../../../../assets/img/Icon-User/icon-user-2.jpg">
+              Rana rizada
+            </option>
+            <option value="../../../../assets/img/Icon-User/icon-user-3.jpg">
+              Rana de la alta curnia
+            </option>
+            <option value="../../../../assets/img/Icon-User/icon-user-4.jpg">
+              Rana de gym
+            </option>
+            <option value="../../../../assets/img/Icon-User/icon-user-5.jpg">
+              Rana cute
+            </option>
+          </select>
+
+          <button type="submit" (click)="crearUsuario()" [disabled]="userForm.invalid">Crear cuenta</button>
+        </form>
+      </div>
+    </div>
+    <div class="container2">
+      <img src="../assets/img/Ribbit_Dary_Logo.jpg" />
+    </div>
+  </div>
+</body>

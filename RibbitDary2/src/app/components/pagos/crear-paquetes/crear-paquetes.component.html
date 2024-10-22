@@ -1,0 +1,103 @@
+<header>
+  <app-navigation></app-navigation>
+  <app-nav-nar-lat></app-nav-nar-lat>
+</header>
+
+<body class="body">
+  <div class="body1">
+    <div class="container">
+      
+      <form class="user-form">
+        <h1 class="bienvenido">
+          {{ isEditMode ? "Editar Paquete" : "Crear Paquete" }}
+        </h1>
+
+        <label for="namePaquete">Nombre del Paquete:</label>
+        <input
+          type="text"
+          id="namePaquete"
+          name="namePaquete"
+          [(ngModel)]="paquete.namePaquete"
+        />
+
+        <div class="form-group">
+          <div class="form-group-item">
+            <label for="tiempo">Tiempo:</label>
+            <input
+              type="text"
+              id="tiempo"
+              name="tiempo"
+              [(ngModel)]="paquete.tiempo"
+            />
+          </div>
+
+          <div class="form-group-item">
+            <label for="precio">Precio:</label>
+            <input
+              type="text"
+              id="precio"
+              name="precio"
+              [(ngModel)]="paquete.precio"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-item">
+            <label for="cantidadProy">Cantidad de Proyectos:</label>
+            <input
+              type="text"
+              id="cantidadProy"
+              name="cantidadProy"
+              [(ngModel)]="paquete.cantidadProy"
+            />
+          </div>
+
+          <div class="form-group-item">
+            <label for="cantidadTareas">Cantidad de Tareas:</label>
+            <input
+              type="text"
+              id="cantidadTareas"
+              name="cantidadTareas"
+              [(ngModel)]="paquete.cantidadTareas"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-item">
+            <label for="numPersonas">Número de Personas:</label>
+            <input
+              type="text"
+              id="numPersonas"
+              name="numPersonas"
+              [(ngModel)]="paquete.numPersonas"
+            />
+          </div>
+
+          <div class="form-group-item">
+            <label for="capacidad">Capacidad:</label>
+            <input
+              type="text"
+              id="capacidad"
+              name="capacidad"
+              [(ngModel)]="paquete.capacidad"
+            />
+          </div>
+        </div>
+
+        <button type="button" (click)="savePaquete()">
+          {{ isEditMode ? "Actualizar Paquete" : "Crear Paquete" }}
+        </button>
+      </form>
+      <div class="container2">
+        <img
+          src="../../../../assets/img/Ribbit_Dary_Logo.jpg"
+          alt="Icono del Paquete"
+        />
+      </div>
+    </div>
+
+  </div>
+</body>
+

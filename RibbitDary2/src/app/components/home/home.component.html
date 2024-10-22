@@ -1,0 +1,167 @@
+<header>
+  <app-navigation></app-navigation>
+</header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="bodyT">
+    <h1>Bienvenido</h1>
+    <div *ngFor="let user of user" class="beyonce">
+      <h1>Tareas que tienes:</h1>
+    <div *ngIf="user.idTipo === 1">
+      <button (click)="sendEmail()">Enviar correos</button>
+    </div>
+    </div>
+    <div>
+      <h2>Urgentes:</h2>
+      <div class="containerTa">
+        <div class="task-grid">
+          <div
+            class="task-card urgente"
+            *ngFor="let tareaU of tareasUrgentes"
+            [routerLink]="['/tareas', idU, tareaU.idP]"
+          >
+            <div class="task-info">
+              <h2>{{ tareaU.nomTarea }}</h2>
+              <br />
+              <p>
+                <strong>Fecha De Termino:</strong>
+                {{ tareaU.fechaF | date : "dd/MM/yyyy" }}
+              </p>
+            </div>
+            <div class="task-persons">
+              <h3>Persona encargada:</h3>
+              <div class="task-users">
+                <div
+                  *ngFor="let colab of colaboradorTareas[tareaU.idColaborador]"
+                  class="task-user"
+                >
+                  <img [src]="colab.icono" alt="{{ colab.nombres }}" />
+                  <span>{{ colab.nombres }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="task-status">
+              <h3>Estatus:</h3>
+              <h3>{{ tareaU.estatus }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>No tan urgentes:</h2>
+      <div class="containerTa">
+        <div class="task-grid">
+          <div
+            class="task-card media"
+            *ngFor="let tarea of tareasMedias"
+            [routerLink]="['/tareas', idU, tarea.idP]"
+          >
+            <div class="task-info">
+              <h2>{{ tarea.nomTarea }}</h2>
+              <br />
+              <p>
+                <strong>Fecha De Termino:</strong>
+                {{ tarea.fechaF | date : "dd/MM/yyyy" }}
+              </p>
+            </div>
+            <div class="task-persons">
+              <h3>Persona encargada:</h3>
+              <div class="task-users">
+                <div
+                  *ngFor="let colab of colaboradorTareas[tarea.idColaborador]"
+                  class="task-user"
+                >
+                  <img [src]="colab.icono" alt="{{ colab.nombres }}" />
+                  <span>{{ colab.nombres }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="task-status">
+              <h3>Estatus:</h3>
+              <h3>{{ tarea.estatus }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>No te preocupes:</h2>
+      <div class="containerTa">
+        <div class="task-grid">
+          <div
+            class="task-card no-urgente"
+            *ngFor="let tarea of tareasNoUrgentes"
+            [routerLink]="['/tareas', idU, tarea.idP]"
+          >
+            <div class="task-info">
+              <h2>{{ tarea.nomTarea }}</h2>
+              <br />
+              <p>
+                <strong>Fecha De Termino:</strong>
+                {{ tarea.fechaF | date : "dd/MM/yyyy" }}
+              </p>
+            </div>
+            <div class="task-persons">
+              <h3>Persona encargada:</h3>
+              <div class="task-users">
+                <div
+                  *ngFor="let colab of colaboradorTareas[tarea.idColaborador]"
+                  class="task-user"
+                >
+                  <img [src]="colab.icono" alt="{{ colab.nombres }}" />
+                  <span>{{ colab.nombres }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="task-status">
+              <h3>Estatus:</h3>
+              <h3>{{ tarea.estatus }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Vencidas:</h2>
+      <div class="containerTa">
+        <div class="task-grid">
+          <div
+            class="task-card vencida"
+            *ngFor="let tarea of tareasVencidas"
+            [routerLink]="['/tareas', idU, tarea.idP]"
+          >
+            <div class="task-info">
+              <h2>{{ tarea.nomTarea }}</h2>
+              <br />
+              <p>
+                <strong>Fecha De Termino:</strong>
+                {{ tarea.fechaF | date : "dd/MM/yyyy" }}
+              </p>
+            </div>
+            <div class="task-persons">
+              <h3>Persona encargada:</h3>
+              <div class="task-users">
+                <div
+                  *ngFor="let colab of colaboradorTareas[tarea.idColaborador]"
+                  class="task-user"
+                >
+                  <img [src]="colab.icono" alt="{{ colab.nombres }}" />
+                  <span>{{ colab.nombres }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="task-status">
+              <h3>Estatus:</h3>
+              <h3>{{ tarea.estatus }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

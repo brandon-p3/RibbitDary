@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    padding-top: 10%;
+    width: 15%;
+    background-color: #ebf3d7;
+    color: #333;
+    position: fixed;
+    height: 100%;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    font-size: 1.3em;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #82c45d;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+      display: none; /* Ocultar la barra lateral en pantallas pequeñas */
+    }
+    
+    .menu-icon {
+      display: block; /* Mostrar el ícono del menú en pantallas pequeñas */
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 2em;
+      cursor: pointer;
+      color: #333;
+    }
+  }
+  
+  /* Opcional: Mostrar la barra lateral al hacer clic en el ícono del menú */
+  .show-sidebar {
+    display: flex; /* Mostrar la barra lateral cuando esté activa */
+  }
+  

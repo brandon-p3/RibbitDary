@@ -1,0 +1,94 @@
+<header>
+  <nav class="navbar2">
+    <ul class="nav-list2">
+      <li>
+        <a routerLink="..">
+          <img src="../assets/img/Ribbit_Dary_Logo_SF.png" height="100px" class="menu-icon1"/>
+        </a>
+        <a >
+          <img src="../assets/img/Ribbit_Dary_Logo_SF.png" height="100px" (click)="toggleSidebar()" class="menu-icon"/>
+        </a>
+      </li>
+      <li><h2>Ribbit Dary</h2></li>
+      
+    </ul>
+    
+
+    <div class="nav-info" *ngFor="let user of usuario">
+      <a routerLink="/comentarios">
+        <i class="fas fa-exclamation-triangle"></i>
+      </a>
+      <i class="fas fa-bell" routerLink="/politicas"></i>
+
+      <div class="nav-button-1" *ngIf="router.url !== '/login' && user.idTipo !== 3">
+        <div>
+          <button (click)="onButtonClick(user.idU)">Crear Proyecto</button>
+        </div>
+        
+      </div>
+
+      <!-- Usuario con menú desplegable -->
+      <div class="user-dropdown" (click)="toggleMenu()">
+        <div *ngIf="router.url !== '/login'">
+          <div class="user-info">
+            <img [src]="user.icono" />
+            <p class="user-name">{{user.nombres}}</p>
+          </div>
+        </div>
+        
+
+        <!-- Menú desplegable -->
+        <div class="dropdown-menu" *ngIf="isMenuOpen">
+          <ul>
+            <a [routerLink]="['/edit-usuario/edit/', user.idU, user.id]"  *ngIf="!user.fd_id"><li>Usuario</li></a>
+            <!-- <a [routerLink]="['/tarjeta/', user.idU]"> <li>Tarjetas</li></a>
+            <a [routerLink]="['/detalles-pago/', user.idU]"><li>Pagos</li></a> -->
+          </ul>
+        </div>
+      </div>
+      <div *ngFor="let tu of tipoUser">
+        <i>{{tu.namePaquete}}</i>
+      </div>
+    </div>
+
+    
+<!-- Menú lateral responsivo -->
+<div class="sidebar" [ngClass]="{'show-sidebar': isSidebarOpen}" *ngFor="let user of usuario">
+  <ul>
+    <li>
+      <a [routerLink]="['/home', user.idU]">
+        <i class="fas fa-home"></i> Home
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/proyectos', user.idU]">
+        <i class="fas fa-project-diagram"></i> Proyectos
+      </a>
+    </li>
+    <div *ngIf="user.idTipo === 1">
+      <li>
+        <a [routerLink]="['/tipo-proyecto', user.idU]">
+          <i class="fas fa-tasks"></i> Tipo Proyecto
+        </a>
+      </li>
+    </div>
+    <li>
+      <a [routerLink]="['/paquetes', user.idU]">
+        <i class="fas fa-box"></i> Paquetes
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/socios/', user.idU]">
+        <i class="fas fa-users"></i> Socios
+      </a>
+    </li>
+    <li>
+      <a href="/">
+        <i class="fas fa-sign-out-alt"></i> Salir
+      </a>
+    </li>
+  </ul>
+</div>
+  </nav>
+</header>
+

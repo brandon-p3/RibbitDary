@@ -1,0 +1,174 @@
+/* Estilos para la clase .containerTa */
+.containerTa {
+  display: flex;
+  justify-content: center;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas en la rejilla */
+  gap: 20px;
+}
+
+.task-card {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  color: #ffffff; /* Azul pastel */
+}
+
+/* Estilos para tareas urgentes */
+.task-card.urgente {
+  background: #f1808b; /* Rojo pastel */
+  border-color: #e57373; /* Rojo más oscuro */
+}
+
+.task-card.urgente:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(229, 115, 115, 0.5);
+}
+
+/* Estilos para tareas medianamente urgentes */
+.task-card.media {
+  background: #f7c77f; /* Naranja pastel */
+  border-color: #ffb74d; /* Naranja más oscuro */
+}
+
+.task-card.media:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(255, 183, 77, 0.5);
+}
+
+/* Estilos para tareas no urgentes */
+.task-card.no-urgente {
+  background: #6ed173; /* Verde pastel */
+  border-color: #4db6ac; /* Verde más oscuro */
+}
+
+.task-card.no-urgente:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(77, 182, 172, 0.5);
+}
+
+/* Estilos para tareas vencidas */
+.task-card.vencida {
+  background: #9c9c9c; /* Gris pastel */
+  border-color: #90a4ae; /* Gris más oscuro */
+}
+
+.task-card.vencida:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(144, 164, 174, 0.5);
+}
+
+.task-info h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #ffffff; /* Azul pastel */
+}
+
+.task-info p {
+  margin: 5px 0;
+  color: #ffffff; /* Verde oscuro */
+}
+
+.task-persons {
+  margin-top: 15px;
+}
+
+.task-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.task-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.task-user span {
+  line-height: 40px;
+  color: #ffffff; 
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  font-size: 1.2em;
+}
+
+.task-status {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.bodyT h1, h2 {
+  font-family: 'Roboto', sans-serif; /* Fuente moderna para los títulos */
+  color: #0d2208; /* Verde oscuro */
+}
+
+/* Estilos para la clase .containerTa */
+.containerTa {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas en la rejilla */
+  gap: 20px;
+  width: 100%;
+}
+.beyonce{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.beyonce button {
+  background-color: #f44336; /* Rojo pastel */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+  font-family: 'CascadiaMonoExtraLight', monospace;
+}
+
+/* Responsivo para pantallas de tamaño medio (tabletas) */
+@media (max-width: 768px) {
+  .task-grid {
+    grid-template-columns: repeat(1, 1fr); /* Dos columnas en la rejilla */
+    gap: 15px;
+  }
+
+  .task-card {
+    width: 90%;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .task-user img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .task-user span {
+    font-size: 1em;
+  }
+
+}

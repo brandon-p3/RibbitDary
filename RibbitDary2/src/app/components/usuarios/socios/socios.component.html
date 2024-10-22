@@ -1,0 +1,38 @@
+<header>
+    <app-navigation></app-navigation>
+    <app-nav-nar-lat></app-nav-nar-lat>
+</header>
+
+<div class="body">
+    <div class="container">
+        <div class="user-card" *ngFor="let socio of socios">
+            <div class="user-info">
+                <img [src]="socio.icono" alt="Imagen del Usuario">
+                <div class="user-details">
+                    <h1>{{ socio.nombres }}</h1>
+                    <p>{{ socio.aPuP }}</p>
+                    <p>{{ socio.aPuM }}</p>
+                </div>
+            </div>
+            <div class="projects">
+                <h2>Proyectos Involucrados</h2>
+                <ul>
+                    <!-- Aquí podrías agregar una lista dinámica de proyectos si tu API la proporciona -->
+                    <li *ngFor="let proyecto of proyectos[socio.idU]">
+                        {{ proyecto.nameProyect }}
+                    </li>
+                </ul>
+            </div>
+            <div *ngFor="let user of user">
+            <div class="actions"  *ngIf="user.idTipo !== 3">
+                <button class="edit-btn" [routerLink]="['/edit-socios/edit/', idU, socio.idU]">Editar</button>
+                <button class="delete-btn" (click)="deleteSocio(socio.idU)">Borrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngFor="let user of user">
+    <a (click)="onButtonClick(user.idU)"class="add-btn" *ngIf="user.idTipo !== 3">+</a>
+    </div>
+ 
+</div>

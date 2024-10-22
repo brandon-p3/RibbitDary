@@ -1,0 +1,41 @@
+<header>
+  <app-navigation></app-navigation>
+  <app-nav-nar-lat></app-nav-nar-lat>
+</header>
+<body class="body">
+  <div class="paquetes-container">
+    <div *ngFor="let paquete of paquetes" class="paquete-conte">
+      <img class="img-Paquetes" src="../assets/img/Ribbit_Dary_Logo_SF.png" />
+      <div class="paquete-card" *ngFor="let user of user">
+        <div class="paquete-header">
+          <h3>{{ paquete.namePaquete }}</h3>
+          <span class="paquete-price">$ {{ paquete.precio }} MXN</span>
+        </div>
+        <div class="paquete-details">
+            <p><strong>Disfruta de todos estos beneficios en la compra de tu paquete {{paquete.namePaquete}}</strong></p>
+          <p><strong>Tiempo:</strong> {{ paquete.tiempo }} Dias</p>
+          <p><strong>Proyectos:</strong> {{ paquete.cantidadProy }} Proyectos</p>
+          <p><strong>Tareas:</strong> {{ paquete.cantidadTareas }} Tareas</p>
+          <p><strong>Personas:</strong> {{ paquete.numPersonas }} Personas</p>
+          <p><strong>Capacidad:</strong> {{ paquete.capacidad }} GB</p>
+        </div>
+        <div class="paquete-actions">
+          <button (click)="comprarPaquete(paquete)">Comprar</button>
+          <button
+            [routerLink]="['/edit-paquetes/edit', idU, paquete.idPaquete]"
+            *ngIf="user.idTipo === 1"
+          >
+            Editar
+          </button>
+          <button *ngIf="user.idTipo === 1" (click)="eliminarPaquete(paquete.idPaquete)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <div  *ngFor="let user of user">
+    <button class="add-btn" [routerLink]="['/crear-paquetes', idU]" *ngIf="user.idTipo === 1">
+      +
+    </button>
+  </div>
+  </div>
+
+</body>

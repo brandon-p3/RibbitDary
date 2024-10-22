@@ -1,0 +1,41 @@
+<header>
+  <app-navigation></app-navigation>
+</header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="Contenedor-Todo">
+
+    <div class="Formulario-TP">
+      <form (ngSubmit)="createOrUpdateTipoProyecto()">
+        <label for="tipoProyecto">Tipo Proyecto:</label>
+        <input
+          type="text"
+          id="tipoProyecto"
+          name="tipoProyecto"
+          [(ngModel)]="tipoProy.tipoProyecto"
+          required
+        />
+        <button type="submit" class="submit-button">
+          {{ edit ? "Actualizar tipo proyecto" : "Subir tipo proyecto" }}
+        </button>
+      </form>
+    </div>
+    <div class="Contenedor-TP">
+      <h1>Tipo de Proyectos</h1>
+      <div class="tp-grid">
+        <div class="tp" *ngFor="let tipoP of tipoProyectos">
+          <h2>{{ tipoP.tipoProyecto }}</h2>
+          <button (click)="editTipoProyecto(tipoP)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="deleteTipoProyecto(tipoP.idType)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>

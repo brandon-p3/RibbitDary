@@ -1,0 +1,34 @@
+<header>
+    <app-navigation></app-navigation>
+    <app-nav-nar-lat></app-nav-nar-lat>
+  </header>
+  
+  <body class="body">
+    <div class="paquetes-container">
+      <div class="paquete-conte">
+        <img class="img-Paquetes" src="../assets/img/Ribbit_Dary_Logo_SF.png" />
+  
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <h3>{{ paquete?.namePaquete }}</h3>
+            <span class="paquete-price">$ {{ paquete?.precio }} MXN</span>
+          </div>
+  
+          <div class="paquete-details">
+            <p><strong>Disfruta de estos beneficios al comprar tu paquete {{ paquete?.namePaquete }}</strong></p>
+            <p><strong>Tiempo:</strong> {{ paquete?.tiempo }} días</p>
+            <p><strong>Proyectos:</strong> {{ paquete?.cantidadProy }} proyectos</p>
+            <p><strong>Tareas:</strong> {{ paquete?.cantidadTareas }} tareas</p>
+            <p><strong>Personas:</strong> {{ paquete?.numPersonas }} personas</p>
+            <p><strong>Capacidad:</strong> {{ paquete?.capacidad }} GB</p>
+          </div>
+  
+          <div class="paquete-actions">
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            <button class="volver-btn" (click)="volver()">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  

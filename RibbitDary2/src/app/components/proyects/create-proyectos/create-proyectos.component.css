@@ -1,0 +1,364 @@
+.formProyectos {
+  width: 100%;
+  margin-top: 2%;
+  font-family: 'CascadiaMonoExtraLight', monospace;
+}
+
+/*Contenido del formulario*/
+.contentForm {
+  display: flex;
+  gap: 1%;
+  margin-top: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.contTP {
+  display: inline;
+  height: 50%;
+  width: 70%;
+}
+
+.contTP label {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+.contTP input {
+  background: white;
+  border: none;
+  color: #000000;
+  height: 40px;
+  font-size: 1em;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+
+
+.contTP select {
+  background-color: #abcbe0ec;
+  border: none;
+  color: #000000;
+  height: 50px;
+  font-size: 1.3em;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+/*Contenido del proyecto*/
+
+.contProyecto {
+  background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-cuadros-verdes-blancos.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 4%;
+  border-radius: 20px;
+}
+
+.contProyecto1 {
+  padding: 3%;
+  display: grid;
+  flex-direction: column;
+}
+
+
+/*Contenido de las fechas*/
+.contProyectoFechas {
+  display: flex;
+  gap: 45%;
+  margin-bottom: 1%;
+}
+
+.contProyectoFechas1 {
+  display: grid;
+  gap: 10%;
+}
+
+/*Personas, notas, flores*/
+.perNotType {
+  width: 100%;
+  display: flex;
+}
+
+.perNotType-Container {
+  width: 30%;
+}
+
+/*Personas dentro del proyecto*/
+.perContainer {
+  width: 100%;
+}
+
+.personas-container {
+  background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-cuadros-verde-oscuro.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3%;
+  margin-left: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-top: 20px;
+
+}
+
+.personas-container h2 {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  padding: 5%;
+  border-radius: 20px;
+}
+
+.personas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-left: 10px;
+}
+
+
+.persona {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 3px;
+  border-radius: 30px;
+  padding: 15px;
+  background-color: whitesmoke;
+}
+
+
+/* Estilos para el botón de eliminar */
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
+.delete-button:active {
+  background-color: #c70000;
+  transform: scale(0.95);
+}
+
+.personas-container img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+
+/*Personas ya en el proyecto*/
+.personas-disponibles {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.personas-disponibles h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.personas-disponibles ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.personas-disponibles li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.personas-disponibles li:hover {
+  background-color: #e0e0e0;
+}
+
+.personas-disponibles img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Presupuesto */
+.Presupuesto {
+  background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-puntitos.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3%;
+  margin-left: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Presupuesto label {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 1%;
+  color: rgb(0, 0, 0);
+  font-family: 'CascadiaMonoExtraLight', monospace;
+}
+
+.Presupuesto input {
+  background: white;
+  border-color: #4CAF50;
+  color: #000000;
+  height: 40px;
+  font-size: 1em;
+  text-align: center;
+  margin-bottom: 1%;
+  width: 95%;
+}
+
+/* Continúa con el resto de tus estilos... */
+
+/*Notas*/
+.notas-container {
+  background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-cuadros-amarillos.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  padding: 1%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.notas-container h2 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 1.3em;
+}
+
+.notas-textarea {
+  width: 90%;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  resize: none;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+/*Boton subir Proyectos*/
+.submit-button {
+  width: 92%;
+  margin-left: 25px;
+  padding: 10px;
+  background-color: #82c45d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+
+.success-message {
+  background-color: #4CAF50;
+  /* Color verde */
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+
+/* Estilos responsivos */
+
+/* Para pantallas de tamaño medio (tabletas) */
+@media (max-width: 768px) {
+  .formProyectos {
+      margin-top: 15%;
+  }
+  
+  .contentForm {
+      flex-direction: column;
+  }
+  
+  .contTP {
+      width: 100%;
+  }
+
+  .contTP label {
+      font-size: 1.2em;
+  }
+
+  .contTP input, .contTP select {
+      font-size: 0.9em;
+      height: 35px;
+  }
+
+  .contProyecto {
+      margin-bottom: 3%;
+  }
+
+  .contProyectoFechas {
+      gap: 20%;
+  }
+
+  .perNotType {
+      flex-direction: column;
+  }
+
+  .perNotType-Container {
+      width: 100%;
+  }
+
+  .personas-container {
+      margin-left: 0;
+      margin-top: 10px;
+  }
+
+  .submit-button {
+      width: 100%;
+      margin-left: 0;
+  }
+
+  .success-message {
+      font-size: 14px;
+  }
+  .Presupuesto input {
+    width: 100%;
+  }
+  .perNotType-Container{
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,135 @@
+<header>
+  <app-navigation></app-navigation>
+</header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="search-filter-container">
+    <form class="search-form" (ngSubmit)="buscarProyecto()">
+      <input
+        type="text"
+        placeholder="Buscar Proyecto"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        class="search-input"
+      />
+      <button type="submit" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+  
+    <div class="FiltroProyectos">
+      <select
+        [(ngModel)]="filtro"
+        id="filtro" 
+        name="filtro"
+        (change)="filtroProyectos(filtro)"
+      >
+        <option value="Activo">Activo</option>
+        <option value="Baja Temporal">Baja Temporal</option>
+        <option value="Cancelado">Cancelado</option>
+        <option value="Todos">Todos</option>
+      </select>
+    </div>
+  </div>
+  
+
+  <div class="content-Proyecto" *ngFor="let proyect of proyects">
+    <div class="cont-Proy-Info">
+      <a [routerLink]="['/tareas', idU, proyect.idP]" class="tareasRutas">
+        <div class="if-Pro-1">
+          <h2>Nombre del proyecto:</h2>
+          <h3>{{ proyect.nameProyect }}</h3>
+        </div>
+        <div class="cont-Proy-Info-1">
+          <div class="if-Pro-2">
+            <div>
+              <h2>Fecha de Inicio:</h2>
+              <p>{{ proyect.fechaI | date : "dd/MM/yyyy" }}</p>
+            </div>
+            <div>
+              <h2>Fecha de Fin:</h2>
+              <p>{{ proyect.fechaF | date : "dd/MM/yyyy" }}</p>
+            </div>
+            <div *ngFor="let progres of progreso[proyect.idP]">
+              <div class="presu-pro">
+                <h2>Progreso:</h2>
+                <p>{{ progres.progreso }}%</p>
+              </div>
+              <div class="progress-bar-container">
+                <div
+                  class="progress-bar"
+                  [ngStyle]="{
+                    width: progres.progreso + '%',
+                    background: getProgressColor(progres.progreso)
+                  }"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="if-Pro-2">
+            <div class="usersC">
+              <h2>Tipo de proyecto:</h2>
+              <div *ngFor="let tP of tipoProyecto[proyect.idType]">
+                <p>{{ tP.tipoProyecto }}</p>
+              </div>
+
+              <h2>Persona Encargada:</h2>
+              <div class="users" *ngFor="let creador of creadorProyect[proyect.idU]">
+                <img [src]="creador.icono" />
+                <p>{{ creador.nombres }}</p>
+              </div>
+
+              <div class="presu-pro">
+                <h2>Presupuesto:</h2>
+                <p>$ {{ proyect.presupuesto }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="container-Col-Pro">
+      <div class="cont-Col-Info-Pro">
+        <div>
+          <h3>Descripcion del proyecto:</h3>
+        </div>
+        <div class="usersCol">
+          <p>
+            {{ proyect.descripcion }}
+          </p>
+        </div>
+      </div>
+      <div *ngFor="let user of user">
+        <div class="project-actions" *ngIf="user.idTipo !== 3">
+          <button
+            class="btn btn-edit btn-cute"
+            [routerLink]="['/edit-proyectos/edit/', proyect.idU, proyect.idP]"
+          >
+          <i class="fas fa-edit"></i>
+          </button>
+          <button
+            class="btn btn-delete btn-cute"
+            (click)="deleteProyect(proyect.idP)"
+            *ngIf="user.idTipo === 1"
+          >
+          <i class="fas fa-trash"></i>
+          </button>
+          <div class="complet">
+            <select
+              [(ngModel)]="proyect.estatus"
+              id="estatus" 
+              name="estatus"
+              (change)="updateEstatus(proyect)"
+            >
+              <option value="Activo">Activo</option>
+              <option value="Baja Temporal">Baja Temporal</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

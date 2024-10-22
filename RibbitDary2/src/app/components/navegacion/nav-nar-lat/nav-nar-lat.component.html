@@ -1,0 +1,35 @@
+<body>
+  <div class="sidebar" *ngFor="let user of usuario">
+    <ul>
+      <li>
+        <a [routerLink]="['/home', user.idU]"
+          ><i class="fas fa-home"></i> Home</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/proyectos', user.idU]"
+          ><i class="fas fa-project-diagram"></i> Proyectos</a
+        >
+      </li>
+      <div *ngIf="user.idTipo === 1">
+        <li>
+          <a [routerLink]="['/tipo-proyecto', user.idU]"
+            ><i class="fas fa-tasks"></i> Tipo Proyecto</a
+          >
+        </li>
+      </div>
+        <li>
+          <a [routerLink]="['/paquetes', user.idU]"
+            ><i class="fas fa-box"></i> Paquetes</a
+          >
+        </li>
+      <li>
+        <a [routerLink]="['/socios/', user.idU]"><i class="fas fa-users"></i> Socios</a>
+      </li>
+
+      <li>
+        <a href="/"><i class="fas fa-sign-out-alt"></i> Salir</a>
+      </li>
+    </ul>
+  </div>
+</body>

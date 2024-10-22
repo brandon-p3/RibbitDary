@@ -1,0 +1,31 @@
+<header>
+    <app-navigation></app-navigation>
+    <app-nav-nar-lat></app-nav-nar-lat>
+  </header>
+
+  <body class="body">
+<div class="detalles-pago-container">
+    <h2>Detalles de Pago</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Tarjeta</th>
+          <th>Titular</th>
+          <th>CVV</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detalle of detallesPago">
+
+          <td>
+            <button (click)="editDetalle(detalle.idDetallePago)">Editar</button>
+            <button (click)="deleteDetalle(detalle.idDetallePago)">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+  

@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../../../assets/img/Imagenes_RibbitDary/fondo-hojitas.jpg');
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    margin-top: 50px;
+}
+.caja {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.caja h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.caja input[type="text"],
+.caja input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.caja input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.caja input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.caja .message {
+    text-align: center;
+    margin-top: 10px;
+}
+.caja .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+.imagen{
+    max-width: 100%; /* Ajustar imagen al tamaño máximo del contenedor */
+            height: auto; /* Mantener proporciones */
+            border-radius: 50%; /* Ejemplo de borde redondeado */
+            position: absolute;
+}
+
+.contenedor {
+    display:flex ;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin-bottom: 20px; /* Espacio debajo del logo */
+}
+.imagen1{
+    width: 80px; 
+    height: 80px;
+}
+
+.contenedor2{
+    position: fixed; /* Opcionalmente puedes usar 'relative' o 'fixed' dependiendo de tus necesidades */
+    top: 0px; /* Cambia este valor según la posición vertical que desees */
+    left: 0px; /* Cambia este valor según la posición horizontal que desees */
+    width: 10000px; /* Ancho del div */
+    height: 80px; /* Alto del div */
+    background-color:#8fff95; /* Color de fondo */
+    border: none ; /* Borde opcional */
+    padding: 0px; /* Espacio interno */
+
+}
+.contenedordeltitulo{
+    text-align: right; /* Alinea el texto hacia la derecha */
+    width: 300px; /* Ancho del div, puedes ajustar según tu diseño */
+    border: none; /* Borde opcional para visualizar el div */
+    padding: 10px; 
+    
+}
+
+.barravertical{
+    position: fixed; /* Opcionalmente puedes usar 'relative' o 'fixed' dependiendo de tus necesidades */
+    top: 44px; /* Cambia este valor según la posición vertical que desees */
+    left: 0px; /* Cambia este valor según la posición horizontal que desees */
+    width: 160px; /* Ancho del div */
+    height: 600px; /* Alto del div */
+    background-color:#8fff95; /* Color de fondo */
+    border: none ; /* Borde opcional */
+    padding: 0px; /* Espacio interno */
+}
+.imagen{
+    position: fixed; /* Opcionalmente puedes usar 'relative' o 'fixed' dependiendo de tus necesidades */
+    top: 10px; /* Cambia este valor según la posición vertical que desees */
+    left: 20px; /* Cambia este valor según la posición horizontal que desees */
+    width: 80px; 
+    height: 80px;
+}
+    
+.politicas {
+    
+    position: fixed; /* Opcionalmente puedes usar 'relative' o 'fixed' dependiendo de tus necesidades */
+    top: 150px; /* Cambia este valor según la posición vertical que desees */
+    left: 30px; /* Cambia este valor según la posición horizontal que desees */
+    width: 160px; /* Ancho del div */
+    height: 600px; /* Alto del div */
+    
+    border: none ; /* Borde opcional */
+    padding: 0px; /* Espacio interno */
+    z-index: 999;
+}
+.texto{
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    color: #000000;
+}
+
+.texto1{
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Botón de 'Entrar' */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Botón de 'Iniciar con Facebook' */
+.btn-facebook {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #3b5998; /* Color azul de Facebook */
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-facebook i {
+    font-size: 20px;
+}
+
+.btn-facebook:hover {
+    background-color: #365492; /* Color azul más oscuro al pasar el cursor */
+}

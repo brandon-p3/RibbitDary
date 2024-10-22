@@ -1,0 +1,147 @@
+<header><app-navigation></app-navigation></header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="bodyT">
+    <h1>Tareas:</h1>
+    <div class="containerTa">
+      <div class="containerP">
+        <div class="container-Col-Pro2">
+          <div class="cont-Col-Info-Pro2">
+            <div>
+              <h3>Nombre del proyecto:</h3>
+            </div>
+            <div class="usersCol2">
+              <p>{{ proyects.nameProyect }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col-Pro">
+          <div class="cont-Col-Info-Pro">
+            <div>
+              <h3>Descripción del proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <p>{{ proyects.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col-Pro">
+          <div class="cont-Col-Info-Pro">
+            <div>
+              <h3>Notas del proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <p>{{ proyects.notas }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-Col">
+          <div class="cont-Col-Info">
+            <div>
+              <h3>Personas en el proyecto:</h3>
+            </div>
+            <div class="usersCol">
+              <ng-container *ngFor="let user of colaboradores">
+                <img [src]="user.icono" />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="containerT">
+        <div class="container-Tarea" *ngFor="let tarea of tareas">
+          <div class="cont-Tarea-Info">
+            <div class="container-Tarea-Div1">
+              <h2>Tarea:</h2>
+              <p>{{ tarea.nomTarea }}</p>
+              <h2>Fecha:</h2>
+              <p>{{ tarea.fechaI | date : "dd/MM/yyyy" }}</p>
+              <h2>Descripcion:</h2>
+              <p>{{ tarea.descripcion }}</p>
+            </div>
+            <div class="container-Tarea-Div2">
+              <h2>Materiales:</h2>
+              <ul>
+                <li *ngFor="let material of materiales[tarea.idT]">
+                  {{ material.nombreMaterial }}
+                </li>
+              </ul>
+              <div>
+                <h2>Fecha de Fin:</h2>
+                <p>{{ tarea.fechaF | date : "dd/MM/yyyy" }}</p>
+              </div>
+            </div>
+            <div class="container-Tarea-Div3">
+              <div class="usersC">
+                <h2>Persona encargada:</h2>
+                <div class="users">
+                  <div
+                    *ngFor="let colab of colaboradorTareas[tarea.idColaborador]"
+                    class="users"
+                  >
+                    <img [src]="colab.icono" />
+                    <p>{{ colab.nombres }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="complet">
+                <h2>Estatus:</h2>
+
+                <select
+                  [(ngModel)]="tarea.estatus"
+                  id="PersonaEncarga"
+                  name="Persona Encargada"
+                  (change)="updateEstatus(tarea)"
+                >
+                  <option value="No iniciada">No iniciada</option>
+                  <option value="Iniciada">Iniciada</option>
+                  <option value="En proceso">En proceso</option>
+                  <option value="Terminada">Terminada</option>
+                </select>
+              </div>
+              <div class = "complet">
+                <button [routerLink]="[
+                  '/tarea',
+                  tarea.idU,
+                  tarea.idP,
+                  tarea.idT
+                  ]">Detalles</button>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let user of user">
+            <div class="edit-delete-buttons" *ngIf="user.idTipo !== 3">
+              <button   [routerLink]="[
+              '/edit-tarea/edit/',
+              tarea.idU,
+              tarea.idP,
+              tarea.idT
+            ]">
+                <i
+                  class="fas fa-edit"
+                
+                ></i>
+              </button>
+              <button (click)="deleteTarea(tarea.idT)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngFor="let user of user">
+          <div
+            *ngIf="user.idTipo !== 3"
+            class="add-task-button"
+            (click)="onButtonClick(user.idU)"
+          >
+            +
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</body>

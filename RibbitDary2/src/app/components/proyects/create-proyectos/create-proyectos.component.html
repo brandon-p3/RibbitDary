@@ -1,0 +1,128 @@
+<header><app-navigation></app-navigation></header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <form class="formProyectos">
+    <div class="contentForm">
+      <div class="contTP">
+        <div class="contProyecto">
+          <div class="contProyecto1">
+            <label for="NombreProyecto">Nombre Del Proyecto:</label>
+            <input
+              type="text"
+              name="NombreProyecto"
+              [(ngModel)]="proyect.nameProyect"
+              autofocus
+              style="border-color: black"
+            />
+            <select
+              id="TipodeProyecto"
+              name="TipodeProyecto"
+              [(ngModel)]="proyect.idType"
+            >
+              <option value="opcion1">Tipo de Proyecto</option>
+              <option  *ngFor="let tp of tipoProy" value="{{tp.idType}}">{{tp.tipoProyecto}}</option>
+            </select>
+            <div class="contProyectoFechas">
+              <div class="contProyectoFechas1">
+                <label for="FechaInicioP">Fecha de Inicio:</label>
+                <input
+                  type="date"
+                  id="FechaInicioP"
+                  name="Fecha de Inicio"
+                  [(ngModel)]="proyect.fechaI"
+                  class="form_input"
+                />
+              </div>
+              <div class="contProyectoFechas1">
+                <label for="FechaFinalP">Fecha Final:</label>
+                <input
+                  type="date"
+                  id="FechaFinalP"
+                  name="Fecha Final"
+                  [(ngModel)]="proyect.fechaF"
+                  class="form_input"
+                />
+              </div>
+            </div>
+            <label for="Descripcion">Descripcion:</label>
+            <textarea
+              id="Descripcion"
+              name="Descripcion"
+              class="form_input"
+              [(ngModel)]="proyect.descripcion"
+              rows="5"
+              placeholder="Escribe una descripción detallada aquí..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="perNotType">
+          <div class="notas-container">
+            <h2>Notas:</h2>
+            <textarea
+              id="Notas"
+              name="Notas"
+              [(ngModel)]="proyect.notas"
+              class="notas-textarea"
+              placeholder="Escribe tus notas aquí..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="perNotType-Container">
+        <button
+          type="button"
+          class="submit-button"
+          (click)="edit ? updateProyect() : saveNewProyect()"
+        >
+          Subir Proyecto
+        </button>
+
+        <div class="Presupuesto">
+          <label for="presupuesto">Presupuesto del Proyecto:</label>
+          <input
+            type="number"
+            id="presupuesto"
+            name="presupuesto"
+            [(ngModel)]="proyect.presupuesto"
+            (keypress)="validateInput($event)"
+          />
+        </div>
+        <app-mapa></app-mapa>
+        <div class="personas-container">
+          <h2>Personas seleccionadas:</h2>
+          <div class="personas-list">
+            <div *ngIf="edit" class="personas-list">
+              <div *ngFor="let colab of colaSelect" class="persona">
+                <img [src]="colab.icono" alt="Icono de usuario" />
+                <span>{{ colab.nombres }}</span>
+                <button
+                  type="button"
+                  (click)="deleteColaborador(colab.idU)"
+                  class="delete-button"
+                >
+                  Borrar
+                </button>
+              </div>
+            </div>
+            <div class="personas-disponibles">
+              <h3>Personas disponibles:</h3>
+              <ul>
+                <li *ngFor="let user of colaDispo">
+                  <input
+                    type="checkbox"
+                    [value]="user.idU"
+                    (change)="toggleColaboradorSeleccionado(user.idU, $event)"
+                  />
+                  <img [src]="user.icono" alt="Icono de usuario" />
+                  <span>{{ user.nombres }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>

@@ -1,0 +1,140 @@
+<header>
+  <app-navigation></app-navigation>
+  <app-nav-nar-lat></app-nav-nar-lat>
+</header>
+
+<body class="body">
+  <div class="body1">
+    <div class="container">
+      <form class="user-form">
+        <h1 class="bienvenido">
+          {{ edit ? "Editar Usuario" : "Crea tus socios" }}
+        </h1>
+
+        <label for="nombres">Nombres:</label>
+        <input
+          type="text"
+          id="nombres"
+          name="nombres"
+          [(ngModel)]="crearSocio.nombres"
+        />
+
+        <label for="aPuP">Apellido Paterno:</label>
+        <input
+          type="text"
+          id="aPuP"
+          name="aPuP"
+          [(ngModel)]="crearSocio.aPuP"
+        />
+
+        <label for="aPuM">Apellido Materno:</label>
+        <input
+          type="text"
+          id="aPuM"
+          name="aPuM"
+          [(ngModel)]="crearSocio.aPuM"
+        />
+
+        <label for="usuario">Correo Electrónico:</label>
+        <input
+          type="text"
+          id="usuario"
+          name="usuario"
+          [(ngModel)]="crearSocio.usuario"
+        />
+
+        <label for="contraseña">Contraseña:</label>
+        <input
+          type="password"
+          id="contraseña"
+          name="contraseña"
+          [(ngModel)]="crearSocio.password"
+          [disabled]="edit"
+        />
+
+        <label for="contraseñaconfirma">Confirma Contraseña:</label>
+        <input
+          type="password"
+          id="contraseñaconfirma"
+          name="contraseñaconfirma"
+          [(ngModel)]="confirmpass"
+          [disabled]="edit"
+        />
+
+        <label for="icono">Avatar:</label>
+        <select id="icono" name="icono" [(ngModel)]="crearSocio.icono">
+          <option value="" disabled selected>Selecciona un icono</option>
+          <option value="../../../../assets/img/Icon-User/icon-user-1.jpg">
+            Rana simple
+          </option>
+          <option value="../../../../assets/img/Icon-User/icon-user-2.jpg">
+            Rana rizada
+          </option>
+          <option value="../../../../assets/img/Icon-User/icon-user-3.jpg">
+            Rana de la alta curnia
+          </option>
+          <option value="../../../../assets/img/Icon-User/icon-user-4.jpg">
+            Rana de gym
+          </option>
+          <option value="../../../../assets/img/Icon-User/icon-user-5.jpg">
+            Rana cute
+          </option>
+        </select>
+
+        <button type="button" (click)="edit ? updateSocio() : crearSocios()">
+          {{ edit ? "Actualizar Usuario" : "Crear Socio" }}
+        </button>
+      </form>
+      <!--Formulario para cambiar la contraseña -->
+      <form class="user-form" *ngIf="edit" #userForm="ngForm" >
+        <h1 class="bienvenido2">Cambia tu contraseña</h1>
+      
+        <div>
+          <label for="contraseña">Contraseña:</label>
+          <div class="password-container">
+            <input
+            type="{{ showPassword  ? 'text' : 'password' }}"
+              id="contraseña"
+              name="contraseña"
+              required
+              [(ngModel)]="pass.password"
+              #password="ngModel"
+              [ngClass]="{'error': password.invalid && password.touched}"
+              pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!#%*?&]{8,}"
+              title="La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo."
+            />
+            <button type="button" (click)="togglePasswordVisibility()" class="button-eye">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <p *ngIf="password.invalid && password.touched" class="error-message">
+            La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un símbolo.
+          </p>
+      
+          <label for="contraseñaconfirma">Confirma Contraseña:</label>
+          <div class="password-container">
+            <input
+              id="contraseñaconfirma"
+              name="contraseñaconfirma"
+              required
+              [(ngModel)]="confirmpass2"
+                />
+
+          </div>
+
+          <button [disabled]="userForm.invalid" type="button" (click)="updatePassword()">Actualizar Contraseña</button>
+       
+        </div>
+      </form>
+      
+    </div>
+
+    <div [ngClass]="edit ? 'container3' : 'container2'">
+      <img
+        *ngIf="crearSocio.icono"
+        [src]="crearSocio.icono"
+        alt="Icono seleccionado"
+      />
+    </div>
+  </div>
+</body>

@@ -1,0 +1,189 @@
+{
+  "proyects": [
+    {
+      "id": "c162",
+      "NombreProyecto": "Crear pantallas de HTML",
+      "TipoProyecto": "Escolar",
+      "PersonasInvolucradas": [
+        {
+          "NombrePersonasInvolucradas": "Tú",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-2.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Andres",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Felipe",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-1.jpg"
+        }
+      ],
+      "PersonaACargo": "Gustavo Amaro",
+      "IconUserA": "../../../../assets/img/Icon-User/icon-user-2.jpg",
+      "FechaI": "2024-06-26",
+      "FechaF": "2024-08-21",
+      "Descripcion": "Hacer cada una de las panatllas de html",
+      "Notas": "",
+      "Porcentaje": "50"
+    },
+    {
+      "id": "142b",
+      "NombreProyecto": "prueba",
+      "TipoProyecto": "Escolar",
+      "PersonasInvolucradas": [
+        {
+          "NombrePersonasInvolucradas": "Tú",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-2.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Andres",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+        }
+      ],
+      "PersonaACargo": "Gustavo Amaro",
+      "IconUserA": "../../../../assets/img/Icon-User/icon-user-2.jpg",
+      "FechaI": "2024-06-27",
+      "FechaF": "2024-06-19",
+      "Descripcion": "Hola",
+      "Notas": "",
+      "TypeFlor": 0,
+      "Porcentaje": "50"
+    },
+    {
+      "id": "0f14",
+      "NombreProyecto": "Hola munde",
+      "TipoProyecto": "Personal",
+      "PersonasInvolucradas": [
+        {
+          "NombrePersonasInvolucradas": "Tú",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-2.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Felipe",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-1.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Andres",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Ronaldo",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-3.jpg"
+        },
+        {
+          "NombrePersonasInvolucradas": "Roy",
+          "IconUser": "../../../../assets/img/Icon-User/icon-user-5.jpg"
+        }
+      ],
+      "PersonaACargo": "Gustavo Amaro",
+      "IconUserA": "../../../../assets/img/Icon-User/icon-user-2.jpg",
+      "FechaI": "2024-07-24",
+      "FechaF": "2024-07-31",
+      "Descripcion": "Adios mes pride",
+      "Notas": "",
+      "TypeFlor": 0,
+      "Porcentaje": "50"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "ab42",
+      "idP": "142b",
+      "NombreTarea": "Pruebas",
+      "FechaI": "2024-06-28",
+      "Descripcion": "Esta es una atrea de pruebas, para comprobar que todo lo agregado dentro del archivo json se logran vizualizar",
+      "Materiales": [
+        {
+          "Material": "Cosas"
+        },
+        {
+          "Material": "Cosas"
+        }
+      ],
+      "FechaF": "2024-06-17",
+      "PersonaACargo": "Andres",
+      "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+    },
+    {
+      "id": "680f",
+      "idP": "c162",
+      "NombreTarea": "Prueba 2",
+      "FechaI": "2024-06-26",
+      "Descripcion": "No se que escribir dentro de esto, i heit mi life",
+      "Materiales": [
+        {
+          "Material": "Kaney Wets"
+        },
+        {
+          "Material": "Otras cosas"
+        }
+      ],
+      "FechaF": "2024-06-18",
+      "PersonaACargo": "Felipe",
+      "IconUser": "../../../../assets/img/Icon-User/icon-user-1.jpg"
+    },
+    {
+      "id": "890c",
+      "idP": "c162",
+      "NombreTarea": "Pruebas",
+      "FechaI": "2024-06-28",
+      "Descripcion": "Pinche ronaldo come verga",
+      "Materiales": [
+        {
+          "Material": "Pene"
+        },
+        {
+          "Material": "Culo de ronaldo"
+        },
+        {
+          "Material": "Pene"
+        }
+      ],
+      "FechaF": "2024-06-26",
+      "PersonaACargo": "Andres",
+      "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+    },
+    {
+      "id": "c060",
+      "idP": "c162",
+      "NombreTarea": "Uriel gei",
+      "FechaI": "2024-07-01",
+      "Descripcion": "Es muy gei",
+      "Materiales": [
+        {
+          "Material": "Pene"
+        },
+        {
+          "Material": "Mas pene"
+        },
+        {
+          "Material": "Mucho pene"
+        }
+      ],
+      "FechaF": "2024-07-16",
+      "PersonaACargo": "Felipe",
+      "IconUser": "../../../../assets/img/Icon-User/icon-user-1.jpg"
+    },
+    {
+      "id": "bd48",
+      "idP": "142b",
+      "NombreTarea": "Uriel Hetero",
+      "FechaI": "2024-07-31",
+      "Descripcion": "Es muy fife",
+      "Materiales": [
+        {
+          "Material": "Futbol"
+        },
+        {
+          "Material": "Golpear Mujeres"
+        },
+        {
+          "Material": "Pussys"
+        }
+      ],
+      "FechaF": "2024-07-29",
+      "PersonaACargo": "Andres",
+      "IconUser": "../../../../assets/img/Icon-User/icon-user-4.jpg"
+    }
+  ]
+}

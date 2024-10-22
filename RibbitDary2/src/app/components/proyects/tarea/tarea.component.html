@@ -1,0 +1,60 @@
+<header><app-navigation></app-navigation></header>
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="formProyectos">
+    <div class="contentForm">
+      <div class="container-Tarea">
+        <div class="cont-Tarea-Info">
+          <div class="container-Tarea-Div1">
+            <h2 for="NombreTarea">Nombre De la Tarea: </h2>
+            <p>{{ tarea.nomTarea }}</p>
+            <div>
+              <h2>Fecha de Inicio:</h2>
+              <p>{{ tarea.fechaI | date : "dd/MM/yyyy" }}</p>
+              <h2>Fecha de Fin:</h2>
+              <p>{{ tarea.fechaF | date : "dd/MM/yyyy" }}</p>
+            </div>
+            <h2>Descripción:</h2>
+            <p>{{ tarea.descripcion }}</p>
+          </div>
+          <div class="container-Tarea-Div3">
+            <div class="usersC">
+              <h2>Persona encargada:</h2>
+              <div class="users">
+                <div
+                  *ngFor="let colab of colaboradorTareas"
+                  class="users"
+                >
+                <img [src]="colab.icono" />
+                  <p>{{ colab.nombres }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="complet">
+              <h2>Estatus:</h2>
+              <p>{{ tarea.estatus }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-ubi">
+      <div>
+        <h4>Ubicacion de tu tarea: </h4>
+        <div id="mi_mapa" style="height: 300px; width: 100%; "></div>
+      </div>
+
+    <div class="materiales-lista">
+      <div class="materiales">
+        <h2>Materiales:</h2>
+        <ul>
+          <li *ngFor="let material of materiales" class="list-group-item">
+            {{ material.nombreMaterial }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+</body>

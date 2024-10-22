@@ -1,0 +1,15 @@
+<!-- src/app/components/news-list/news-list.component.html -->
+<div class="news-container" *ngIf="topNewsArticles.length > 0; else noNews">
+    <div *ngFor="let article of topNewsArticles" class="news-item">
+      <img [src]="article.urlToImage" alt="news image" class="news-image" *ngIf="article.urlToImage">
+      <div class="news-content">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+        <a [href]="article.url" target="_blank" class="read-more">Leer más</a>
+      </div>
+    </div>
+  </div>
+  <ng-template #noNews>
+    <p>No hay noticias disponibles.</p>
+  </ng-template>
+  
