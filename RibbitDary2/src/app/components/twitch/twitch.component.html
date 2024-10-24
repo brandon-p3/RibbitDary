@@ -1,0 +1,39 @@
+<header >
+  <app-navigation></app-navigation>
+</header>
+
+<app-nav-nar-lat></app-nav-nar-lat>
+
+<body class="body">
+  <div class="transmision-container" *ngIf="streams.length > 0">
+    <div class="stream-wrapper">
+      <h2 class="title">Transmisión en vivo</h2>
+      <iframe
+        [src]="getEmbedUrl(streams[0].user_name)"
+        class="stream-frame"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true">
+      </iframe>
+    </div>
+
+    <div class="chat-wrapper">
+      <h2 class="title">Chat en vivo</h2>
+      <iframe
+        [src]="getChatEmbedUrl(streams[0].user_name)"
+        class="chat-frame"
+        frameborder="0"
+        scrolling="no">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="no-stream" *ngIf="streams.length === 0">
+    <p>No estás transmitiendo en este momento.</p>
+  </div>
+
+  <div class="actions">
+    <button class="btn logout" (click)="logout()">Cerrar sesión</button>
+    <button class="btn login" (click)="loginWithTwitch()">Iniciar Sesión con Twitch</button>
+  </div>
+</body>

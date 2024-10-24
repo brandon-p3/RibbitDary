@@ -48,7 +48,8 @@ export interface Proyect {
     usuario?: string,
     password?: string,
     idTipo?: string,
-    icono?: string
+    icono?: string,
+    userIdTwitch?: string | null
   }
   
   export interface CreaSocio {

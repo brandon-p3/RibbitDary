@@ -31,6 +31,14 @@ export class NavNarLatComponent {
     );
 
   }
+  navigateToTwitch(idU: string) {
+    if (idU) {
+      localStorage.setItem('idU', idU); // Guardar el idU en localStorage
+      this.router.navigate(['/sesionesUsuario', idU]); // Redirigir al componente Twitch
+    } else {
+      console.error('ID de usuario no encontrado');
+    }
+  }
 
 
 }

@@ -45,6 +45,7 @@ import {
 } from 'angularx-social-login';
 import { PagoComponent } from './components/pago/pago.component';
 import { NewsComponent } from './components/navegacion/news/news.component';
+import { TwitchComponent } from './components/twitch/twitch.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { NewsComponent } from './components/navegacion/news/news.component';
     MapasTareaComponent,
     TareaComponent,
     PagoComponent,
-    NewsComponent
+    NewsComponent,
+    TwitchComponent
   ],
   
   bootstrap: 
@@ -103,7 +105,7 @@ import { NewsComponent } from './components/navegacion/news/news.component';
               },
               {
                 id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider('1179990169767112')
+                provider: new FacebookLoginProvider('1588368391753323')
               }
             ],
             onError: (err) => {

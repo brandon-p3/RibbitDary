@@ -19,6 +19,7 @@ import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-
 import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
 import { PagoComponent } from './components/pago/pago.component';
+import { TwitchComponent } from './components/twitch/twitch.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
 
   // Home
   { path: 'home/:idU', component: HomeComponent },
+  { path: 'home', component: HomeComponent }, 
 
 
   //Para usuarios Admin
@@ -78,6 +80,10 @@ const routes: Routes = [
 
   //Detalles pago
   {path: 'detalles-pago/:idU', component: DetallesPagoComponent},
+
+  //Twitch
+  {path: 'sesionesUsuario/:idU', component: TwitchComponent},
+  {path: 'sesionesUsuario', component: TwitchComponent},
 
 ];
 

@@ -30,11 +30,11 @@ export class ProyectsService {
   login(correo: string, password: string): Observable<any> {
     return this.http.post<any>(this.loginUrl, { correo, password });
   }
-  
+
   loginWithFacebook(fbToken: string): Observable<any> {
     return this.http.post<any>(`${this.API_BASE_URL}/auth/facebook`, { fbToken });
   }
-  
+
   crearUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.API_BASE_URL}/usuario`, usuario);
   }
@@ -51,10 +51,15 @@ export class ProyectsService {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/ubi/edit/${idU}`, usuario);
   }
 
+  updateTwitchUser(idU: string, usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/userIdTwitch/edit/${idU}`, usuario);
+  }
+
+
   //Mandar correo
-sendCorreo(idU: string): Observable<Usuario> {
-  return this.http.get<Usuario>(`${this.API_BASE_URL}/correo/correo-tareasU/${idU}`);
-}  
+  sendCorreo(idU: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_BASE_URL}/correo/correo-tareasU/${idU}`);
+  }
 
 
   //User x User
@@ -78,6 +83,9 @@ sendCorreo(idU: string): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.API_BASE_URL}/usuario/edit/${idU}`);
   }
 
+  getUsuarioTwitch(idU: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_BASE_URL}/usuario/userIdTwitch/${idU}`);
+  }
 
   // Obtener un tipo de proyecto por ID
   getTipoproyecto(idType: string): Observable<TipoProyecto> {
@@ -139,10 +147,6 @@ sendCorreo(idU: string): Observable<Usuario> {
   }
 
 
-
-
-
-
   // Colaboradores
   getColaboradores(idP: string): Observable<any> {
     return this.http.get<any>(`${this.API_BASE_URL}/proyectxcolab/${idP}`);
@@ -155,9 +159,6 @@ sendCorreo(idU: string): Observable<Usuario> {
   deletePColaborador(idP: string, idC: string): Observable<Proyectxcolab> {
     return this.http.delete<Proyectxcolab>(`${this.API_BASE_URL}/proyectxcolab/${idP}/${idC}`);
   }
-
-
-
 
 
   // Tareas
@@ -243,7 +244,7 @@ sendCorreo(idU: string): Observable<Usuario> {
     return this.http.get<DetallesPago[]>(`${this.API_BASE_URL}/detallespago/${idU}`);
   }
 
-  createDetalle(idU:String, detallePago: DetallesPago): Observable<DetallesPago> {
+  createDetalle(idU: String, detallePago: DetallesPago): Observable<DetallesPago> {
     return this.http.post<DetallesPago>(`${this.API_BASE_URL}/detallespago/${idU}`, detallePago);
   }
 
@@ -259,7 +260,7 @@ sendCorreo(idU: string): Observable<Usuario> {
   getTarjetas(idU: string): Observable<Tarjeta[]> {
     return this.http.get<Tarjeta[]>(`${this.API_BASE_URL}/tarjeta/${idU}`);
   }
-  
+
   getTarjeta(numTarjeta: string): Observable<Tarjeta> {
     return this.http.get<Tarjeta>(`${this.API_BASE_URL}/tarjeta/edit/${numTarjeta}`);
   }
@@ -303,11 +304,11 @@ sendCorreo(idU: string): Observable<Usuario> {
     return this.http.get<Paquete>(`${this.API_BASE_URL}/configUser/${idU}`);
   }
 
-  configUserPT(idU: string){
+  configUserPT(idU: string) {
     return this.http.get(`${this.API_BASE_URL}/configUser/paquetesU/${idU}`);
   }
 
-  configUserT(idU: string, idP: string){
+  configUserT(idU: string, idP: string) {
     return this.http.get(`${this.API_BASE_URL}/configUser/tareasU/${idU}/${idP}`);
   }
 

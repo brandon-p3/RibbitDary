@@ -28,8 +28,7 @@ CREATE TABLE usuario (
     fb_id VARCHAR(255),
     CONSTRAINT idTipo_FK FOREIGN KEY (idTipo) REFERENCES tipousuario(idTipo),
     CONSTRAINT unique_usuario UNIQUE (usuario),
-    email_verified BOOLEAN,
-    verification_token VARCHAR(255),
+    userIdTwitch VARCHAR(255),
 );
 
 -- Crear tabla UserXUser

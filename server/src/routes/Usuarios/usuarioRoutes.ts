@@ -17,6 +17,8 @@ class UsuarioRoutes{
         this.router.delete('/:idU',usuarioController.delete);
         this.router.put('/password/edit/:idU', usuarioController.updatePassword);
         this.router.put('/ubi/edit/:idU', usuarioController.ubicacion);
+        this.router.put('/userIdTwitch/edit/:idU', usuarioController.updateTwitch);
+        this.router.get('/userIdTwitch/:idU', usuarioController.getUserStream);
     }
 }
 
