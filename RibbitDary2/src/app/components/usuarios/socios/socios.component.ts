@@ -57,14 +57,20 @@ export class SociosComponent implements OnInit {
   }
 
   deleteSocio(idU: string) {
-    this.proyectsService.deleteUserxUser(idU).subscribe(
-      resp => {
-        console.log('Socio eliminado:', resp);
-        this.getsocios();
-      },
-      err => console.error('Error al eliminar socio', err)
-    );
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar este socio?');
+    if (confirmation) {
+      this.proyectsService.deleteUserxUser(idU).subscribe(
+        resp => {
+          console.log('Socio eliminado:', resp);
+          this.getsocios();
+        },
+        err => console.error('Error al eliminar socio', err)
+      );
+    } else {
+      console.log('Eliminación cancelada');
+    }
   }
+  
 
   getProyectos(idU: string) {
     this.proyectsService.getProyect(idU).subscribe(

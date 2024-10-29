@@ -43,9 +43,10 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
-import { PagoComponent } from './components/pago/pago.component';
+import { PagoComponent } from './components/pagos/pago/pago.component';
 import { NewsComponent } from './components/navegacion/news/news.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { TwitchComponent } from './components/twitch/twitch.component';
     TareaComponent,
     PagoComponent,
     NewsComponent,
-    TwitchComponent
+    TwitchComponent,
+    ChatbotComponent
   ],
   
   bootstrap: 

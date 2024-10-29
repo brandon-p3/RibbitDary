@@ -1,0 +1,20 @@
+.chat-icon {
+    position: fixed;
+    bottom: 20px; /* Ajusta la posición según sea necesario */
+    right: 20px; /* Ajusta la posición según sea necesario */
+    cursor: pointer;
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  }
+  
+  .chatbot-container {
+    position: fixed;
+    bottom: 70px; /* Ajusta según el tamaño de tu ícono */
+    right: 20px;
+    width: 400px; /* Ajusta el ancho del chatbot */
+    height: 700px; /* Ajusta la altura del chatbot */
+    border: 1px solid #ccc; /* Estilo opcional para el borde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+    background-color: white; /* Fondo opcional */
+    z-index: 999; /* Asegúrate de que esté por encima de otros elementos */
+  }
+  

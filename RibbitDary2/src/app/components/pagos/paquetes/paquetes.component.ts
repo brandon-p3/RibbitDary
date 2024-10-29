@@ -35,9 +35,14 @@ export class PaquetesComponent implements OnInit {
   }
 
   eliminarPaquete(idPaquete: string): void {
-    this.proyectsService.eliminarPaquete(idPaquete).subscribe(() => {
-      this.paquetes = this.paquetes.filter(paquete => paquete.idPaquete !== idPaquete);
-    });
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar este socio?');
+    if (confirmation) {
+      this.proyectsService.eliminarPaquete(idPaquete).subscribe(() => {
+        this.paquetes = this.paquetes.filter(paquete => paquete.idPaquete !== idPaquete);
+      });
+    } else {
+      console.log('Eliminación cancelada');
+    }
   }
 
   comprarPaquete(paquete: Paquete): void {

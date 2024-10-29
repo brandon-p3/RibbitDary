@@ -18,8 +18,9 @@ import { PaquetesComponent } from './components/pagos/paquetes/paquetes.componen
 import { CrearPaquetesComponent } from './components/pagos/crear-paquetes/crear-paquetes.component';
 import { DetallesPagoComponent } from './components/pagos/detalles-pago/detalles-pago.component';
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
-import { PagoComponent } from './components/pago/pago.component';
+import { PagoComponent } from './components/pagos/pago/pago.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
     redirectTo: '/presentacion',
     pathMatch: 'full'
   },
-
+//ChatBot
+{ path: 'chatbot/:idU', component: ChatbotComponent },
   //Usuarios
   {path: 'crear-usuario', component: CrearUsuarioComponent},
   {path:'edit-usuario/edit/:idU/:e', component: CrearSociosComponent},

@@ -116,15 +116,19 @@ export class ProyectosComponent implements OnInit {
   }
   //Borrar proyectos
   deleteProyect(idP: string) {
-    console.log(idP);
-
-    this.proyectsService.deleteProyect(idP).subscribe(
-      resp => {
-        console.log(resp);
-        this.getProyects();
-      },
-      err => console.error(err)
-    );
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar este socio?');
+    if (confirmation) {
+      console.log(idP);
+      this.proyectsService.deleteProyect(idP).subscribe(
+        resp => {
+          console.log(resp);
+          this.getProyects();
+        },
+        err => console.error(err)
+      );
+    } else {
+      console.log('Eliminación cancelada');
+    }
   }
 
   //Actualizar el estatus del proyecto

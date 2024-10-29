@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProyectsService } from '../../services/proyects.service';
+import { ProyectsService } from '../../../services/proyects.service';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 
 @Component({
@@ -111,6 +111,7 @@ export class PagoComponent implements OnInit {
             },
             err => console.error('Error registrando pago:', err)
           );
+          alert("Se mandara el recibo a tu correo, para que estes atento, cualquier duda no dudes en contactarnos");
 
         } else {
           console.error('ID de usuario no encontrado');

@@ -119,7 +119,7 @@
 .add-btn {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 15px;
     width: 60px;
     height: 60px;
     background-color: #a5d6a7; /* Verde pastel */
@@ -133,6 +133,7 @@
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 4%;
 }
 
 .add-btn:hover {

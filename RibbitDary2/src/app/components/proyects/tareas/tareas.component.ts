@@ -116,14 +116,19 @@ export class TareasComponent implements OnInit {
   }
 
   deleteTarea(idT: string) {
-    console.log(idT);
-    this.proyectsService.deleteTarea(idT).subscribe(
-      resp => {
-        console.log(resp);
-        this.getTareas();
-      },
-      err => console.error(err)
-    );
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar este socio?');
+    if (confirmation) {
+      console.log(idT);
+      this.proyectsService.deleteTarea(idT).subscribe(
+        resp => {
+          console.log(resp);
+          this.getTareas();
+        },
+        err => console.error(err)
+      );
+    } else {
+      console.log('Eliminación cancelada');
+    }
   }
 
 
