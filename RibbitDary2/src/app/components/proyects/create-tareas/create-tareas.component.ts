@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tarea, Material } from '../../../models/Proyect';
 import { ProyectsService } from '../../../services/proyects.service';
+import { GoogleCalendarService } from '../../../services/google-calendar.service';
 import * as L from 'leaflet';
+import { MatDialog } from '@angular/material/dialog'; // Importa MatDialog
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component'; // Asegúrate de importar tu componente de diálogo
+
 
 @Component({
   selector: 'app-create-tareas',
@@ -25,7 +29,7 @@ export class CreateTareasComponent implements OnInit {
   idMaterialSelect: string[] = [];
   materiales: Material[] = [];
   materialSelect: any = [];
-  tareaUbi: any=[];
+  tareaUbi: any = [];
 
   proyects: any = [];
   colaboradores: any = [];
@@ -35,7 +39,9 @@ export class CreateTareasComponent implements OnInit {
   constructor(
     private proyectsService: ProyectsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private googleCalendarService: GoogleCalendarService,
+    private dialog: MatDialog 
   ) { }
 
   ngOnInit() {
@@ -132,28 +138,7 @@ export class CreateTareasComponent implements OnInit {
     }
   }
 
-  async saveNewTarea() {
-    const idU = this.route.snapshot.paramMap.get('idU');
-    const idP = this.route.snapshot.paramMap.get('idP');
 
-    if (idU && idP) {
-      this.tarea.idU = idU;
-      this.tarea.idP = idP;
-      try {
-        const resp = await this.proyectsService.saveTarea(this.tarea).toPromise();
-        console.log('Tarea guardada:', resp);
-
-        if (resp && resp.idT) {
-          const idT = resp.idT.toString();
-          this.saveNewMaterials(idT, idP);
-        }
-
-        this.volver();
-      } catch (err) {
-        console.error('Error al guardar tarea:', err);
-      }
-    }
-  }
 
   saveNewMaterials(idT: string, idP: string) {
     this.materiales.forEach(material => {
@@ -213,7 +198,7 @@ export class CreateTareasComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-  
+
     const redIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -230,16 +215,16 @@ export class CreateTareasComponent implements OnInit {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-  
+
     // Inicializar el mapa si aún no existe
     if (!this.map) {
       this.map = L.map('mi_mapa').setView([21.47268, -101.22288], 15);
-  
+
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
     }
-  
+
     // Mostrar la ubicación actual del usuario si se permite la geolocalización
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -248,12 +233,12 @@ export class CreateTareasComponent implements OnInit {
             position.coords.latitude,
             position.coords.longitude,
           ];
-  
+
           if (this.map) {
             this.map.setView(userLocation, 15);
-  
+
             // Añadir un marcador en la ubicación del usuario
-            L.marker(userLocation, {icon: redIcon})
+            L.marker(userLocation, { icon: redIcon })
               .addTo(this.map)
               .bindPopup("Estás aquí")
               .openPopup();
@@ -266,38 +251,101 @@ export class CreateTareasComponent implements OnInit {
     } else {
       alert('Geolocalización no soportada por tu navegador.');
     }
-  
+
     // Agregar marcadores para los colaboradores
     if (this.map && this.colaboradores.length > 0) {
       this.colaboradores.forEach((usuario: any) => {
         const location: L.LatLngTuple = [usuario.lat, usuario.lng];
-        L.marker(location, {icon: greenIcon})
+        L.marker(location, { icon: greenIcon })
           .addTo(this.map!)
           .bindPopup(`${usuario.nombres} está aquí`);
       });
     }
-  
+
     // Mostrar el marcador de la tarea si estamos en modo de edición
     if (this.map && this.edit) {
       const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-      L.marker(tareaLocation, {icon: yellowIcon})
+      L.marker(tareaLocation, { icon: yellowIcon })
         .addTo(this.map!)
         .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
         .openPopup();
     }
-  
+
     // Permitir al usuario seleccionar una nueva ubicación para la tarea
     this.map.on('click', (e: L.LeafletMouseEvent) => {
       this.tarea.lng = e.latlng.lng;
       this.tarea.lat = e.latlng.lat;
-  
+
       // Remover el marcador anterior si existe, y agregar uno nuevo
-      L.marker(e.latlng, {icon: yellowIcon})
+      L.marker(e.latlng, { icon: yellowIcon })
         .addTo(this.map!)
         .bindPopup(`Ubicación seleccionada para la tarea: ${this.tarea.nomTarea}`)
         .openPopup();
     });
   }
-  
+
+  async saveNewTarea() {
+    const idU = this.route.snapshot.paramMap.get('idU');
+    const idP = this.route.snapshot.paramMap.get('idP');
+
+    if (idU && idP) {
+      this.tarea.idU = idU;
+      this.tarea.idP = idP;
+
+      // Asignar medio día como hora de inicio y fin
+      if (this.tarea.fechaF && this.tarea.fechaI) {
+        const startDateTime = new Date(this.tarea.fechaI);
+        startDateTime.setHours(18, 0, 0); // Establecer a las 12:00 PM
+
+        const endDateTime = new Date(this.tarea.fechaF);
+        endDateTime.setHours(18, 0, 0); // Establecer a las 12:00 PM
+
+        this.tarea.fechaI = startDateTime.toISOString();
+        this.tarea.fechaF = endDateTime.toISOString();
+      }
+
+      try {
+        const resp = await this.proyectsService.saveTarea(this.tarea).toPromise();
+        console.log('Tarea guardada:', resp);
+
+        if (resp && resp.idT) {
+          const idT = resp.idT.toString();
+          this.saveNewMaterials(idT, idP);
+
+          // Diálogo de confirmación
+          const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            data: {
+              message: '¿Deseas agregar tu tarea a tu calendario de Google?',
+              fechaInicio: this.tarea.fechaI,
+              fechaFin: this.tarea.fechaF
+            }
+          });
+
+          dialogRef.afterClosed().subscribe(async (result) => {
+            if (result) { // Si el usuario acepta
+              const eventStart = {
+                summary: this.tarea.nomTarea,
+                description: `Tarea asignada a ID Colaborador: ${this.tarea.idColaborador}`,
+                start: {
+                  dateTime: this.tarea.fechaI,
+                  timeZone: 'America/Mexico_City'
+                },
+                end: {
+                  dateTime: this.tarea.fechaF,
+                  timeZone: 'America/Mexico_City'
+                }
+              };
+
+              await this.googleCalendarService.addEvent(eventStart);
+              console.log('Evento creado en Google Calendar');
+            }
+            this.volver(); // Redirige al usuario independientemente de su elección
+          });
+        }
+      } catch (err) {
+        console.error('Error al guardar tarea:', err);
+      }
+    }
+  }
 
 }

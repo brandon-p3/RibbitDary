@@ -1,0 +1,30 @@
+<div class="event-creator">
+  <h2>Crear Evento</h2>
+  <form (ngSubmit)="createEvent()">
+    <div>
+      <label for="summary">Resumen:</label>
+      <input type="text" id="summary" [(ngModel)]="event.summary" name="summary" required>
+    </div>
+    <div>
+      <label for="location">Ubicación:</label>
+      <input type="text" id="location" [(ngModel)]="event.location" name="location" required>
+    </div>
+    <div>
+      <label for="description">Descripción:</label>
+      <input type="text" id="description" [(ngModel)]="event.description" name="description" required>
+    </div>
+    <div>
+      <label for="start">Inicio:</label>
+      <input type="datetime-local" id="start" [(ngModel)]="event.start.dateTime" name="start" required>
+    </div>
+    <div>
+      <label for="end">Fin:</label>
+      <input type="datetime-local" id="end" [(ngModel)]="event.end.dateTime" name="end" required>
+    </div>
+    <div>
+      <label for="attendees">Correo de Invitado:</label>
+      <input type="email" id="attendees" [(ngModel)]="event.attendees[0].email" name="attendees" required>
+    </div>
+    <button type="submit">Crear Evento</button>
+  </form>
+</div>

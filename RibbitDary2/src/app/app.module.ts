@@ -30,6 +30,7 @@ import { MapaComponent } from './components/mapas/mapa/mapa.component';
 import { MapasTareaComponent } from './components/mapas/mapas-tarea/mapas-tarea.component';
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -47,6 +48,11 @@ import { PagoComponent } from './components/pagos/pago/pago.component';
 import { NewsComponent } from './components/navegacion/news/news.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { EventCreatorComponent } from './event-creator/event-creator.component';
+import { ConfirmDialogComponent } from './components/proyects/create-tareas/confirmDialogComponent';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FirestoreModule } from '@angular/fire/firestore'; 
 
 @NgModule({
   declarations: [
@@ -77,7 +83,9 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
     PagoComponent,
     NewsComponent,
     TwitchComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    EventCreatorComponent,
+    ConfirmDialogComponent
   ],
   
   bootstrap: 
@@ -90,6 +98,9 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
     RouterModule.forRoot(routes),
     SocialLoginModule,
     NgxPayPalModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
   ], 
     providers: [
       ProyectsService,
