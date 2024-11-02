@@ -22,6 +22,12 @@
         </button>
       </div>
 
+      <div class="social-login">
+        <button (click)="signInWithGoogle()" class="btn-Google">
+          <i>F</i> Iniciar con Google
+        </button>
+      </div>
+
       <div *ngIf="loggedIn">
         <img src="{{user.response.picture.data.url}}" style="width: 100px;"/>
       </div>

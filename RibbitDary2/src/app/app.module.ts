@@ -9,7 +9,7 @@ import { TareasComponent } from './components/proyects/tareas/tareas.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { CreateProyectosComponent } from './components/proyects/create-proyectos/create-proyectos.component';
 import { CreateTareasComponent } from './components/proyects/create-tareas/create-tareas.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NavNarLatComponent } from './components/navegacion/nav-nar-lat/nav-nar-lat.component';
 import { ProyectosComponent } from './components/proyects/proyectos/proyectos.component';
 import { ProyectsService } from './services/proyects.service';
@@ -31,6 +31,8 @@ import { MapasTareaComponent } from './components/mapas/mapas-tarea/mapas-tarea.
 import { TareaComponent } from './components/proyects/tarea/tarea.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { OAuthModule} from 'angular-oauth2-oidc';
 
 // Define tus rutas aquí
 const routes: Routes = [
@@ -101,6 +103,8 @@ import { ClimaComponent } from './components/navegacion/clima/clima.component';
     SocialLoginModule,
     NgxPayPalModule,
     CommonModule,
+    OAuthModule.forRoot(),
+    HttpClientModule,
   ], 
     providers: [
       ProyectsService,

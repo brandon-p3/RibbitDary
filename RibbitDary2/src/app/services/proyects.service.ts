@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
 import axios from 'axios';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 
 import {
   Proyect, Tarea, Proyectxcolab, Material, Usuario,
@@ -23,7 +24,12 @@ export class ProyectsService {
   private apiKeyClima = '7ab6120027bd3ef3b3d6d5a29df3b3d4'; // Reemplaza con tu clave API
   private baseUrl = 'https://api.openweathermap.org/data/2.5';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private oAuthService: OAuthService, //Servicio para login con Google
+  ) { 
+    this.initLogin();
+  }
 
 
   //Usuarios
@@ -57,6 +63,33 @@ export class ProyectsService {
 
   updateTwitchUser(idU: string, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_BASE_URL}/usuario/userIdTwitch/edit/${idU}`, usuario);
+  }
+
+  //Login con google
+  initLogin(){
+    const config: AuthConfig = {
+      issuer: 'https://accounts.google.com',
+      strictDiscoveryDocumentValidation: false,
+      redirectUri: window.location.origin + '/home',
+      clientId: '1051544364901-ijdfoh36b43h18c36tfu2gmqprk1cv29.apps.googleusercontent.com',
+      scope: 'openid profile email',
+    }
+
+    this.oAuthService.configure(config);
+    this.oAuthService.setupAutomaticSilentRefresh();
+    this.oAuthService.loadDiscoveryDocumentAndTryLogin(); 
+  }
+
+  loginG(){
+    this.oAuthService.initLoginFlow();
+  }
+
+  logoutG(){
+    this.oAuthService.logOut();
+  }
+
+  getPorfile(){ //metodo para obtener el perfil de google
+    return this.oAuthService.getIdentityClaims();
   }
 
 

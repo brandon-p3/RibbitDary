@@ -169,3 +169,29 @@ body {
 .btn-facebook:hover {
     background-color: #365492; /* Color azul más oscuro al pasar el cursor */
 }
+
+/* Botón de 'Iniciar con Google' */
+.btn-Google {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: white; /* Color azul de Facebook */
+    border: none;
+    color: black;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-Google i {
+    font-size: 20px;
+}
+
+.btn-Google:hover {
+    background-color: #9fe4a1; /* Color azul más oscuro al pasar el cursor */
+}
