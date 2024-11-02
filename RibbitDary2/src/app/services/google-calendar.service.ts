@@ -6,7 +6,6 @@ import { gapi } from 'gapi-script';
 })
 export class GoogleCalendarService {
   private clientId = '1051544364901-sdspeb5faof25qk2q64o6lnuma2fb8pi.apps.googleusercontent.com';
-  private apiKey = 'AIzaSyBECOcHxhjSvdanzQETS_oNhVgSMbrvQLY';
   private discoveryDocs = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
   private scope = "https://www.googleapis.com/auth/calendar.events";
 
@@ -17,7 +16,6 @@ export class GoogleCalendarService {
   private initializeGapi() {
     gapi.load('client:auth2', () => {
       gapi.client.init({
-        apiKey: this.apiKey,
         clientId: this.clientId,
         discoveryDocs: this.discoveryDocs,
         scope: this.scope

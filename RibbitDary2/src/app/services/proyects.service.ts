@@ -66,18 +66,24 @@ export class ProyectsService {
   }
 
   //Login con google
-  initLogin(){
+  initLogin() {
     const config: AuthConfig = {
       issuer: 'https://accounts.google.com',
       strictDiscoveryDocumentValidation: false,
       redirectUri: window.location.origin + '/home',
-      clientId: '1051544364901-ijdfoh36b43h18c36tfu2gmqprk1cv29.apps.googleusercontent.com',
+      clientId: '1051544364901-sdspeb5faof25qk2q64o6lnuma2fb8pi.apps.googleusercontent.com',
       scope: 'openid profile email',
-    }
+      responseType: 'token id_token',
+      showDebugInformation: true,  // Opcional para depuración
+    };
 
     this.oAuthService.configure(config);
     this.oAuthService.setupAutomaticSilentRefresh();
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin(); 
+
+    // Cargar el documento de descubrimiento y luego intentar iniciar sesión
+    this.oAuthService.loadDiscoveryDocument().then(() => {
+      this.oAuthService.tryLogin();
+    });
   }
 
   loginG(){
