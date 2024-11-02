@@ -1,0 +1,50 @@
+  :host {
+  display: block;
+  margin: 20px;
+}
+
+.weather-container {
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    margin-top: 5%;
+    height: 100px; /* Altura pequeña */
+    color: black; /* Color del texto en negro */
+    padding: 5px; /* Espacio alrededor del contenido */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    flex-direction: column; /* Coloca el contenido en columna */
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    overflow: hidden; /* Oculta el desbordamiento */
+    text-align: center; /* Centra el texto */
+    font-size: 12px; /* Ajusta el tamaño de la fuente según sea necesario */
+  }
+  
+       
+  
+  
+  .weather-content {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 10px;
+  margin: 5px 0;
+}
+
+.loading {
+  color: #fff;
+}
+
+  

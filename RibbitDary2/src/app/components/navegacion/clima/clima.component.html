@@ -1,0 +1,5 @@
+<div class="weather-container" [ngStyle]="{'background-image': getBackgroundImage()}">
+    <h1>Clima en {{ weatherData.name }}</h1>
+    <p>Temperatura: {{ weatherData.main.temp }}°C</p>
+    <p>Condiciones: {{ weatherData.weather[0].description }}</p>
+</div>

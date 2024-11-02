@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
+import axios from 'axios';
 
 import {
   Proyect, Tarea, Proyectxcolab, Material, Usuario,
@@ -19,6 +20,8 @@ export class ProyectsService {
   private loginUrl = 'http://localhost:5000/api/login';
   private apiKey = '31e2925f71534cbd9b020403b113357d';  // Clave API de NewsAPI
   private apiUrl = 'https://newsapi.org/v2/top-headlines';
+  private apiKeyClima = '7ab6120027bd3ef3b3d6d5a29df3b3d4'; // Reemplaza con tu clave API
+  private baseUrl = 'https://api.openweathermap.org/data/2.5';
 
   constructor(private http: HttpClient) { }
 
@@ -318,5 +321,17 @@ export class ProyectsService {
   getTopHeadlines(country: string = 'us'): Observable<any> {
     return this.http.get(`${this.apiUrl}?country=${country}&apiKey=${this.apiKey}`);
   }
+
+  //Api del clima
+  async getWeather(city: string) {
+    try {
+      const response = await axios.get(`${this.baseUrl}/weather?q=${city}&appid=${this.apiKeyClima}&units=metric`);
+      return response.data; 
+    } catch (error) {
+      console.error('Error al obtener los datos del clima:', error);
+      throw error; // Lanza el error para manejarlo en el componente
+    }
+  }
+  
 
 }

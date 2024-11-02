@@ -49,10 +49,11 @@ import { NewsComponent } from './components/navegacion/news/news.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { EventCreatorComponent } from './event-creator/event-creator.component';
-import { ConfirmDialogComponent } from './components/proyects/create-tareas/confirmDialogComponent';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FirestoreModule } from '@angular/fire/firestore'; 
+import { CommonModule } from '@angular/common';
+import { ClimaComponent } from './components/navegacion/clima/clima.component';
 
 @NgModule({
   declarations: [
@@ -85,22 +86,21 @@ import { FirestoreModule } from '@angular/fire/firestore';
     TwitchComponent,
     ChatbotComponent,
     EventCreatorComponent,
-    ConfirmDialogComponent
+    ClimaComponent,
   ],
   
   bootstrap: 
   [AppComponent
 
   ],
-   imports: [BrowserModule,
+   imports: [
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(routes),
     SocialLoginModule,
     NgxPayPalModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
+    CommonModule,
   ], 
     providers: [
       ProyectsService,
@@ -126,6 +126,9 @@ import { FirestoreModule } from '@angular/fire/firestore';
             }
           } as SocialAuthServiceConfig,
         }
+    ],
+    exports: [
+      ClimaComponent
     ]
 })
 export class AppModule { }
