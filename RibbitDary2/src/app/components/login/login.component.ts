@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-      console.log(this.user);
+      //console.log(this.user);
     });
   }
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit{
       // Llama al backend para autenticar al usuario con el token de Facebook
       this.proyectsService.loginWithFacebook(fbToken).subscribe(
         response => {
-          console.log('Login exitoso:', response);
+          //console.log('Login exitoso:', response);
           // Redirigir al usuario según sea necesario
           this.router.navigate([`/home/${response.userId}`]);
         },

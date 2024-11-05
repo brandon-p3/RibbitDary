@@ -116,7 +116,7 @@ export class TareasComponent implements OnInit {
   }
 
   deleteTarea(idT: string) {
-    const confirmation = confirm('¿Estás seguro de que deseas eliminar este socio?');
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar esta tarea?');
     if (confirmation) {
       console.log(idT);
       this.proyectsService.deleteTarea(idT).subscribe(

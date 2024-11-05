@@ -120,12 +120,9 @@ export class TareaComponent implements OnInit {
 
           if (this.map) {
             this.map.setView(userLocation, 15);
-
-            // Verificar que la ubicación de la tarea esté disponible
             if (this.tareaUbi.lat && this.tareaUbi.lng) {
 
               const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-              // Trazar la ruta usando leaflet-routing-machine
               L.routing.control({
                 waypoints: [
                   L.latLng(userLocation[0], userLocation[1]),

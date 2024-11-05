@@ -18,3 +18,8 @@
     z-index: 999; /* Asegúrate de que esté por encima de otros elementos */
   }
   
+  iframe {
+    border: none;
+    border-radius: 8px; /* Esquinas redondeadas */
+  }
+  
