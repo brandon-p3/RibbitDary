@@ -11,7 +11,11 @@ CREATE TABLE tipousuario (
     idTipo TINYINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nombre VARCHAR(15) NOT NULL
 );
-
+-- Insertar tipos de usuario
+INSERT INTO tipousuario (idTipo, nombre) VALUES
+(1, 'UsuarioMaster'),
+(2, 'UsuarioAdmin'),
+(3, 'UsuarioComun');
 
 -- Crear tabla Usuario
 CREATE TABLE usuario (
@@ -30,6 +34,10 @@ CREATE TABLE usuario (
     CONSTRAINT unique_usuario UNIQUE (usuario),
     userIdTwitch VARCHAR(255),
 );
+INSERT INTO usuario (idU, usuario, aPuP, aPuM, password, icono, idTipo) VALUES
+(0, 'UsuarioBorrado', 'Usuario Borrando', 'Borrado', 'nadiePodraAcceder#12','../../../../assets/img/Icon-User/icon-user-6.jpg', 3), -- Usuario borrado, sin contraseña
+(1, 'gustavo_p3', 'Gustavo', 'Mendoza', 'Amaro', 'brandon','../../../../assets/img/Icon-User/icon-user-2.jpg',1), -- Usuario master
+(2, 'mirza_p3', 'Mirza', 'Morales', 'Lezama','mirza','../../../../assets/img/Icon-User/icon-user-1.jpg', 1); -- Usuario master
 
 -- Crear tabla UserXUser
 CREATE TABLE userxuser (
