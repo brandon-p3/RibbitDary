@@ -5,14 +5,13 @@
   width: 100%;
   background-color: #ebf3d7;
   z-index: 1000;
-  font-family: 'CascadiaMonoExtraLight', monospace;
+  font-family: "CascadiaMonoExtraLight", monospace;
   height: 17%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
-
 }
 
 .nav-list2 {
@@ -23,7 +22,6 @@
   margin: 0;
   width: 100%;
   max-width: 120%;
-
 }
 
 .nav-list2 li {
@@ -43,7 +41,6 @@
   cursor: pointer;
   padding-right: 5%;
   width: 50%;
-
 }
 
 .nav-button-1 button {
@@ -53,7 +50,7 @@
   border-radius: 5%;
   color: white;
   font-size: 1.3em;
-  font-family: 'CascadiaMonoExtraLight', monospace;
+  font-family: "CascadiaMonoExtraLight", monospace;
   font-size: 1em;
 }
 
@@ -61,7 +58,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-
 }
 
 .nav-info i {
@@ -125,7 +121,6 @@ a {
   border-radius: 5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-
 }
 
 .dropdown-menu ul {
@@ -168,7 +163,7 @@ a {
   left: 0;
 }
 
-.menu-icon{
+.menu-icon {
   display: none;
 }
 
@@ -194,7 +189,7 @@ a {
     color: #000;
     text-decoration: none;
     display: block;
-    font-size: .9em;
+    font-size: 0.9em;
     padding: 10px;
     border-radius: 4px;
   }
@@ -204,12 +199,10 @@ a {
     color: white;
   }
 
-
   .nav-list2 li h2 {
     font-size: 1em;
     columns: 0;
   }
-
 
   .nav-info {
     padding-right: 0;
@@ -221,8 +214,7 @@ a {
     width: 100%;
     font-size: 0.9em;
     padding: 0px 13px 0px 13px; /* O simplemente padding: 13px; */
-}
-
+  }
 
   .fa-exclamation-triangle {
     display: none;
@@ -232,12 +224,15 @@ a {
     display: none;
   }
 
-  .menu-icon1{
+  .menu-icon1 {
     display: none;
   }
 
   .menu-icon {
     display: block;
-}
+  }
 
+  .nav-list2 li h2 {
+    display: none; /* Oculta el título en pantallas pequeñas */
+  }
 }
