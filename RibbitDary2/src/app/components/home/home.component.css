@@ -71,8 +71,16 @@
 .task-info h2 {
   margin: 0;
   font-size: 1.8em;
-  color: #ffffff; /* Azul pastel */
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 
 .task-info p {
   margin: 5px 0;
@@ -153,15 +161,27 @@
 /* Responsivo para pantallas de tamaño medio (tabletas) */
 @media (max-width: 768px) {
   .task-grid {
-    grid-template-columns: repeat(1, 1fr); /* Dos columnas en la rejilla */
+    grid-template-columns: repeat(1, 1fr); /* Una columna en la rejilla */
     gap: 15px;
   }
 
   .task-card {
-    width: 90%;
-    padding: 10px;
     font-size: 0.9em;
   }
+
+  .task-info h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* Cambiado a 100% para que ocupe todo el ancho */
+    display: block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
   .task-user img {
     width: 40px;
     height: 40px;
@@ -170,5 +190,4 @@
   .task-user span {
     font-size: 1em;
   }
-
 }

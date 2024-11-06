@@ -1,0 +1,60 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px; /* Mejora el redondeo */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Sombras más suaves */
+  animation: fadeIn 0.3s ease;
+  max-width: 450px; /* Ancho máximo del diálogo */
+  margin: auto; /* Centrado automático */
+  background-color: #ffffff; /* Fondo blanco */
+  position: fixed; /* Asegura que se quede en una posición fija */
+  top: 50%; /* Posiciona al 50% desde la parte superior */
+  left: 50%; /* Posiciona al 50% desde la izquierda */
+  transform: translate(-50%, -50%); /* Ajusta para centrar el cuadro de diálogo */
+  z-index: 10000; /* Asegura que esté por encima de otros elementos */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirm-dialog-title {
+  text-align: center;
+  color: #3f51b5; /* Color primario */
+  margin: 0;
+  font-size: 1.5rem; /* Tamaño de fuente mayor */
+}
+
+.dialog-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem; /* Tamaño de fuente para el mensaje */
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-around; /* Mejora el espaciado entre los botones */
+  width: 100%;
+  padding-top: 10px; /* Espacio superior */
+}
+
+button {
+  min-width: 80px; /* Anchura mínima para los botones */
+  font-weight: bold; /* Texto en negrita */
+  transition: background-color 0.2s; /* Transición suave al cambiar el color de fondo */
+}
+
+button:hover {
+  background-color: rgba(63, 81, 181, 0.1); /* Efecto al pasar el ratón */
+}

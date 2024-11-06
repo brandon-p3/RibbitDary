@@ -5,7 +5,7 @@ import { ProyectsService } from '../../../services/proyects.service';
 import { GoogleCalendarService } from '../../../services/google-calendar.service';
 import * as L from 'leaflet';
 import { MatDialog } from '@angular/material/dialog'; // Importa MatDialog
-import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component'; // Asegúrate de importar tu componente de diálogo
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'; // Asegúrate de importar tu componente de diálogo
 
 
 @Component({
@@ -35,13 +35,14 @@ export class CreateTareasComponent implements OnInit {
   colaboradores: any = [];
   creadorProyect: any = [];
   edit: boolean = false;
+  colaboradorForDrive: any = [];
 
   constructor(
     private proyectsService: ProyectsService,
     private route: ActivatedRoute,
     private router: Router,
     private googleCalendarService: GoogleCalendarService,
-    private dialog: MatDialog 
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -321,26 +322,48 @@ export class CreateTareasComponent implements OnInit {
             }
           });
 
+
+
           dialogRef.afterClosed().subscribe(async (result) => {
             if (result) { // Si el usuario acepta
-              const eventStart = {
-                summary: this.tarea.nomTarea,
-                description: `Tarea asignada a ID Colaborador: ${this.tarea.idColaborador}`,
-                start: {
-                  dateTime: this.tarea.fechaI,
-                  timeZone: 'America/Mexico_City'
-                },
-                end: {
-                  dateTime: this.tarea.fechaF,
-                  timeZone: 'America/Mexico_City'
-                }
-              };
+              const idColaborador = this.tarea.idColaborador;
+              if (idColaborador) {
+                this.proyectsService.getUsuarioEdit(idColaborador).subscribe(
+                  resp => {
+                    console.log(resp);
+                    this.colaboradorForDrive = resp;
 
-              await this.googleCalendarService.addEvent(eventStart);
-              console.log('Evento creado en Google Calendar');
+                    // Crear el evento con los asistentes
+                    const eventStart = {
+                      summary: this.tarea.nomTarea,
+                      description: `${this.tarea.descripcion}`,
+                      location: `${this.tarea.lat}, ${this.tarea.lng}`, // Añadir ubicación
+                      start: {
+                        dateTime: this.tarea.fechaI,
+                        timeZone: 'America/Mexico_City'
+                      },
+                      end: {
+                        dateTime: this.tarea.fechaF,
+                        timeZone: 'America/Mexico_City'
+                      },
+                      attendees: [
+                        {
+                          email: this.colaboradorForDrive.usuario // Añadir al colaborador como asistente
+                        }
+                      ]
+                    };
+
+                    // Llamada al servicio para agregar el evento al Google Calendar
+                    this.googleCalendarService.addEvent(eventStart);
+                    console.log('Evento creado en Google Calendar', eventStart);
+                  },
+                  err => console.error(err)
+                );
+              }
+              this.volver(); // Redirige al usuario independientemente de su elección
             }
-            this.volver(); // Redirige al usuario independientemente de su elección
           });
+
         }
       } catch (err) {
         console.error('Error al guardar tarea:', err);

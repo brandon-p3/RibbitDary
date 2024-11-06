@@ -90,8 +90,13 @@ button:active {
 /*Container para mover cada parte de la info de la tarea*/
 /*Div1*/
 .container-Tarea-Div1 {
-    width: 50%;
+    width: 45%;
+    padding-right: 3%;
+    word-wrap: break-word;  /* Permite que las palabras largas se ajusten al contenedor */
+    overflow-wrap: break-word;  /* Asegura que el texto largo se divida en líneas si es necesario */
+    white-space: normal;  /* Permite que el texto se ajuste en múltiples líneas */
 }
+
 
 .container-Tarea-Div1 h2 {
     font-size: 1.2rem;
@@ -329,7 +334,21 @@ button:active {
     }
 
     /* Información de la tarea */
-    .container-Tarea-Div1,
+    .container-Tarea-Div1 {
+        width: 90%;
+        word-wrap: break-word;  /* Permite que las palabras largas se ajusten al contenedor */
+        overflow-wrap: break-word;  /* Asegura que el texto largo se divida en líneas si es necesario */
+        white-space: normal;  /* Permite que el texto se ajuste en múltiples líneas */
+        overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    }
+    
+    /* Si prefieres que el texto que no cabe se muestre con puntos suspensivos */
+    .container-Tarea-Div1 p {
+        text-overflow: ellipsis; /* Muestra '...' si el texto es demasiado largo */
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        overflow: hidden; /* Oculta el contenido que sobrepasa el contenedor */
+    }
+    
     .container-Tarea-Div2,
     .container-Tarea-Div3 {
         width: 100%;
