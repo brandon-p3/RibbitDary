@@ -23,7 +23,8 @@ export interface Proyect {
     idU?: string,
     idColaborador?: string,
     lng?: number,
-    lat?: number
+    lat?: number,
+    idEvento?: string
   }
 
   export interface Proyectxcolab{

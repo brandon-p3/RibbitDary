@@ -288,31 +288,31 @@ export class CreateTareasComponent implements OnInit {
   async saveNewTarea() {
     const idU = this.route.snapshot.paramMap.get('idU');
     const idP = this.route.snapshot.paramMap.get('idP');
-
+  
     if (idU && idP) {
       this.tarea.idU = idU;
       this.tarea.idP = idP;
-
+  
       // Asignar medio día como hora de inicio y fin
       if (this.tarea.fechaF && this.tarea.fechaI) {
         const startDateTime = new Date(this.tarea.fechaI);
-        startDateTime.setHours(18, 0, 0); // Establecer a las 12:00 PM
-
+        startDateTime.setHours(18, 0, 0);
+  
         const endDateTime = new Date(this.tarea.fechaF);
-        endDateTime.setHours(18, 0, 0); // Establecer a las 12:00 PM
-
+        endDateTime.setHours(18, 0, 0);
+  
         this.tarea.fechaI = startDateTime.toISOString();
         this.tarea.fechaF = endDateTime.toISOString();
       }
-
+  
       try {
         const resp = await this.proyectsService.saveTarea(this.tarea).toPromise();
         console.log('Tarea guardada:', resp);
-
+  
         if (resp && resp.idT) {
           const idT = resp.idT.toString();
           this.saveNewMaterials(idT, idP);
-
+  
           // Diálogo de confirmación
           const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
@@ -321,18 +321,16 @@ export class CreateTareasComponent implements OnInit {
               fechaFin: this.tarea.fechaF
             }
           });
-
-
-
+  
           dialogRef.afterClosed().subscribe(async (result) => {
-            if (result) { // Si el usuario acepta
+            if (result) { // Si el usuario acepta, agrega el evento en Google Calendar
               const idColaborador = this.tarea.idColaborador;
               if (idColaborador) {
                 this.proyectsService.getUsuarioEdit(idColaborador).subscribe(
                   resp => {
                     console.log(resp);
                     this.colaboradorForDrive = resp;
-
+  
                     // Crear el evento con los asistentes
                     const eventStart = {
                       summary: this.tarea.nomTarea,
@@ -352,23 +350,30 @@ export class CreateTareasComponent implements OnInit {
                         }
                       ]
                     };
-
+  
                     // Llamada al servicio para agregar el evento al Google Calendar
-                    this.googleCalendarService.addEvent(eventStart);
-                    console.log('Evento creado en Google Calendar', eventStart);
+                    this.googleCalendarService.addEvent(eventStart).then(eventResp => {
+                      console.log('Evento creado en Google Calendar', eventResp);
+                      this.volver(); // Redirige solo después de crear el evento
+                    }).catch(error => {
+                      console.error('Error al crear el evento en Google Calendar', error);
+                      this.volver(); // Redirige si hay un error al crear el evento
+                    });
                   },
                   err => console.error(err)
                 );
               }
-              this.volver(); // Redirige al usuario independientemente de su elección
+            } else {
+              // Si el usuario elige "No", solo se redirige
+              this.volver();
             }
           });
-
         }
       } catch (err) {
         console.error('Error al guardar tarea:', err);
       }
     }
   }
+  
 
 }

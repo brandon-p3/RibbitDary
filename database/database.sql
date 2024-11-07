@@ -104,11 +104,11 @@ CREATE TABLE tipoproyecto (
 -- Crear tabla Proyecto
 CREATE TABLE proyecto (
     idP INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nameProyect VARCHAR(30) NOT NULL,
-    descripcion VARCHAR(255) NOT NULL,
+    nameProyect VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(100000) NOT NULL,
     fechaI DATE NOT NULL,
     fechaF DATE NOT NULL,
-    notas VARCHAR(255),
+    notas VARCHAR(100000),
     idU INT NOT NULL,
     idType INT NOT NULL,
     estatus VARCHAR(50),
@@ -129,8 +129,8 @@ CREATE TABLE proyectxcolab (
 -- Crear tabla Tarea
 CREATE TABLE tarea (
     idT INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nomTarea VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(255),
+    nomTarea VARCHAR(1000) NOT NULL,
+    descripcion VARCHAR(100000),
     fechaI DATE NOT NULL,
     fechaF DATE NOT NULL,
     idU INT NOT NULL,
