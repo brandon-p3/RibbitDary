@@ -1,227 +1,227 @@
 .formProyectos{
-    width: 100%;
-    margin-top: 2%;
-    font-family: 'CascadiaMonoExtraLight', monospace;
-    display: flex;
-    gap: 20px;
- 
+  width: 100%;
+  margin-top: 2%;
+  font-family: 'CascadiaMonoExtraLight', monospace;
+  display: flex;
+  gap: 20px;
+
 }
 /* Contenido del formulario */
 
 
 .contentForm{
-    display: inline;
-    width: 70%;
-    background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-cuadros-azules.jpg');
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    margin-bottom: 4%;
-    border-radius: 20px;
-    padding: 3%;
-    display: grid;
-    flex-direction: column; 
-   
+  display: inline;
+  width: 70%;
+  background-image: url('../../../../assets/img/Imagenes_RibbitDary/fondo-cuadros-azules.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 4%;
+  border-radius: 20px;
+  padding: 3%;
+  display: grid;
+  flex-direction: column; 
+ 
 }
 
 .contentForm label{
-    font-size: 1.3em;
-    text-align: center;
-    margin-bottom: 1%;
+  font-size: 1.3em;
+  text-align: center;
+  margin-bottom: 1%;
 }
 .contentForm input{
-    background: white;
-    border: none;
-    color: #000000;
-    height: 40px;
-    font-size: .8em;
-    text-align: center;
-    margin-bottom: 1%;
+  background: white;
+  border: none;
+  color: #000000;
+  height: 40px;
+  font-size: .8em;
+  text-align: center;
+  margin-bottom: 1%;
 }
 
 
 
 .contentForm select{
-    background-color: #95d1f8ec;
-    border: none;
-    color: #000000;
-    height: 50px;
-    font-size: 1em;
-    text-align: center;
-    margin-bottom: 1%;
+  background-color: #95d1f8ec;
+  border: none;
+  color: #000000;
+  height: 50px;
+  font-size: 1em;
+  text-align: center;
+  margin-bottom: 1%;
 
 }
 
 /*Contenido de las fechas*/
 .contTareasFechas{
-    display: flex;
-    gap: 45%;
-    margin-top: 10px;
+  display: flex;
+  gap: 45%;
+  margin-top: 10px;
 }
 
 .contTareasFechas1{
-    display: grid;
-    gap: 10%;
+  display: grid;
+  gap: 10%;
 }
 
 
 /*Boton subir tarea*/
 .submit-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 30px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #82c45d;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'CascadiaMonoExtraLight', monospace;
-  }
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 30px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #82c45d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'CascadiaMonoExtraLight', monospace;
+}
 
-  .submit-button:hover {
-    background-color: #28a7465e;
-  }
+.submit-button:hover {
+  background-color: #28a7465e;
+}
 
 
 
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    color: white;
-  }
+.form-group {
+  margin-bottom: 15px;
+}
 
-  /*Materiales*/
+.form-group label {
+  font-weight: bold;
+}
 
-  .mat-ubi{
-    width: 40%;
-    border-radius: 10px;
-    padding: 10px 20px;
-    height: 100%;
-  }
-/* Materiales */
-.materiales-lista {
-  background-color: #a0f8b2;
-  width: 95%;
-  margin-top: 2%;
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+/*Materiales*/
+
+.mat-ubi{
+  width: 40%;
   border-radius: 10px;
   padding: 10px 20px;
   height: 100%;
 }
+/* Materiales */
+.materiales-lista {
+background-color: #a0f8b2;
+width: 95%;
+margin-top: 2%;
+border-radius: 10px;
+padding: 10px 20px;
+height: 100%;
+}
 
 .list-group {
-  list-style-type: none;
-  padding-left: 0;
+list-style-type: none;
+padding-left: 0;
 }
 
 .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f3f3f3;
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-  padding: 10px;
-  border-radius: 4px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #f3f3f3;
+border: 1px solid #ddd;
+margin-bottom: 5px;
+padding: 10px;
+border-radius: 4px;
 }
 
 .btn-remove {
-  background: none;
-  border: none;
-  color: red;
-  cursor: pointer;
+background: none;
+border: none;
+color: red;
+cursor: pointer;
 }
 
 .btn-remove:hover {
-  color: darkred;
+color: darkred;
 }
 
 .btn-remove i {
-  font-size: 18px;
+font-size: 18px;
 }
 
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .formProyectos {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    gap: 10px; /* Espacio entre elementos en pantallas pequeñas */
-    align-items: center; /* Centra los elementos */
-    margin-top: 17%; /* Elimina el margen superior */
-  }
+.formProyectos {
+  flex-direction: column; /* Cambia la dirección del flex a columna */
+  gap: 10px; /* Espacio entre elementos en pantallas pequeñas */
+  align-items: center; /* Centra los elementos */
+  margin-top: 17%; /* Elimina el margen superior */
+}
 
-  .contentForm {
-    width: 90%; /* Ajusta el ancho para dispositivos móviles */
-    margin: 0 auto; /* Centra el contenido */
-    padding: 5%; /* Reduce el padding */
-    box-shadow: none; /* Elimina la sombra para un diseño más limpio */
-    border-radius: 10px; /* Ajusta el radio del borde */
-  }
+.contentForm {
+  width: 90%; /* Ajusta el ancho para dispositivos móviles */
+  margin: 0 auto; /* Centra el contenido */
+  padding: 5%; /* Reduce el padding */
+  box-shadow: none; /* Elimina la sombra para un diseño más limpio */
+  border-radius: 10px; /* Ajusta el radio del borde */
+}
 
-  .contentForm label {
-    font-size: 1.2em; /* Ajusta el tamaño del texto */
-  }
-
-
-
-  .contTareasFechas {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    gap: 10px; /* Espacio entre elementos */
-  }
-
-  .contTareasFechas1 {
-    gap: 10%; /* Ajusta el espacio entre elementos */
-  }
-
-  .submit-button {
-    width: 100%; /* Ajusta el ancho del botón */
-    font-size: 1em; /* Ajusta el tamaño de la fuente */
-    padding: 12px; /* Ajusta el padding */
-  }
-
-  .mat-ubi{
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px 20px;
-    height: 100%;
-  }
-
-  .materiales-lista {
-    width: 100%; /* Ajusta el ancho */
-    padding: 10px; /* Ajusta el padding */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-  }
+.contentForm label {
+  font-size: 1.2em; /* Ajusta el tamaño del texto */
+}
 
 
-  .btn-remove {
-    font-size: 18px; /* Ajusta el tamaño del icono */
-  }
-  
+
+.contTareasFechas {
+  flex-direction: column; /* Cambia la dirección del flex a columna */
+  gap: 10px; /* Espacio entre elementos */
+}
+
+.contTareasFechas1 {
+  gap: 10%; /* Ajusta el espacio entre elementos */
+}
+
+.submit-button {
+  width: 100%; /* Ajusta el ancho del botón */
+  font-size: 1em; /* Ajusta el tamaño de la fuente */
+  padding: 12px; /* Ajusta el padding */
+}
+
+.mat-ubi{
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 20px;
+  height: 100%;
+}
+
+.materiales-lista {
+  width: 100%; /* Ajusta el ancho */
+  padding: 10px; /* Ajusta el padding */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+
+.btn-remove {
+  font-size: 18px; /* Ajusta el tamaño del icono */
+}
+
 }
