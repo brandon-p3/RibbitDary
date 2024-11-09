@@ -14,11 +14,12 @@ import {
 })
 export class ProyectsService {
 
-  //private API_BASE_URL = 'https://server-production-11e4.up.railway.app/api';
-  //private loginUrl = 'https://server-production-11e4.up.railway.app/api/login';
+  private API_BASE_URL = 'https://ribbitdaryserver-production.up.railway.app/api';
+  private loginUrl = 'https://ribbitdaryserver-production.up.railway.app/api/login';
 
-  private API_BASE_URL = 'http://localhost:5000/api';
-  private loginUrl = 'http://localhost:5000/api/login';
+  // private API_BASE_URL = 'http://localhost:5000/api';
+  // private loginUrl = 'http://localhost:5000/api/login';
+  
   private apiKey = '31e2925f71534cbd9b020403b113357d';  // Clave API de NewsAPI
   private apiUrl = 'https://newsapi.org/v2/top-headlines';
   private apiKeyClima = '7ab6120027bd3ef3b3d6d5a29df3b3d4'; // Reemplaza con tu clave API

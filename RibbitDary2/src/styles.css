@@ -4,9 +4,9 @@
 }
 
 /* Para pantallas móviles */
-@media (max-width: 480px) {
+@media (max-width: 720px) {
     .body {
-        padding-left: 0%;
-        padding-top: 25%;
+        padding-left: 0;
+        padding-top: 30%;
     }
 }

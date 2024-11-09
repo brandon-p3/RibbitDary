@@ -122,7 +122,7 @@ import { ClimaComponent } from './components/navegacion/clima/clima.component';
               },
               {
                 id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider('1588368391753323')
+                provider: new FacebookLoginProvider('441044812351366')
               }
             ],
             onError: (err) => {
