@@ -123,7 +123,7 @@ export class TareaComponent implements OnInit {
             if (this.tareaUbi.lat && this.tareaUbi.lng) {
 
               const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-              L.routing.control({
+              L.Routing.control({
                 waypoints: [
                   L.latLng(userLocation[0], userLocation[1]),
                   L.latLng(tareaLocation[0], tareaLocation[1])

@@ -28,6 +28,7 @@
       </div>
 
       <!-- Usuario con menú desplegable -->
+       <div class="usuerPaquete">
       <div class="user-dropdown" (click)="toggleMenu()">
         <div *ngIf="router.url !== '/login'">
           <div class="user-info">
@@ -49,6 +50,7 @@
       <div *ngFor="let tu of tipoUser">
         <i>{{tu.namePaquete}}</i>
       </div>
+    </div>
     </div>
 
     
@@ -97,4 +99,4 @@
   </nav>
 </header>
 
-<!-- <app-chatbot></app-chatbot> -->
+<app-chatbot></app-chatbot>

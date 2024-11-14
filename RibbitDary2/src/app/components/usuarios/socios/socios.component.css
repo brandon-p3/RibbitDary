@@ -1,12 +1,10 @@
-
-
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
-}
-
-.user-card {
+  }
+  
+  .user-card {
     background-color: #ffffff; /* Fondo blanco para tarjetas */
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -18,78 +16,78 @@
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
-}
-
-.user-card:hover {
+  }
+  
+  .user-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-.user-info {
+  }
+  
+  .user-info {
     display: flex;
     align-items: center;
-}
-
-.user-info img {
+  }
+  
+  .user-info img {
     border-radius: 50%;
     border: 3px solid #a5d6a7; /* Borde verde pastel alrededor de la imagen */
     width: 100px;
     height: 100px;
     object-fit: cover;
     margin-right: 20px;
-}
-
-.user-details h1 {
+  }
+  
+  .user-details h1 {
     margin: 0;
     font-size: 1.5em;
     color: #004d40; /* Verde oscuro */
-}
-
-.user-details p {
+  }
+  
+  .user-details p {
     margin: 5px 0;
     color: #00796b; /* Verde más oscuro */
     font-size: 1em;
-}
-
-.projects {
+  }
+  
+  .projects {
     display: flex;
     flex-direction: column;
-}
-
-.projects h2 {
+  }
+  
+  .projects h2 {
     margin-top: 0;
     color: #004d40; /* Verde oscuro */
     font-size: 1.2em;
-}
-
-.projects ul {
+  }
+  
+  .projects ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.projects li {
+  }
+  
+  .projects li {
     background-color: #b2dfdb; /* Azul pastel */
     padding: 8px 12px;
     border-radius: 8px;
     margin-bottom: 6px;
     font-size: 1em;
-}
-
-.actions {
+  }
+  
+  .actions {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     opacity: 0;
     transition: opacity 0.3s;
-}
-
-.user-card:hover .actions {
+  }
+  
+  .user-card:hover .actions {
     opacity: 1;
-}
-
-.actions button {
+  }
+  
+  .actions button {
     background-color: #004d40; /* Verde oscuro */
     color: white;
     border: none;
@@ -99,24 +97,23 @@
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s, transform 0.2s;
-}
-
-.actions .edit-btn {
+  }
+  
+  .actions .edit-btn {
     background-color: #00796b; /* Verde más oscuro */
-}
-
-.actions .delete-btn {
+  }
+  
+  .actions .delete-btn {
     background-color: #d32f2f; /* Rojo para eliminar */
-}
-
-.actions button:hover {
+  }
+  
+  .actions button:hover {
     background-color: #003d33; /* Verde más oscuro para hover */
     transform: scale(1.05);
-}
-
-
-/* Estilos para el botón circular "Más" */
-.add-btn {
+  }
+  
+  /* Estilos para el botón circular "Más" */
+  .add-btn {
     position: fixed;
     bottom: 20px;
     right: 15px;
@@ -134,53 +131,50 @@
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     margin-bottom: 4%;
-}
-
-.add-btn:hover {
+  }
+  
+  .add-btn:hover {
     background-color: #00796b; /* Verde más oscuro para hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 750px) {
     .container {
-        width: 100%;
-        padding: 10px;
+      width: 90%;
+      padding: 10px;
     }
-
+  
     .user-card {
-        padding: 10px;
-        margin-bottom: 20px;
+      padding: 10px;
+      margin-bottom: 20px;
     }
-
+  
     .user-info img {
-        width: 50px;
-        height: 50px;
+      width: 50px;
+      height: 50px;
     }
-
+  
     .user-details h1 {
-        font-size: 1em;
+      font-size: 1em;
     }
-
+  
     .projects h2 {
-        font-size: 0.9em;
+      font-size: 0.9em;
     }
-
+  
     .projects li {
-        font-size: 0.7em;
-        padding: 5px 8px;
+      font-size: 0.7em;
+      padding: 5px 8px;
     }
-
+  
     .actions button {
-        font-size: 0.8em;
-        padding: 8px 10px;
+      font-size: 0.8em;
+      padding: 8px 10px;
     }
-
+  
     .add-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5em;
+      font-size: 1.5em;
+      margin-bottom: 13%;
     }
-}
-
-
+  }
+  

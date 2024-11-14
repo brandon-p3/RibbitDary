@@ -116,3 +116,12 @@
 .add-btn:hover {
   background-color: #64a064;
 }
+
+
+@media (max-width: 800px)  {
+.add-btn {
+  margin-bottom: 13%;
+  padding: 15px 19px;
+  margin-right: -1%;
+}
+}
