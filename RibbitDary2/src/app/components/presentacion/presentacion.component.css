@@ -312,3 +312,94 @@ body{
     margin-bottom: 20px;
   }
 }
+
+.mobile-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #e3e3e3);
+}
+.mobile-section h2 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  color: #333;
+}
+.mobile-section p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+/* Cards */
+.platform-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 600px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+.card-content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.card-image {
+  flex: 1;
+  text-align: center;
+}
+.card-image img {
+  width: 150px;
+  height: auto;
+}
+.card-info {
+  flex: 2;
+  padding-left: 20px;
+  text-align: left;
+}
+.card-info h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #444;
+}
+.card-info p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Botón de descarga */
+.btn-download {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00b345;
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-download:hover {
+  background-color: #42c976;
+  transform: scale(1.05);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .card-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .card-info {
+    padding-left: 0;
+  }
+}

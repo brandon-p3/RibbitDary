@@ -85,7 +85,7 @@ const routes: Routes = [
 
   //Twitch
   {path: 'sesionesUsuario/:idU', component: TwitchComponent},
-  {path: 'sesionesUsuario#access_token=mf6lwepet6vswq5cv2nh2hdap4cs7r&scope=user%3Aread%3Afollows+chat%3Aread&token_type=bearer', component: TwitchComponent},
+  {path: 'sesionesUsuario', component: TwitchComponent},
 
 ];
 

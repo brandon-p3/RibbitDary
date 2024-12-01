@@ -16,4 +16,14 @@ export class PresentacionComponent {
       }
     }
   }
+
+  downloadApk() {
+    const fileUrl = 'https://raw.githubusercontent.com/brandon-p3/RibbitDary-Android/main/app-debug.apk';
+    const anchor = document.createElement('a');
+    anchor.href = fileUrl;
+    anchor.download = 'app-debug.apk'; // Nombre predeterminado del archivo
+    anchor.target = '_blank';
+    anchor.click();
+  }
+
 }

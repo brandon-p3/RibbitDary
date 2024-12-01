@@ -6,6 +6,7 @@ import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 
 
+
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
@@ -123,13 +124,13 @@ export class TareaComponent implements OnInit {
             if (this.tareaUbi.lat && this.tareaUbi.lng) {
 
               const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-              L.Routing.control({
-                waypoints: [
-                  L.latLng(userLocation[0], userLocation[1]),
-                  L.latLng(tareaLocation[0], tareaLocation[1])
-                ],
-                routeWhileDragging: true
-              }).addTo(this.map);
+              // L.Routing.control({
+              //   waypoints: [
+              //     L.latLng(userLocation[0], userLocation[1]),
+              //     L.latLng(tareaLocation[0], tareaLocation[1])
+              //   ],
+              //   routeWhileDragging: true
+              // }).addTo(this.map);
 
 
               L.marker(tareaLocation, { icon: yellowIcon })
