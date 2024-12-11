@@ -11,14 +11,12 @@ class DetallesPagoController {
             if (user.length > 0 && user[0].idTipo === 1) {
                 const detalleP = await pool.query(`
                     SELECT * FROM detallespago INNER JOIN usuario ON detallespago.idU = usuario.idU
-                    INNER JOIN paquete ON detallespago.idPaquete = paquete.idPaquete
-                    INNER JOIN tarjeta ON detallespago.numTarjeta = tarjeta.numTarjeta`);
+                    INNER JOIN paquete ON detallespago.idPaquete = paquete.idPaquete`);
                 res.json(detalleP);
             } else {
                 const detalleP = await pool.query(`
                     SELECT * FROM detallespago INNER JOIN usuario ON detallespago.idU = usuario.idU
                     INNER JOIN paquete ON detallespago.idPaquete = paquete.idPaquete
-                    INNER JOIN tarjeta ON detallespago.numTarjeta = tarjeta.numTarjeta
                     WHERE detallespago.idU = ?`, [idU]);
                 res.json(detalleP);
             }

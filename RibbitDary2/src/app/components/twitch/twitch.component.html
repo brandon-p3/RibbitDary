@@ -1,39 +1,50 @@
-<header >
-  <app-navigation></app-navigation>
-</header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transmisión en vivo</title>
+  <base href="/">
+</head>
+<body>
+  <header>
+    <app-navigation></app-navigation>
+  </header>
 
-<app-nav-nar-lat></app-nav-nar-lat>
+  <app-nav-nar-lat></app-nav-nar-lat>
 
-<body class="body">
-  <div class="transmision-container" *ngIf="streams.length > 0">
-    <div class="stream-wrapper">
-      <h2 class="title">Transmisión en vivo</h2>
-      <iframe
-        [src]="getEmbedUrl(streams[0].user_name)"
-        class="stream-frame"
-        frameborder="0"
-        scrolling="no"
-        allowfullscreen="true">
-      </iframe>
+  <div class="body">
+    <div class="transmision-container" *ngIf="streams.length > 0">
+      <div class="stream-wrapper">
+        <h2 class="title">Transmisión en vivo</h2>
+        <iframe
+          [src]="getEmbedUrl(streams[0].user_name)"
+          class="stream-frame"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="chat-wrapper">
+        <h2 class="title">Chat en vivo</h2>
+        <iframe
+          [src]="getChatEmbedUrl(streams[0].user_name)"
+          class="chat-frame"
+          frameborder="0"
+          scrolling="no">
+        </iframe>
+      </div>
     </div>
 
-    <div class="chat-wrapper">
-      <h2 class="title">Chat en vivo</h2>
-      <iframe
-        [src]="getChatEmbedUrl(streams[0].user_name)"
-        class="chat-frame"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
+    <div class="no-stream" *ngIf="streams.length === 0">
+      <p>No estás transmitiendo en este momento.</p>
     </div>
-  </div>
 
-  <div class="no-stream" *ngIf="streams.length === 0">
-    <p>No estás transmitiendo en este momento.</p>
-  </div>
-
-  <div class="actions">
-    <button class="btn logout" (click)="logout()">Cerrar sesión</button>
-    <button class="btn login" (click)="loginWithTwitch()">Iniciar Sesión con Twitch</button>
+    <div class="actions">
+      <button class="btn logout" (click)="logout()">Cerrar sesión</button>
+      <button class="btn login" (click)="loginWithTwitch()">Iniciar Sesión con Twitch</button>
+    </div>
   </div>
 </body>
+</html>

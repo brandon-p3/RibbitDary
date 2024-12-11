@@ -6,7 +6,6 @@ import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 
 
-
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
@@ -124,25 +123,35 @@ export class TareaComponent implements OnInit {
             if (this.tareaUbi.lat && this.tareaUbi.lng) {
 
               const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
-              // L.Routing.control({
+
+              // const Routing: any = (L as any).Routing;
+              // const routingControl = Routing.control({
               //   waypoints: [
               //     L.latLng(userLocation[0], userLocation[1]),
               //     L.latLng(tareaLocation[0], tareaLocation[1])
               //   ],
-              //   routeWhileDragging: true
+              //   language: 'es',
+              //   createMarker: () => null  // Desactiva la edición de puntos en el mapa
               // }).addTo(this.map);
 
+              // this.map.fitBounds(routingControl.getWaypoints().map((waypoint: any) => waypoint.latLng));
 
-              L.marker(tareaLocation, { icon: yellowIcon })
-                .addTo(this.map)
-                .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
-                .openPopup();
+
             }
+            const tareaLocation: L.LatLngTuple = [this.tareaUbi.lat, this.tareaUbi.lng];
             
+            L.marker(tareaLocation, { icon: yellowIcon })
+              .addTo(this.map)
+              .bindPopup(`Ubicación de la tarea: ${this.tareaUbi.nomTarea}`)
+              .openPopup();
+
             L.marker(userLocation, { icon: redIcon })
               .addTo(this.map)
               .bindPopup("Estás aquí")
               .openPopup();
+
+            const bounds = L.latLngBounds([tareaLocation, userLocation]);
+            this.map.fitBounds(bounds);
           }
         },
         () => {

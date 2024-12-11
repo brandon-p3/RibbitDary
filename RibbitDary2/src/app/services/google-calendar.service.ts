@@ -5,7 +5,7 @@ import { gapi } from 'gapi-script';
   providedIn: 'root'
 })
 export class GoogleCalendarService {
-  private clientId = '1051544364901-46c2kvf0fsca2r22l6h60h8s3rqof8vd.apps.googleusercontent.com';
+  private clientId = '1051544364901-sdspeb5faof25qk2q64o6lnuma2fb8pi.apps.googleusercontent.com';
   private discoveryDocs = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
   private scope = "https://www.googleapis.com/auth/calendar.events";
 

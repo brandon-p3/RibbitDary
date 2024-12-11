@@ -110,18 +110,17 @@ export class TwitchComponent implements OnInit {
   }
 
   getEmbedUrl(userName: string): SafeResourceUrl {
-    // const url = `https://player.twitch.tv/?channel=${userName}&parent=localhost`;
-    const url = `https://player.twitch.tv/?channel=${userName}&ribbitdary-4077c.web.app`;
+    const url = `https://player.twitch.tv/?channel=${userName}&parent=ribbitdary-4077c.web.app`;
     console.log(url);
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
+  
   getChatEmbedUrl(userName: string): SafeResourceUrl {
-    // const chatUrl = `https://www.twitch.tv/embed/${userName}/chat?parent=localhost`;
     const chatUrl = `https://www.twitch.tv/embed/${userName}/chat?parent=ribbitdary-4077c.web.app`;
     console.log(chatUrl);
     return this.sanitizer.bypassSecurityTrustResourceUrl(chatUrl);
   }
+  
 
   loginWithTwitch() {
     const redirectUri = 'https://ribbitdary-4077c.web.app/sesionesUsuario';
